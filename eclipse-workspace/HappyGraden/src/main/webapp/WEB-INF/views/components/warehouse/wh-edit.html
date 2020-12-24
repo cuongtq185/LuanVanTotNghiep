@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head>
+
+</head>
+<body>
+	<th:block th:fragment="wh-edit">
+		<div class="main-content">
+			<div class="section__content section__content--p30">
+				<div class="container-fluid">
+					<div class="row">
+
+						<div class="col-lg-12">
+							<div class="card">
+								<a href="">
+									<div class="card-header">
+										<strong> Phiếu nhập hàng</strong> 
+									</div>
+								</a>
+								<div class="card-body card-block">
+									<form class="form-horizontal" th:object="${product}">
+
+										<div class="row form-group">
+											<div class="col col-md-3">
+												<label for="text-input" class=" form-control-label"> Tên loại sản phẩm:</label>
+											</div>
+											<div class="col-12 col-md-9">
+												<input type="text" id="productName" name="text-input" th:field="*{productName}"
+													 class="form-control" disabled>
+											</div>
+										</div>
+										
+										<div class="row form-group">
+											<div class="col col-md-3">
+												<label for="text-input" class=" form-control-label"> Chi tiết nhập hàng :</label>
+											</div>
+											<div class="col-12 col-md-9">
+												<textarea name="textarea-input" id="detailImp" rows="7"
+                                                        placeholder="Mô tả chi tiết nhập hàng..." class="form-control"></textarea>
+											</div>
+										</div>
+										
+										<div class="row form-group">
+											<div class="col col-md-3">
+												<label for="text-input" class=" form-control-label"> Số lượng:</label>
+											</div>
+											<div class="col-12 col-md-9">
+												<input type="text" id="quantityImp" name="text-input" 
+													 class="form-control">
+											</div>
+										</div>
+										
+										<div class="row form-group">
+											<div class="col col-md-3">
+												<label for="text-input" class=" form-control-label"> Giá:</label>
+											</div>
+											<div class="col-12 col-md-9">
+												<input type="text" id="priceImp" name="text-input" 
+													 class="form-control" placeholder="vnđ" >
+											</div>
+										</div>
+									
+									</form>
+								</div>
+								<div class="card-footer" align = "right">
+									<button type="submit" class="btn btn-primary btn-sm" onClick="impProduct()">
+										<i class="fa fa-dot-circle-o"></i> Lưu
+									</button>
+									
+									<a th:href ="@{/admin/warehouse/list}">
+									<button type="reset" class="btn btn-danger btn-sm">
+										<i class="fa fa-ban"></i> Thoát
+									</button>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="copyright">
+						<p style="color: green">Copyright © 2020 Happy Graden. All
+							rights reserved.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>		
+	</th:block>
+
+</body>
+</html>
