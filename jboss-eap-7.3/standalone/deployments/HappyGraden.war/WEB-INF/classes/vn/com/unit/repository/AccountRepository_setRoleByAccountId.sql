@@ -1,1 +1,0 @@
-insert into p2p_account_role(account, role) values (/*id_account*/, /*id_role*/)
