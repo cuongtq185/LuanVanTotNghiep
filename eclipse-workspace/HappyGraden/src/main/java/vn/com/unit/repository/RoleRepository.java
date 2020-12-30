@@ -12,7 +12,7 @@ public interface RoleRepository extends MirageRepository<Role, Long> {
 	/* tìm quyền bởi id người dùng */
 	public List<Role> findRoleByAccountId(@Param("account_id") Long account_id);
 	
-	// tìm quyền bởi tên quyền
+	/* tìm id quyền bởi tên quyền */
 	public Long findRoleIdByName(@Param("role_name") String role_name);
 	
 }

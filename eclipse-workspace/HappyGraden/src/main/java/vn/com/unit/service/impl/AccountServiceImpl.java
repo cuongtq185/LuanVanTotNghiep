@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import vn.com.unit.dto.AccountWithRoleDto;
 import vn.com.unit.entity.Account;
-import vn.com.unit.entity.AccountRole;
 import vn.com.unit.entity.Role;
 import vn.com.unit.repository.AccountRepository;
 import vn.com.unit.repository.AccountRoleRepository;
@@ -42,11 +41,13 @@ public class AccountServiceImpl implements AccountService {
 	@Autowired
 	private AccountRoleRepository accountRoleRepository;
 
+	/* check username login*/
 	@Override
 	public Account findByUsername(String username) {
 		return accountRepository.findByUsername(username);
 	}
 
+	/* check login */
 	@Override
 	public boolean checkLogin(Account account, String rawPassword) {
 		try {

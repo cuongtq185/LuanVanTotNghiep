@@ -1,13 +1,14 @@
-select *, category.category_name, origin.origin_name, product_img2D.product_img, product_price.product_price
-from product pr
-left join category 
-on pr.category = category.category_id
-left join origin 
-on pr.origin = origin.origin_id
-left join product_img2D
-on pr.product_id = product_img2D.id_product_img2D
-left join product_price
-on pr.product_id = product_price.product_price_id
-where product_disable = 0
-order by product_id
-OFFSET  /*offset*/ ROWS FETCH NEXT  /*sizeOfPage*/ ROWS ONLY
+-- ProductRepository_findAllProductActive => hiển thị product lên index
+SELECT *, CATEGORY.CATEGORY_NAME, ORIGIN.ORIGIN_NAME, PRODUCT_IMG2D.PRODUCT_IMG, PRODUCT_PRICE.PRODUCT_PRICE
+FROM PRODUCT PR
+	LEFT JOIN CATEGORY 
+		ON PR.CATEGORY = CATEGORY.CATEGORY_ID
+	LEFT JOIN ORIGIN 
+		ON PR.ORIGIN = ORIGIN.ORIGIN_ID
+	LEFT JOIN PRODUCT_IMG2D
+		ON PR.PRODUCT_ID = PRODUCT_IMG2D.ID_PRODUCT_IMG2D
+	LEFT JOIN PRODUCT_PRICE
+		ON PR.PRODUCT_ID = PRODUCT_PRICE.PRODUCT_PRICE_ID
+WHERE PRODUCT_DISABLE = 0
+	ORDER BY PRODUCT_ID
+	OFFSET  /*offset*/ ROWS FETCH NEXT  /*sizeOfPage*/ ROWS ONLY

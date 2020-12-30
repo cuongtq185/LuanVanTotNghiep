@@ -7,8 +7,10 @@ import vn.com.unit.entity.Account;
 
 public interface AccountService {
 	
+	/* check username login */
 	public Account findByUsername(String username);
 	
+	/* check login */
 	public boolean checkLogin(Account account, String rawPassword);
 	
 	public boolean checkPass(Account account, String oldPassword);

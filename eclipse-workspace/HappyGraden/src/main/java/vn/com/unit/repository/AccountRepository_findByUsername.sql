@@ -1,3 +1,3 @@
 SELECT *
-FROM account
-WHERE account_username = /*username*/
+FROM ACCOUNT
+WHERE ACCOUNT_USERNAME = /*username*/
