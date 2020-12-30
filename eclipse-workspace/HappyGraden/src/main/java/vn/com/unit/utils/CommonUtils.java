@@ -29,10 +29,6 @@ import vn.com.unit.service.CategoryService;
 @Service
 public class CommonUtils {
 
-//	private static Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-//	public static String JWT_SECRET = Encoders.BASE64.encode(key.getEncoded());
-//	public static final String JWT_SECRET = "asdasdasdas`1``122113vs`2`1`12`12dfhjejrkqwje@8737316e893er9fe6y362738edc0-1-_--e-99p;l,.';[o[\"/kl`";
-
 	private static final SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 	public static final String JWT_SECRET = Encoders.BASE64.encode(key.getEncoded());
 
@@ -58,7 +54,6 @@ public class CommonUtils {
 
 	public static Map<String, Object> getMapHeaderAtribute(Model model, CategoryService categoryService) {
 		List<Category> categories = categoryService.findAllCategory();
-//		model.addAttribute("categories", categories);
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("categories", categories);
