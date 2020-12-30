@@ -9,7 +9,7 @@ import vn.com.unit.entity.Role;
 
 public interface RoleRepository extends MirageRepository<Role, Long> {
 
-	// tìm quyền bởi id
+	/* tìm quyền bởi id người dùng */
 	public List<Role> findRoleByAccountId(@Param("account_id") Long account_id);
 	
 	// tìm quyền bởi tên quyền

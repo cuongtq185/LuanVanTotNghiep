@@ -9,12 +9,15 @@ import vn.com.unit.entity.Role;
 
 public interface RoleService {
 	
+	/* kiểm tra role khi login */
 	public List<GrantedAuthority> findAuthorities(Account account);
 	
+	/* tìm quyền bởi người dùng */
 	public List<Role> findRoleByAccount(Account account);
 	
-	//tìm quyển bởi id
+	/* tìm quyền bởi id người dùng */
 	public List<Role> findRoleByAccountId(Long accountId);
 	
+	/* tìm id role bởi role name */
 	public Long findRoleIdByName(String role_name);
 }

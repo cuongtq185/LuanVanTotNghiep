@@ -38,16 +38,6 @@ public class CartController {
 	@GetMapping("/cart")
 	public ModelAndView cart(Model model) {
 
-//		select cart.*, product.*
-//		from
-//			(
-//			select *
-//			from p2p_cart
-//			where account = 3
-//			) cart
-//		left join p2p_product product
-//		on product.id = cart.product
-
 		int total_cart_item= 0;
 		Long total = 0L;
 		Account account = accountService.findCurrentAccount();
@@ -70,16 +60,9 @@ public class CartController {
 		return new ModelAndView("cart");
 	}
 
-//	18:22:16,779 WARN  [org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver] (default task-10) Resolved exception caused by handler execution: org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot construct instance of `java.util.LinkedHashMap` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('{"product_id" : 2}'); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot construct instance of `java.util.LinkedHashMap` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('{"product_id" : 2}')
-//	 at [Source: (PushbackInputStream); line: 1, column: 1]
-
-
-//	public ResponseEntity<String> add(Model model, @RequestBody Map<String, String> json) {
 	@PutMapping("/cart/add")
 	@ResponseBody
-	public ResponseEntity<String> add(Model model, @RequestBody Map<String, String> json) {
-		
-//		insert into p2p_cart (account, product, quantity) values (3, 1, 1);
+	public ResponseEntity<String> add(Model model, @RequestBody Map<String, String> json) {		
 		
 		int quantity = 1;
 		

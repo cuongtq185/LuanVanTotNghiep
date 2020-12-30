@@ -21,6 +21,7 @@ public class RoleServiceImpl implements RoleService {
 	@Autowired
 	RoleRepository roleRepository;
 	
+	/* kiểm tra role khi login */
 	@Override
 	public List<GrantedAuthority> findAuthorities(Account account) {
 		List<GrantedAuthority> authorities = new ArrayList<>();
@@ -37,7 +38,9 @@ public class RoleServiceImpl implements RoleService {
 
 		return authorities;
 	}
-	//tìm quyền bởi account
+
+	
+	/* tìm quyền bởi người dùng */
 	@Override
 	public List<Role> findRoleByAccount(Account account) {
 		try {
@@ -48,7 +51,8 @@ public class RoleServiceImpl implements RoleService {
 		return new ArrayList<Role>();
 	}
 	
-	// tìm quyền bởi id
+	
+	/* tìm quyền bởi id người dùng */
 	@Override
 	public List<Role> findRoleByAccountId(Long accountId) {
 		try {
@@ -58,7 +62,9 @@ public class RoleServiceImpl implements RoleService {
 		}
 		return new ArrayList<Role>();
 	}
-	// tìm quyền bởi tên quyền
+	
+	
+	/* tìm id quyền bởi tên quyền */
 	@Override
 	public Long findRoleIdByName(String role_name){
 		try {

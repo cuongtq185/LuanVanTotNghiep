@@ -1,3 +1,3 @@
-select role_id
-from role
-where role_name = /*role_name*/
+SELECT ROLE_ID
+FROM ROLE
+WHERE ROLE_NAME = /*role_name*/

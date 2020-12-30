@@ -1,6 +1,6 @@
-select *
-from role
-where role_id
-in (select role
-	from account
-	where account_id = /*account_id*/)
+--RoleRepository_findRoleByAccountId => tìm quyền bởi id người dùng
+SELECT *
+FROM ROLE
+WHERE ROLE_ID IN (SELECT ROLE
+				  FROM ACCOUNT
+				  WHERE ACCOUNT_ID = /*account_id*/)
