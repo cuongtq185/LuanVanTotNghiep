@@ -219,7 +219,7 @@ values(N'Cây bạch mã hoàng tử', N' Hợp với tuổi dần', 0,4,2, getu
 
 --insert product_price
 insert into product_price(create_at, product_price_id, product_price)
-values(getutcdate(),1 , 2000000)
+values(getutcdate(),1, 2000000)
 insert into product_price(create_at, product_price_id, product_price)
 values(getutcdate(),2,3000000)
 
