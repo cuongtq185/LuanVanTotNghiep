@@ -24261,15 +24261,15 @@ legend {
 }
 
 .app-logo {
-	height: 23px;
-	width: 97px;
+	height: 82px;
+	width: 400px;
 	background: url(/static/template/theme/ogani/img/logohp.png)
 }
 
 .app-logo-inverse {
 	height: 23px;
 	width: 97px;
-	background: url(assets/images/logo.png)
+	background: url(/static/template/theme/ogani/img/logohp.png)
 }
 
 .app-login-box .app-logo {
