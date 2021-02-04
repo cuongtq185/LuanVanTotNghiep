@@ -1,3 +1,5 @@
+--datasource.properties
+
 #sqlserver2012.driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
 #sqlserver2012.url=jdbc:sqlserver://db112.unit.vn:61433;databaseName=DMS_UAT; encrypt=true;trustServerCertificate=true ;
 #sqlserver2012.username=deployer
@@ -35,12 +37,8 @@ db2.username=deployer
 db2.password=Dms@release
 
 
-
-
-
-manual-report-adjust-ds/list
-dms-report-adjust-ds/list DmsReportForGaController
-
 --luu set ngay start va end
 http://localhost:8080/dms_p2/dmsagentcertificate/edit
 http://localhost:8080/dms_p2/post-office/list
+
+
