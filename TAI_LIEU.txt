@@ -41,4 +41,8 @@ db2.password=Dms@release
 http://localhost:8080/dms_p2/dmsagentcertificate/edit
 http://localhost:8080/dms_p2/post-office/list
 
+--table
+D:\DataSourceDMS.DaiiChi\06.Database\Pharse2\01.Table\DMS_TABLE_CNB
+Task #38756
+
 
