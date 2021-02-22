@@ -10868,7 +10868,7 @@ scale(
 .app-header__logo .logo-src {
 	height: 23px;
 	width: 97px;
-	background: url(assets/images/logo-inverse.png)
+	background: url(/static/template/theme/ogani/img/logohp.png)
 }
 
 .app-header__menu, .app-header__mobile-menu {
@@ -11232,7 +11232,7 @@ scale(
 }
 
 .app-header.header-text-dark .app-header__logo .logo-src {
-	background: url(assets/images/logo-inverse.png)
+	background: url(/static/template/theme/ogani/img/logohp.png)
 }
 
 .app-sidebar {
@@ -11515,7 +11515,7 @@ scale(
 }
 
 .app-sidebar.sidebar-text-light .app-header__logo .logo-src {
-	background: url(assets/images/logo.png)
+	background: url(/static/template/theme/ogani/img/logohp.png)
 }
 
 .app-sidebar.sidebar-text-light .app-header__logo .hamburger-inner,
