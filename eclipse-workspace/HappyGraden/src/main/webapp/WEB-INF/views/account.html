@@ -13,12 +13,12 @@
        		<div th:replace="components/admin/admin-header :: admin-header"></div>
        		<div class="app-main">
 				<div th:replace="components/account/account-menu :: account-menu"></div>
-				<div th:replace="components/account/account-edit :: account-edit"></div>
+				<div th:replace="components/account/account-list :: account-list"></div>
         	</div>
 	</div>					
     	<th:block th:replace="components/admin/admin-footer :: admin-footer"></th:block>
     	
-	<!-- <script th:src="@{/static/admin/js/core/jquery.min.js}"></script>
+	<script th:src="@{/static/admin/js/core/jquery.min.js}"></script>
 	<script th:src="@{/static/admin/js/core/popper.min.js}"></script>
 	<script
 		th:src="@{/static/admin/js/core/bootstrap-material-design.min.js}"></script>
@@ -39,8 +39,8 @@
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
         Swal.fire({
-                title: 'Bạn muốn xóa tài khoản?',
-                text: "Bạn sẽ không thể phục hồi trở lại!",
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -79,7 +79,7 @@
             }) 
         }
         
-        function Pagging(limit,page){
+        /* function Pagging(limit,page){
          	 var token = $("meta[name='_csrf']").attr("content");
               var header = $("meta[name='_csrf_header']").attr("content");
       		var keyword = $("#search-box").val();
@@ -110,7 +110,7 @@
                	  alert(request.status);
                  }
              });  
-      	}
-      </script> -->
+      	} */
+      </script>
 </body>
 </html>
