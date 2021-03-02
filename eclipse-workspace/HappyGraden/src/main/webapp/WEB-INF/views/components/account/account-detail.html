@@ -9,171 +9,103 @@
 </head>
 <body>
 	<th:block th:fragment="account-detail">
-		<div class="main-content">
-			<div class="section__content section__content--p30">
-				<div class="container-fluid">
-					<div class="row">
-
-						<div class="col-lg-12">
-							<div class="card">
-								<div class="card-header" style="color:blue">
-									<strong> Chi tiết tài khoản</strong> 
-								</div>
-								<div class="card-body card-block">
-									<form action="" method="post" enctype="multipart/form-data" th:if="account != null" th:object="${account}"
-										class="form-horizontal">
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label class=" form-control-label">Tên đăng nhập:</label>
-											</div>
-											<div class="col-12 col-md-9">
-												<input type="text" id="text-input" name="text-input" th:field="*{accountUsername}"
-													 class="form-control" disabled>
-											</div>
-
-										</div>
-										<!-- <div class="row form-group">
-											<div class="col col-md-3">
-												<label for="password-input" class=" form-control-label">Mật khẩu:</label>
-											</div>
-											<div class="col-12 col-md-9">
-												<input type="password" id="password-input" th:field="*{accountPassword}"
-													name="password-input" 
-													class="form-control" disabled> 
-											</div>
-										</div> -->
-										<!-- <div class="row form-group">
-											<div class="col col-md-3">
-												<label for="password-input" class=" form-control-label">Nhập lại mật khẩu:</label>
-											</div>
-											<div class="col-12 col-md-9">
-												<input type="password" id="password-input"
-													name="password-input" placeholder="Vui lòng nhập lại mật khẩu"
-													class="form-control"> <small
-													class="help-block form-text">Please enter a complex
-													password</small>
-											</div>
-										</div> -->
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label for="text-input" class=" form-control-label"> Họ và tên:</label>
-											</div>
-											<div class="col-12 col-md-9">
-												<input type="text" id="text-input" name="text-input" th:field="*{accountName}"
-													 class="form-control" disabled>
-											</div>
-										</div>
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label for="email-input" class=" form-control-label">Email: </label>
-											</div>
-											<div class="col-12 col-md-9">
-												<input type="email" id="email-input" name="email-input" th:field="*{accountEmail}"
-													 class="form-control" disabled> 
-											</div>
-										</div>
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label for="text-input" class=" form-control-label">Số điện thoại: </label>
-											</div>
-											<div class="col-12 col-md-9">
-												<input type="text" id="phone-input" name="phone-input" th:field="*{accountPhone}"
-													 class="form-control" disabled> 
-													
-											</div>
-										</div>
-										
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label for="text-input" class=" form-control-label">Địa chỉ: </label>
-											</div>
-											<div class="col-12 col-md-9">
-												<input type="text" id="address-input" name="address-input" th:field="*{accountAddress}"
-													 class="form-control" disabled> 
-											</div>
-										</div>
-										
-										<div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">Trạng thái:</label>
-                                                </div>
-                                                <div class="col col-md-9">
-                                                    <!-- <div class="form-check-inline form-check">
-                                                        <label for="inline-checkbox1" class="form-check-label ">
-                                                            <input type="checkbox" id="inline-checkbox1"
-                                                                name="inline-checkbox1" value="option1"
-                                                                class="form-check-input">Active
-                                                        </label>
-                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                        <label for="inline-checkbox2" class="form-check-label ">
-                                                            <input type="checkbox" id="inline-checkbox2"
-                                                                name="inline-checkbox2" value="option2"
-                                                                class="form-check-input">Inactive
-                                                        </label>                                                       
-                                                    </div> -->
-                                                    <th:block th:if="${account.accountDisable == false}">
-														<th:block th:text="active"></th:block>
-													</th:block>
-													<th:block th:if="${account.accountDisable == true}">
-														<th:block th:text="inactive"></th:block>
-													</th:block>
-                                                </div>
-                                            </div>
-                                            										
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label class=" form-control-label">Quyền người dùng:</label>
-											</div>
-											<div class="col col-md-9">
-												<!-- <div class="form-check">
-													<div class="checkbox">
-														<label for="checkbox1" class="form-check-label ">
-															<input type="checkbox" id="checkbox1" name="checkbox1"
-															value="option1" class="form-check-input">ROLE_ADMIN
-														</label>
-													</div>
-													<div class="checkbox">
-														<label for="checkbox2" class="form-check-label ">
-															<input type="checkbox" id="checkbox2" name="checkbox2"
-															value="option2" class="form-check-input"> ROLE_USER															
-														</label>
-													</div>
-													
-												</div> -->
-												<th:block th:if="${account.role == 1}">
-														<th:block th:text="ROLE_ADMIN"></th:block>
-													</th:block>
-													<th:block th:if="${account.role == 2}">
-														<th:block th:text="ROLE_USER"></th:block>
-													</th:block>
-											</div>
-										</div>
-									</form>
-								</div>
-								<div class="card-footer" align = "right">
-									<!-- <button type="submit" class="btn btn-primary btn-sm">
-										<i class="fa fa-dot-circle-o"></i> Save
-									</button> -->
-									
-									<a th:href ="@{/admin/account/list}">
-									<button type="reset" class="btn btn-danger btn-sm">
-										<i class="fa fa-ban"></i> Thoát
-									</button>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-						<div class="col-md-12">
-							<div class="copyright">
-								<p style="color:green">Copyright © 2020 Happy Graden. All rights reserved.</p>
-							</div>
-						</div>
-					</div>		
-		</div>
+		<div class="app-main__outer">
+                <div class="app-main__inner">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <h4 class="card-title">EDIT ACCOUNT MANAGEMENT</h4>
+                            <form id="signupForm" class="col-md-10 mx-auto" method="post" action="" th:if="account != null" th:object="${account}">
+                                <div class="form-group">
+                                    <label for="firstname">First name</label>
+                                    <div>
+                                        <input type="text" class="form-control" id="firstname" name="firstname" 
+                                        placeholder="First name" th:field="*{accountName}" disabled/>
+                                    </div>
+                                </div>	                              
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <div>
+                                        <input type="text" class="form-control" id="username" name="username" 
+                                        placeholder="Username" th:field="*{accountUsername}" disabled/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <div>
+                                        <input type="text" class="form-control" id="email" name="email"
+                                         placeholder="Email" th:field="*{accountEmail}" disabled/>
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <div>
+                                        <input type="text" class="form-control" id="phone" name="email"
+                                         placeholder="phone" th:field="*{accountPhone}" disabled/>
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <div>
+                                        <input type="text" class="form-control" id="address" name="address" 
+                                        placeholder="address" th:field="*{accountAddress}" disabled/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="createdAt">Created At</label>
+                                    <div>
+                                        <input type="text" class="form-control" id="createdAt"
+                                         th:value=" ${account.accountCreateAt} ? ${#dates.format(account.accountCreateAt, 'dd-MM-yyyy')} "
+                                         name="createdAt" placeholder="createdAt" disabled/>
+                                    </div>
+                                </div>
+                          
+            
+                                <!-- <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
+                                </div> -->
+                                <!-- <div class="form-group">
+                                    <label for="confirm_password">Confirm password</label>
+                                    <div>
+                                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm password" />
+                                    </div>
+                                </div> -->
+                                <!-- <div class="form-group">
+                                    <div>
+                                        <div class="form-check">
+                                            <input type="checkbox" id="agree" name="agree" value="agree" class="form-check-input" />
+                                            <label class="form-check-label">Please agree to our policy</label>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="form-group right">
+                                    <button type="submit" class="btn btn-primary" name="signup" value="Sign up">Sign up</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                 <div class="app-wrapper-footer">
+                    <div class="app-footer">
+                        <div class="app-footer__inner">
+                            
+                            <div class="app-footer-right">
+                                <ul class="header-megamenu nav">
+                                    <li class="nav-item">
+                                        <a data-placement="top" rel="popover-focus" data-offset="300"
+                                            data-toggle="popover-custom" class="nav-link">
+                                            Copyright © 2021 All rights reserved by Happy Graden
+                                            
+                                        </a>
+                                        
+                                    </li>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
 		
 	</th:block>
 
