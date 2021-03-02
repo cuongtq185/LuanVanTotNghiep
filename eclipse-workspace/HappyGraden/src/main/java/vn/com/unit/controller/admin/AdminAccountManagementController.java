@@ -32,8 +32,6 @@ public class AdminAccountManagementController {
 
 	@Autowired
 	private AccountService accountService;
-//	@Autowired
-//	private ShopService shopService;
 	
 	@GetMapping("admin/account/list")
 	public ModelAndView accountList(Model model,
