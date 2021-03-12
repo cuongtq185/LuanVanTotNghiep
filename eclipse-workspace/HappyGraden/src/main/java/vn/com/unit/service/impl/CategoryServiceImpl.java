@@ -132,7 +132,7 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public void deleteCategoryById(Long id) {
 		// TODO Auto-generated method stub
-		try {
+		try {			
 			categoryRepository.deleteCategoryById(id);
 		} catch (Exception e) {
 			// TODO: handle exception
