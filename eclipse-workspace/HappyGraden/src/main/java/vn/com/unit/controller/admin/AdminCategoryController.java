@@ -87,7 +87,7 @@ public class AdminCategoryController {
 	public ResponseEntity<String> createCategory(@RequestBody Category category, Model model) {
 		Category categoryExits = categoryService.findCategoryByName(category.getCategoryName());
 		if (categoryExits != null) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Category already exists\" }");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Category already exists\" }");			
 			}
 		if (category.getCategoryName() == "") {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Name cannot be empty\" }");
