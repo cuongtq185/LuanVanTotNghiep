@@ -1,1 +1,1 @@
-select * from origin
+select * from origin where origin_disable = 0

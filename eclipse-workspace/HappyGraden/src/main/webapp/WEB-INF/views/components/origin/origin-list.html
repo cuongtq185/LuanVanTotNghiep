@@ -6,7 +6,7 @@
 
 </head>
 <body>
-	<th:block th:fragment="category-list">
+	<th:block th:fragment="origin-list">
 	<div class="app-main__outer">
                 <div class="app-main__inner">
                     <div class="app-page-title">
@@ -15,7 +15,7 @@
                                 <div class="page-title-icon">
                                     <i class="fa fa-home" aria-hidden="true"></i>
                                 </div>
-                                <div> <b>CATEGORY MANAGEMENT</b>
+                                <div> <b>ORIGIN MANAGEMENT</b>
                                     <!-- <div class="page-title-subheading">This is an example dashboard created using
                                         build-in elements and components.</div> -->
                                 </div>
@@ -23,7 +23,7 @@
                             <div class="page-title-actions">
                                
                                 <div class="d-inline-block dropdown">
-                                	<a th:href="@{/admin/category/add}">
+                                	<a th:href="@{/admin/origin/add}">
 	                                    <button title="Add" aria-expanded="false" class="btn btn-primary btn-just-icon">
 	                                       <i class="fas fa-plus-circle"></i>	                                        
 	                                    </button>
@@ -44,7 +44,7 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Category Name</th>
+                                            <th>Origin Name</th>
                                             <!-- <th>UserName</th>
                                             <th>Email</th>
                                             <th>Create At</th> -->
@@ -53,15 +53,15 @@
                                     </thead>
                                     <tbody>
                                         <tr  th:if="${!pageable.data.empty or pageable.data != null}"
-												th:each="category, i : ${pageable.data}">
+												th:each="origin, i : ${pageable.data}">
                                             <td><span
 												th:text="${i.count+(pageable.limit*(pageable.page -1))}"></span></td>
-                                            <td><span th:text="${category.categoryName}"></span></td>											
+                                            <td><span th:text="${origin.originName}"></span></td>											
                                            
                                             <td style ="text-align: center;">
-                                            	<button rel="tooltip" title="Delete account" type="button"
+                                            	<button rel="tooltip" title="Delete origin" type="button"
 													class="btn btn-danger btn-just-icon"
-													th:onclick="|DeleteCategory(${category.categoryId})|">
+													th:onclick="|DeleteOrigin(${origin.originId})|">
 													<i class="fas fa-trash-alt"></i>
 												</button>&nbsp;&nbsp;
 												
@@ -71,10 +71,10 @@
 														<i class="fas fa-eye"></i>
 													</button>&nbsp;&nbsp;
 												</a> -->
-												<a th:href="@{'/admin/category/edit/' + ${category.categoryId}}">
-													<button rel="tooltip" title="Edit account" type="button"
+												<a th:href="@{'/admin/origin/edit/' + ${origin.originId}}">
+													<button rel="tooltip" title="Edit origin" type="button"
 														class="btn btn-primary btn-just-icon"
-														th:href="@{'/admin/category/edit/' + ${category.categoryId}}">
+														th:href="@{'/admin/origin/edit/' + ${origin.originId}}">
 														<i class="fas fa-pencil-alt"></i>
 													</button>
 												</a>
@@ -87,7 +87,7 @@
                                     <tfoot>
                                          <tr>
                                             <th>ID</th>
-                                            <th>Category Name</th>
+                                            <th>Origin Name</th>
                                             <!-- <th>UserName</th>
                                             <th>Email</th>
                                             <th>Create At</th> -->

@@ -59,7 +59,7 @@
                                             <td><span th:text="${category.categoryName}"></span></td>											
                                            
                                             <td style ="text-align: center;">
-                                            	<button rel="tooltip" title="Delete account" type="button"
+                                            	<button rel="tooltip" title="Delete origin" type="button"
 													class="btn btn-danger btn-just-icon"
 													th:onclick="|DeleteCategory(${category.categoryId})|">
 													<i class="fas fa-trash-alt"></i>
@@ -72,7 +72,7 @@
 													</button>&nbsp;&nbsp;
 												</a> -->
 												<a th:href="@{'/admin/category/edit/' + ${category.categoryId}}">
-													<button rel="tooltip" title="Edit account" type="button"
+													<button rel="tooltip" title="Edit origin" type="button"
 														class="btn btn-primary btn-just-icon"
 														th:href="@{'/admin/category/edit/' + ${category.categoryId}}">
 														<i class="fas fa-pencil-alt"></i>

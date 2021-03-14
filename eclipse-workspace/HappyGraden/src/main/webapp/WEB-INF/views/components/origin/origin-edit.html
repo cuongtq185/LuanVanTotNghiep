@@ -8,30 +8,30 @@
 
 </head>
 <body>
-	<th:block th:fragment="category-edit">
+	<th:block th:fragment="origin-edit">
 		<div class="app-main__outer">
 			<div class="app-main__inner">
 				<div class="main-card mb-3 card">
 					<div class="card-body">
-						<h4 class="card-title">EDIT CATEGORY MANAGEMENT</h4>
-						<form class="col-md-10 mx-auto" action="" th:object="${category}">
+						<h4 class="card-title">EDIT ORIGIN MANAGEMENT</h4>
+						<form class="col-md-10 mx-auto" action="" th:object="${origin}">
 							<div class="form-group">
-								<label>Category name</label>
+								<label>Origin name</label>
 								<div>
-									<input type="text" id="categoryName" class="form-control"	
-									 placeholder="Category name" th:field="*{categoryName}" maxlength="255"/>
+									<input type="text" id="originName" class="form-control"	
+									 placeholder="Origin name" th:field="*{originName}" maxlength="255"/>
 								</div>
 							</div>
 
 							<div class="form-group right">
-								<a th:href="@{/admin/category/list}"> 
+								<a th:href="@{/admin/origin/list}"> 
 									<span class="btn btn-warning" >
 									<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
 									BACK</span>
 									
 								</a> &nbsp;
 								<span type="submit" class="btn btn-primary"
-									onClick="editCategory()">
+									onClick="editOrigin()">
 									<i class="fa fa-floppy-o" aria-hidden="true"></i>
 									SUBMIT</span>
 							</div>
