@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.com.unit.entity.Category;
@@ -80,21 +81,19 @@ public class AdminCategoryController {
 		return new ModelAndView("category-edit");
 	}
 	
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@PostMapping("/admin/category/add")
 	@ResponseBody
 	public ResponseEntity<String> createCategory(@RequestBody Category category, Model model) {
-		if (categoryService.findCategoryByName(category.getCategoryName()) != null) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Category already exists.\" }");
+		Category categoryExits = categoryService.findCategoryByName(category.getCategoryName());
+		if (categoryExits != null) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Category already exists\" }");
 			}
 		if (category.getCategoryName() == "") {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Name cannot be empty.\" }");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Name cannot be empty\" }");
 		}
-		 categoryService.createCategory(category);
-		/*
-		 * if(check_category != null) { return ResponseEntity.status(HttpStatus.OK).
-		 * body("{\"msg\" : \"Create category successfully.\" }"); }
-		 */
-		 return ResponseEntity.ok("{ \"msg\" : \"Create category successfully.\" }");
+		categoryService.createCategory(category);		
+		return ResponseEntity.ok("{\"msg\" : \"Create category successfully\" }");
 		
 	}
 	@PutMapping("/admin/category/edit")
@@ -118,25 +117,6 @@ public class AdminCategoryController {
 		categoryService.deleteCategoryById(category_id);
 		return  ResponseEntity.ok(null);
 	}
-	
-	
-//	@PostMapping("/admin/category/addnew")
-//	@ResponseBody
-//	public ResponseEntity<String> createNewCategory(@RequestBody categoryEntity category, Model model) {
-//		if (categoryService.findCategoryByName(category.getName()) != null) {
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Category already exists\" }");
-//			}
-//		if (category.getName() == "") {
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Name cannot be empty\" }");
-//		}
-//		categoryEntity result = categoryService.createNewCategory(category);
-//		if (result.getId() != null) {
-//			return ResponseEntity.ok("{ \"id\" : " + result.getId() + ", \"msg\" : \"Create category successfully\" }");
-//		}
-//		
-//		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-//				.body("{ \"msg\" : \"You can't create an category right now. Try again later\" }");
-//		
-//	}
+		
 	
 }

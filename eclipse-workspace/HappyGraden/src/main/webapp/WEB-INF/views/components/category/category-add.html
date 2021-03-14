@@ -10,52 +10,53 @@
 <body>
 	<th:block th:fragment="category-add">
 		<div class="app-main__outer">
-                <div class="app-main__inner">
-                    <div class="main-card mb-3 card">
-                        <div class="card-body">
-                            <h4 class="card-title">ADD CATEGORY MANAGEMENT</h4>
-                            <form class="col-md-10 mx-auto">
-                                <div class="form-group">
-                                    <label for="firstname">Category name</label>
-                                    <div>
-                                        <input type="text" class="form-control" id="addCategoryName" name="addCategoryName" 
-                                        placeholder="Category name"/>
-                                    </div>
-                                </div>	                              
-      
-                                <div class="form-group right">
-                                    <button type="submit" class="btn btn-primary" action="action"
-    									onclick="window.history.go(-1); return false;">BACK</button>
-    								<button type="submit" class="btn btn-primary" onClick="AddCategory()"
-    									>SUBMIT</button>	
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                 <div class="app-wrapper-footer">
-                    <div class="app-footer">
-                        <div class="app-footer__inner">
-                            
-                            <div class="app-footer-right">
-                                <ul class="header-megamenu nav">
-                                    <li class="nav-item">
-                                        <a data-placement="top" rel="popover-focus" data-offset="300"
-                                            data-toggle="popover-custom" class="nav-link">
-                                            Copyright © 2021 All rights reserved by Happy Graden
-                                            
-                                        </a>
-                                        
-                                    </li>
-                                    
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-           
-            
+			<div class="app-main__inner">
+				<div class="main-card mb-3 card">
+					<div class="card-body">
+						<h4 class="card-title">ADD CATEGORY MANAGEMENT</h4>
+						<form class="col-md-10 mx-auto" action="">
+							<div class="form-group">
+								<label>Category name</label>
+								<div>
+									<input type="text" class="form-control" id="addCategoryName"
+										name="addCategoryName" placeholder="Category name" / maxlength="255">
+								</div>
+							</div>
+
+							<div class="form-group right">
+								<a th:href="@{/admin/category/list}"> 
+									<span class="btn btn-warning" >
+									<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+									BACK</span>
+									
+								</a> &nbsp;
+								<span type="submit" class="btn btn-primary"
+									onClick="AddCategory()">
+									<i class="fa fa-floppy-o" aria-hidden="true"></i>
+									SUBMIT</span>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="app-wrapper-footer">
+				<div class="app-footer">
+					<div class="app-footer__inner">
+
+						<div class="app-footer-right">
+							<ul class="header-megamenu nav">
+								<li class="nav-item"><a data-placement="top"
+									rel="popover-focus" data-offset="300"
+									data-toggle="popover-custom" class="nav-link"> Copyright ©
+										2021 All rights reserved by Happy Graden </a></li>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
 	</th:block>
 
 </body>
