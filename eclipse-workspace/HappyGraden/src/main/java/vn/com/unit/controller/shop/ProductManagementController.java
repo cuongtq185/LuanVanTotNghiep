@@ -59,7 +59,7 @@ import vn.com.unit.pageable.PageRequest;
 import javax.validation.Valid;
 
 @Controller
-public class ShopManagement {
+public class ProductManagementController {
 
 	@Autowired
 	AccountService accountService;

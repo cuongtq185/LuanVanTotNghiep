@@ -36,7 +36,7 @@ import vn.com.unit.service.ShopService;
 
 @Controller
 //@PreAuthorize("hasRole('ROLE_ADMIN')")
-public class ShopController {
+public class ProductListController {
 
 	@Autowired
 	AccountService accountService;

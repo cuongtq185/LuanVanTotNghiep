@@ -6,105 +6,118 @@
 
 </head>
 <body>
-	<th:block th:fragment="product-body">
-	<div class="main-content">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                                              
-                        <div class="row">
-                            <div class="col-md-12">
-                                <!-- DATA TABLE -->
-                                
-                                <div class="table-data__tool">
-                                    <div class="table-data__tool-left">
-                                    <h3 class="title-5 m-b-35" style = "margin-bottom: 0px; color: red" >Bảng Loại Sản Phẩm</h3>
-                                       <!--  <div class="rs-select2--light rs-select2--md">
-                                            <select class="js-select2" name="property">
-                                                <option selected="selected">All Properties</option>
-                                                <option value="">Option 1</option>
-                                                <option value="">Option 2</option>
-                                            </select>
-                                            <div class="dropDownSelect2"></div>
-                                        </div> -->
-                                        <!-- <div class="rs-select2--light rs-select2--sm">
-                                            <select class="js-select2" name="time">
-                                                <option selected="selected">Lọc</option>
-                                                <option value="">3 Days</option>
-                                                <option value="">1 Week</option>
-                                            </select>
-                                            <div class="dropDownSelect2"></div>
-                                        </div> -->
-                                        <!-- <button class="au-btn-filter">
-                                            <i class="zmdi zmdi-filter-list"></i>Lọc</button> -->
-                                    </div>
-                                    <div class="table-data__tool-right" title = "Thêm loại">
-                                    	<a th:href ="@{/admin/product/add}">
-                                        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                            <i class="fa fa-plus-circle" style ="margin-right: 0px;"></i>	</button>
-                                        </a>
-                                    </div>
-                                </div> 
-                                <div class="table-responsive table-responsive-data2">
-                                    <table class="table table-data2">
-                                        <thead>
-                                            <tr>
-											<th>STT</th>
-											<th>Tên sản phẩm</th>
-											<th>Giá</th>											
-											<th>Loại sản phẩm</th>
-											<th>Xuất xứ</th>
-											<th style="min-width:130px">Ngày tạo</th>
-											<th>Hình ảnh</th>
-											<th></th>
-										</tr>
-                                        </thead>
-                                        <tbody>
-										<tr class="tr-shadow" th:each="product, i : ${pageable.data}">
-											<td><span
-												th:text="${i.count+(pageable.limit*(pageable.page -1))}"></span>
-											</td>
-											<td><span th:text="${product.productName}"></span></td>
-											<td><span th:text="${product.productPrice}">2000000</span></td>
-											<td><span th:text="${product.categoryName}"></span></td>																					
-											<td><span th:text="${product.originName}"></span></td>
-											<td><span th:text="${product.productCreateAt} ? ${#dates.format(product.productCreateAt, 'dd-MM-yyyy')}"></span></td>
-											<td><span th:text="${product.productImg}"></span></td>
-											<td>
-												<div class="table-data-feature">
-
-													<button class="item" data-toggle="tooltip"
-														data-placement="top" title="Xóa" type="button"
-														style="background-color: blanchedalmond;">
-														<i class="zmdi zmdi-delete"
-															th:onclick="|DeleteProduct(${product.productId})|"></i>
-													</button>
-													<a
-														th:href="@{'/admin/product/edit/' + ${product.productId}}">
-														<button class="item" data-toggle="tooltip"
-															data-placement="top" title="Sửa"
-															style="background-color: blanchedalmond;">
-															<i class="zmdi zmdi-edit"></i>
-														</button>
-													</a>
-												</div>
-											</td>
-										</tr>
-
-									</tbody>
-                                    </table>
-                                   <!-- <div th:replace="components/pagination/panigation :: content(${pageable})"></div> -->
+	<th:block th:fragment="product-list">
+	<div class="app-main__outer">
+                <div class="app-main__inner">
+                    <div class="app-page-title">
+                        <div class="page-title-wrapper">
+                            <div class="page-title-heading">
+                                <div class="page-title-icon">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
                                 </div>
-                                <!-- END DATA TABLE -->
+                                <div> <b>PRODUCT MANAGEMENT</b>
+                                    <!-- <div class="page-title-subheading">This is an example dashboard created using
+                                        build-in elements and components.</div> -->
+                                </div>
+                            </div>
+                            <div class="page-title-actions">
+                               
+                                <div class="d-inline-block dropdown">
+                                	<a th:href="@{/admin/product/add}">
+	                                    <button title="Add" aria-expanded="false" class="btn btn-primary btn-just-icon">
+	                                       <i class="fas fa-plus-circle"></i>	                                        
+	                                    </button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="copyright">
-								<p style="color:green">Copyright © 2020 Happy Graden. All rights reserved.</p>
-							</div>
-						</div>
-					</div>
-				</div>
+                    </div>
+                    
+                    <div class="tabs-animation">
+                        
+
+                        <div class="card mb-3">
+                            
+                            <div class="card-body">
+                                <table style="width: 100%;" id="example"
+                                    class="table table-hover table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Origin Name</th>
+                                            <!-- <th>UserName</th>
+                                            <th>Email</th>
+                                            <th>Create At</th> -->
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr  th:if="${!pageable.data.empty or pageable.data != null}"
+												th:each="product, i : ${pageable.data}">
+                                            <td><span
+												th:text="${i.count+(pageable.limit*(pageable.page -1))}"></span></td>
+                                            <td><span th:text="${product.productName}"></span></td>											
+                                           
+                                            <td style ="text-align: center;">
+                                            	<button rel="tooltip" title="Delete product" type="button"
+													class="btn btn-danger btn-just-icon"
+													th:onclick="|DeleteProduct(${product.productId})|">
+													<i class="fas fa-trash-alt"></i>
+												</button>&nbsp;&nbsp;
+												
+												<a th:href="@{'/admin/product/detail/' + ${product.productId}}">
+													<button rel="tooltip" title="Detail product" type="button"
+														class="btn btn-warning btn-just-icon">
+														<i class="fas fa-eye"></i>
+													</button>&nbsp;&nbsp;
+												</a>
+												<a th:href="@{'/admin/product/edit/' + ${product.productId}}">
+													<button rel="tooltip" title="Edit product" type="button"
+														class="btn btn-primary btn-just-icon"
+														th:href="@{'/admin/product/edit/' + ${product.productId}}">
+														<i class="fas fa-pencil-alt"></i>
+													</button>
+												</a>
+                                            </td>
+                                        </tr>
+                                       
+                                        
+                                        
+                                    </tbody>
+                                    <tfoot>
+                                         <tr>
+                                            <th>ID</th>
+                                            <th>Origin Name</th>
+                                            <!-- <th>UserName</th>
+                                            <th>Email</th>
+                                            <th>Create At</th> -->
+                                            <th>Action</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="app-wrapper-footer">
+                    <div class="app-footer">
+                        <div class="app-footer__inner">
+                            
+                            <div class="app-footer-right">
+                                <ul class="header-megamenu nav">
+                                    <li class="nav-item">
+                                        <a data-placement="top" rel="popover-focus" data-offset="300"
+                                            data-toggle="popover-custom" class="nav-link">
+                                            Copyright © 2021 All rights reserved by Happy Graden
+                                            
+                                        </a>
+                                        
+                                    </li>
+                                    
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 	</th:block>

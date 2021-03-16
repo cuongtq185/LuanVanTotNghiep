@@ -45,8 +45,7 @@ public class AdminOriginController {
 		return new ModelAndView("origin");
 	}
 	
-	
-	
+		
 	@GetMapping("/admin/origin/ajax-list")
 	public ModelAndView originAjaxList(Model model,
 			@RequestParam(value = "page", required = false, defaultValue = "1") int page,
@@ -63,16 +62,13 @@ public class AdminOriginController {
 	}
 	
 	
-	
 	@GetMapping("/admin/origin/add")
 	public ModelAndView categoryAdd(Model model,
 			HttpServletRequest request) {
 
 		return new ModelAndView("origin-add");
 	}
-	
-	
-	
+
 	
 	@GetMapping("/admin/origin/edit/{origin_id}")
 	public ModelAndView originEdit(@PathVariable("origin_id") long origin_id, Model model,

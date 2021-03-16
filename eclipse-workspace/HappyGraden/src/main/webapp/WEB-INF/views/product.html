@@ -2,26 +2,38 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+	
+<head>
+    <th:block th:include="components/admin/admin-head :: admin-head"></th:block>
 	<meta th:name="_csrf" th:content="${_csrf.token}" />
     <meta th:name="_csrf_header" th:content="${_csrf.headerName}" />
-<head>
-    <th:block th:include="components/product/admin-head :: admin-head"></th:block>
-
 </head>
-<body class="animsition">
-	<div class="page-wrapper">
-       		<div th:replace="components/product/product-header :: product-header"></div>
-       		<div class="page-container">
-				<div th:replace="components/admin/admin-menu :: admin-menu"></div>
-				<div th:replace="components/product/product-list :: product-body"></div>
+<body>
+	<div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
+       		<div th:replace="components/admin/admin-header :: admin-header"></div>
+       		<div class="app-main">
+				<div th:replace="components/product/product-menu :: product-menu"></div>
+				<div th:replace="components/product/product-list :: product-list"></div>
         	</div>
-        	
-	</div>					
-    <th:block th:replace="components/admin/admin-footer :: admin-footer"></th:block> 
-    
-    <script th:src="@{/static/admin/js/plugins/sweetalert2@9.js}"></script>
-    
-   <script th:inline="javascript">
+	</div>
+	<th:block th:replace="components/admin/admin-footer :: admin-footer"></th:block>
+
+	<script th:src="@{/static/admin/js/core/jquery.min.js}"></script>
+	<script th:src="@{/static/admin/js/core/popper.min.js}"></script>
+	<script
+		th:src="@{/static/admin/js/core/bootstrap-material-design.min.js}"></script>
+
+	<script th:src="@{/static/bootstrap-4.5.0-dist/js/bootstrap.min.js}"></script>
+	<script
+		th:src="@{/static/admin/js/plugins/perfect-scrollbar.jquery.min.js}"></script>
+	<script th:src="@{/static/admin/js/plugins/sweetalert2@9.js}"></script>
+
+	<script th:src="@{/static/admin/js/plugins/bootstrap-notify.js}"></script>
+
+	<script th:src="@{/static/admin/js/material-dashboard.js?v=2.1.2}"
+		type="text/javascript"></script>
+
+	<script th:inline="javascript">
   		    function DeleteProduct(id) {
             console.log(id)
 
