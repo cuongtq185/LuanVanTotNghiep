@@ -44,10 +44,9 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Origin Name</th>
-                                            <!-- <th>UserName</th>
-                                            <th>Email</th>
-                                            <th>Create At</th> -->
+                                            <th>Product Name</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -56,7 +55,10 @@
 												th:each="product, i : ${pageable.data}">
                                             <td><span
 												th:text="${i.count+(pageable.limit*(pageable.page -1))}"></span></td>
-                                            <td><span th:text="${product.productName}"></span></td>											
+                                            <td><span th:text="${product.productName}"></span></td>
+                                            <td><span th:text="${product.impQuantity}"></span></td>
+                                            <td><span th:text="${product.productPrice}"></span></td>	
+                                           												
                                            
                                             <td style ="text-align: center;">
                                             	<button rel="tooltip" title="Delete product" type="button"
@@ -87,10 +89,9 @@
                                     <tfoot>
                                          <tr>
                                             <th>ID</th>
-                                            <th>Origin Name</th>
-                                            <!-- <th>UserName</th>
-                                            <th>Email</th>
-                                            <th>Create At</th> -->
+                                            <th>Product Name</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>                                            
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>

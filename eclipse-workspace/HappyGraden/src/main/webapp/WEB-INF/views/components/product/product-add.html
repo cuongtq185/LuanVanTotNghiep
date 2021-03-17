@@ -16,24 +16,62 @@
 						<h4 class="card-title">ADD PRODUCT MANAGEMENT</h4>
 						<form class="col-md-10 mx-auto" action="">
 							<div class="form-group">
+								<label>Product name</label>
+								<div>
+									<input type="text" class="form-control" id="addProductName"
+										name="addProductName" placeholder="Product name"
+										maxlength="255" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Category name</label>
+								<div>
+									<select name="select" id="addCategoryName" class="form-control">
+										<option value="">Select category</option>
+										<option th:each="category : ${categories}"
+											th:value="${category.categoryId}"
+											th:utext="${category.categoryName}" />
+
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
 								<label>Origin name</label>
 								<div>
-									<input type="text" class="form-control" id="addOriginName"
-										name="addOriginName" placeholder="Origin name" maxlength="255" />
+									<select name="select" id="addOrigintName" class="form-control">
+										<option value="">Select origin</option>
+										<option th:each="origin : ${origins}"
+											th:value="${origin.originId}" th:utext="${origin.originName}" />
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Product detail</label>
+								<div>
+									<input type="textarea" class="form-control"
+										id="addProductDetail" rows="9" name="addProductDetail"
+										placeholder="Description detail product" maxlength="1000" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Product images</label>
+								<div>
+									<input type="file" id="addProductImg"
+										name="file-multiple-input" multiple=""
+										class="form-control-file">
 								</div>
 							</div>
 
 							<div class="form-group right">
-								<a th:href="@{/admin/origin/list}"> 
-									<span class="btn btn-warning" >
-									<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
-									BACK</span>
-									
-								</a> &nbsp;
-								<span type="submit" class="btn btn-primary"
-									onClick="AddOrigin()">
-									<i class="fa fa-floppy-o" aria-hidden="true"></i>
-									SUBMIT</span>
+								<a th:href="@{/admin/product/list}"> <span
+									class="btn btn-warning"> <i
+										class="fa fa-arrow-circle-left" aria-hidden="true"></i> BACK
+								</span>
+
+								</a> &nbsp; <span type="submit" class="btn btn-primary"
+									onClick="AddProduct()"> <i class="fa fa-floppy-o"
+									aria-hidden="true"></i> SUBMIT
+								</span>
 							</div>
 						</form>
 					</div>
