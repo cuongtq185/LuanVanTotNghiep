@@ -40,13 +40,15 @@ create table account(
 
 create table category(
 	category_id bigint primary key identity(1,1),
-	category_name nvarchar(50) not null unique,
+	category_name nvarchar(50) not null,
+	category_disable  bit default 0
 )
 
 
 create table origin(
 	origin_id bigint primary key identity(1,1),
-	origin_name nvarchar(50) not null unique
+	origin_name nvarchar(50) not null,
+	origin_disable  bit default 0
 )
 
 create table product(
