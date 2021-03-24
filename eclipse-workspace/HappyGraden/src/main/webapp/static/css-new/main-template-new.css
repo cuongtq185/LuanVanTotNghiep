@@ -10865,11 +10865,11 @@ scale(
 	transition: width .2s
 }
 
-/* .app-header__logo .logo-src {
-	height: 100px;
-	width: 100px;
+.app-header__logo .logo-src {
+	height: 40px;
+	width: 150;
 	background: url(/static/template/theme/ogani/img/logohp.png)
-} */
+}
 
 .app-header__menu, .app-header__mobile-menu {
 	display: none;
