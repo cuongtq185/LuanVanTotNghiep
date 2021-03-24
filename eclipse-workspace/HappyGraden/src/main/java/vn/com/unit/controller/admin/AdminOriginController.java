@@ -87,6 +87,10 @@ public class AdminOriginController {
 		if (origin.getOriginName() == "") {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Name cannot be empty.\" }");
 		}
+//		if (origin.getOriginName().length() > 255) {
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+//					.body("{ \"msg\" : \"Origin name should be less than or equal to 255 character\" }");
+//		}
 		originService.createOrigin(origin);	
 		return ResponseEntity.ok("{ \"msg\" : \"Create origin successfully.\" }");
 	}
@@ -101,6 +105,10 @@ public class AdminOriginController {
 		if (origin.getOriginName() == "") {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Name cannot be empty.\" }");
 		}
+//		if (origin.getOriginName().length() > 255) {
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+//					.body("{ \"msg\" : \"Origin name should be less than or equal to 255 character\" }");
+//		}		
 		originService.updateOriginById(origin);
 
 		return ResponseEntity.ok("{ \"msg\" : \"update origin successfully.\" }");
