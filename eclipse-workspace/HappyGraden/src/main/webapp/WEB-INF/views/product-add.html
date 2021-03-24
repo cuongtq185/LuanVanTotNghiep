@@ -34,7 +34,7 @@
 			newProduct.categoryId = $("#addCategoryName").val();
 			newProduct.originId = $("#addOrigintName").val();
 			newProduct.productDetail = $("#addProductDetail").val();
-			newProduct.productImg = $("#addProductImg").val();
+			newProduct.productImg = $("#file").val();
 			$.ajax({
 				url: `/admin/product/add`,
 				type: 'POST',

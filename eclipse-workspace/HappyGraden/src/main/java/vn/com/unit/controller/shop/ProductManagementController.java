@@ -7,10 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,14 +49,15 @@ import vn.com.unit.pageable.PageRequest;
 import vn.com.unit.service.AccountService;
 import vn.com.unit.service.BillItemService;
 import vn.com.unit.service.BillSeparateService;
-//import vn.com.unit.service.BillService;
 import vn.com.unit.service.CategoryService;
 import vn.com.unit.service.OriginService;
+import vn.com.unit.service.ProductImg2DService;
 import vn.com.unit.service.ProductService;
 import vn.com.unit.service.RoleService;
 import vn.com.unit.service.UploadImgService;
 import vn.com.unit.service.WareHouseService;
 import vn.com.unit.utils.CommonUtils;
+import vn.com.unit.utils.FileUtil;
 import vn.com.unit.pageable.PageRequest;
 import javax.validation.Valid;
 
@@ -88,6 +91,9 @@ public class ProductManagementController {
 	@Autowired
 	BillSeparateService billSeparateService;
 	
+	@Autowired
+	ProductImg2DService productImg2DService; 
+	
 	
 	@GetMapping("/admin/product/add")
 	@ResponseBody
@@ -107,9 +113,8 @@ public class ProductManagementController {
 	@PostMapping("admin/product/add")
 	@ResponseBody
 	public ResponseEntity<String> addProduct(@RequestBody ProductDto productDto, ProductImg2D productImg2D,
-			 Model model,
+			Model model, @RequestParam("file") MultipartFile[] file,
 			HttpServletRequest request) {
-
 		
 		List<Product> productName = productService.searchProductByName(productDto.getProductName());
 		if (productName != null && !productName.isEmpty()) {
@@ -118,33 +123,30 @@ public class ProductManagementController {
 		if (productDto.getProductName() == "") {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Name cannot be empty\" }");
 		}
-		 productService.createNewProduct(productDto.getProductName(),productDto.getCategoryId(), productDto.getOriginId(),productDto.getProductDetail());
-		 //wareHouseService.insert(productDto.getProductId());
-
-//		ProductDto product_new = new ProductDto();
+		productService.createNewProduct(productDto.getProductName(),productDto.getCategoryId(), productDto.getOriginId(),productDto.getProductDetail());	
 		
-//		 productService.createNewProduct(productDto.getProductName(),productDto.getCategoryId(), productDto.getOriginId(),productDto.getProductDetail(), productDto.getProductImg());
-		
-////		ProductImg2D img_new = productService.save(productImg2D);
-//
-//		Thread thread = new Thread(new Runnable() {
-//			@Override
-//			public void run() {
-//				String url = UploadImgService.uploadCloudinary(file);
-//
-//				product_new.setProductImg(url);
-//
-//				// Update img for product
-//				productService.save(product_new);
-//
-//				file.delete();
-//			}
-//		});
-//
-//		thread.start();
-//		// --------
-//
-//		return new ModelAndView("product-add");
+		int i =1;
+		for(MultipartFile img : file) {
+			try {
+				String name = productDto.getProductName().replace("", "_");
+				String imgName = productDto.getProductId()+"_"+ name +"_"+ String.valueOf(i)+".jpg";
+				
+				String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img" + productDto.getProductId();
+				FileUtil.createDirectoryNotExists(path);
+				File fileNew = new File(path, imgName);
+				
+				String url = "/static/img" + productDto.getProductId() + "/" +imgName;
+				img.transferTo(fileNew);
+				productImg2DService.saveImg2D(productDto.getProductId(), url);
+				i++;
+				
+			
+			}catch(Exception e){
+				e.printStackTrace();
+				//Logger.error("fail");
+				throw new Error();
+			}
+		}
 		return ResponseEntity.ok("{ \"msg\" : \"update product successfully\" }");
 	}
 
