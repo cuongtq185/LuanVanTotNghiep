@@ -14,19 +14,20 @@
 				<div class="main-card mb-3 card">
 					<div class="card-body">
 						<h4 class="card-title">ADD PRODUCT MANAGEMENT</h4>
-						<form class="col-md-10 mx-auto" action="" enctype="multipart/form-data">
+						<form class="col-md-10 mx-auto" th:action="@{/admin/product/add}"
+							enctype="multipart/form-data" method="POST">
 							<div class="form-group">
 								<label>Product name</label>
 								<div>
 									<input type="text" class="form-control" id="addProductName"
-										name="addProductName" placeholder="Product name"
-										maxlength="255" />
+										name="name" placeholder="Product name" maxlength="255" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label>Category name</label>
 								<div>
-									<select name="select" id="addCategoryName" class="form-control">
+									<select name="category" id="addCategoryName"
+										class="form-control">
 										<option value="">Select category</option>
 										<option th:each="category : ${categories}"
 											th:value="${category.categoryId}"
@@ -38,7 +39,7 @@
 							<div class="form-group">
 								<label>Origin name</label>
 								<div>
-									<select name="select" id="addOrigintName" class="form-control">
+									<select name="origin" id="addOrigintName" class="form-control">
 										<option value="">Select origin</option>
 										<option th:each="origin : ${origins}"
 											th:value="${origin.originId}" th:utext="${origin.originName}" />
@@ -49,15 +50,14 @@
 								<label>Product detail</label>
 								<div>
 									<textarea type="textarea" class="form-control"
-										id="addProductDetail" rows="4" name="addProductDetail"
-										placeholder="Description detail product" maxlength="1000" ></textarea>
+										id="addProductDetail" rows="4" name="detail"
+										placeholder="Description detail product" maxlength="1000"></textarea>
 								</div>
 							</div>
 							<div class="form-group">
 								<label>Product images</label>
 								<div>
-									<input type="file" id="file"
-										name="file" multiple="multiple"
+									<input type="file" id="file" name="file" multiple="multiple"
 										class="form-control-file">
 								</div>
 							</div>
@@ -68,8 +68,8 @@
 										class="fa fa-arrow-circle-left" aria-hidden="true"></i> BACK
 								</span>
 
-								</a> &nbsp; <span type="submit" class="btn btn-primary"
-									onClick="AddProduct()"> <i class="fa fa-floppy-o"
+								</a> &nbsp; <span type="submit" class="btn btn-primary" id="submit" name="submit"
+									value="Submit"> <i class="fa fa-floppy-o"
 									aria-hidden="true"></i> SUBMIT
 								</span>
 							</div>
@@ -92,10 +92,6 @@
 				</div>
 			</div>
 		</div>
-
-
-
 	</th:block>
-
 </body>
 </html>

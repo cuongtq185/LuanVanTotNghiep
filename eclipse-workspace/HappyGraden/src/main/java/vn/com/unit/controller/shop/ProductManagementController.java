@@ -109,35 +109,74 @@ public class ProductManagementController {
 	
 	
 	// add product
-//	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
+//	@PostMapping("admin/product/add")
+//	@ResponseBody
+//	public ResponseEntity<String> addProduct(@RequestBody ProductDto productDto, ProductImg2D productImg2D,
+//			Model model, @RequestParam("file") MultipartFile[] file,
+//			HttpServletRequest request) {
+//		
+//		List<Product> productName = productService.searchProductByName(productDto.getProductName());
+//		if (productName != null && !productName.isEmpty()) {
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Product already exists\" }");
+//		}
+//		if (productDto.getProductName() == "") {
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Name cannot be empty\" }");
+//		}
+//		productService.createNewProduct(productDto.getProductName(),productDto.getCategoryId(), productDto.getOriginId(),productDto.getProductDetail());	
+//		
+//		int i =1;
+//		for(MultipartFile img : file) {
+//			try {
+//				String name = productDto.getProductName().replace("", "_");
+//				String imgName = productDto.getProductId()+"_"+ name +"_"+ String.valueOf(i)+".jpg";
+//				
+//				String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img" + productDto.getProductId();
+//				FileUtil.createDirectoryNotExists(path);
+//				File fileNew = new File(path, imgName);
+//				
+//				String url = "/static/img" + productDto.getProductId() + "/" +imgName;
+//				img.transferTo(fileNew);
+//				productImg2DService.saveImg2D(productDto.getProductId(), url);
+//				i++;
+//				
+//			
+//			}catch(Exception e){
+//				e.printStackTrace();
+//				//Logger.error("fail");
+//				throw new Error();
+//			}
+//		}
+//		return ResponseEntity.ok("{ \"msg\" : \"update product successfully\" }");
+//	}
 	@PostMapping("admin/product/add")
-	@ResponseBody
-	public ResponseEntity<String> addProduct(@RequestBody ProductDto productDto, ProductImg2D productImg2D,
-			Model model, @RequestParam("file") MultipartFile[] file,
+	public ModelAndView addProduct(@RequestParam("file") MultipartFile[] file, RedirectAttributes redirectAttributes, Locale locale,
+			@RequestParam(value = "name") String name,
+			@RequestParam(value = "category") int category,
+			@RequestParam(value = "origin") int origin,
+			@RequestParam(value = "detail") String detail,
 			HttpServletRequest request) {
 		
-		List<Product> productName = productService.searchProductByName(productDto.getProductName());
-		if (productName != null && !productName.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Product already exists\" }");
-		}
-		if (productDto.getProductName() == "") {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Name cannot be empty\" }");
-		}
-		productService.createNewProduct(productDto.getProductName(),productDto.getCategoryId(), productDto.getOriginId(),productDto.getProductDetail());	
-		
+		ModelAndView mav = new ModelAndView("product-list");
+		Product product = new Product();
+		product.setProductName(name);
+		product.setCategory(category);
+		product.setOrigin(origin);
+		product.setProductDetail(detail);
+				
 		int i =1;
 		for(MultipartFile img : file) {
 			try {
-				String name = productDto.getProductName().replace("", "_");
-				String imgName = productDto.getProductId()+"_"+ name +"_"+ String.valueOf(i)+".jpg";
+				name = name.replace("", "_");
+				String imgName = product.getProductId()+"_"+ name +"_"+ String.valueOf(i)+".jpg";
 				
-				String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img" + productDto.getProductId();
+				String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img" + product.getProductId();
 				FileUtil.createDirectoryNotExists(path);
 				File fileNew = new File(path, imgName);
 				
-				String url = "/static/img" + productDto.getProductId() + "/" +imgName;
+				String url = "/static/img" + product.getProductId() + "img" + "/" +imgName;
 				img.transferTo(fileNew);
-				productImg2DService.saveImg2D(productDto.getProductId(), url);
+				productImg2DService.saveImg2D(product.getProductId(), url);
 				i++;
 				
 			
@@ -147,8 +186,10 @@ public class ProductManagementController {
 				throw new Error();
 			}
 		}
-		return ResponseEntity.ok("{ \"msg\" : \"update product successfully\" }");
+		return mav;
+		
 	}
+
 
 	
 //	@GetMapping("/admin/product/add")
