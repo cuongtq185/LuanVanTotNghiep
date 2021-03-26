@@ -352,7 +352,7 @@ public class ProductServiceImpl implements ProductService {
 //        entity.setProbationFlag(aaGroupDisciplineDto.getProbationFlag());
 		return null;
 	}
-	
+	@Override
 	public Product getIdProductAddNew(String name, int category, int origin) {
 		try {
 			productRepository.getIdProductAddNew(name, category, origin);
@@ -361,4 +361,10 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return null;
 	}
+	
+	@Override
+	public int getIdNew() {
+		return productRepository.getIDProduct();	
+	}
+	
 }

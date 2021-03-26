@@ -62,4 +62,6 @@ public interface ProductService {
 	
 	public Product getIdProductAddNew(String name, int category, int origin);
 	
+	public int getIdNew();
+	
 }

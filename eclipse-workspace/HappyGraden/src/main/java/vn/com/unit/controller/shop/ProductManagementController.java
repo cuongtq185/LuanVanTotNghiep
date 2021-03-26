@@ -108,47 +108,7 @@ public class ProductManagementController {
 	}
 	
 	
-	// add product
-	//@PreAuthorize("hasRole('ROLE_ADMIN')")
-//	@PostMapping("admin/product/add")
-//	@ResponseBody
-//	public ResponseEntity<String> addProduct(@RequestBody ProductDto productDto, ProductImg2D productImg2D,
-//			Model model, @RequestParam("file") MultipartFile[] file,
-//			HttpServletRequest request) {
-//		
-//		List<Product> productName = productService.searchProductByName(productDto.getProductName());
-//		if (productName != null && !productName.isEmpty()) {
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Product already exists\" }");
-//		}
-//		if (productDto.getProductName() == "") {
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Name cannot be empty\" }");
-//		}
-//		productService.createNewProduct(productDto.getProductName(),productDto.getCategoryId(), productDto.getOriginId(),productDto.getProductDetail());	
-//		
-//		int i =1;
-//		for(MultipartFile img : file) {
-//			try {
-//				String name = productDto.getProductName().replace("", "_");
-//				String imgName = productDto.getProductId()+"_"+ name +"_"+ String.valueOf(i)+".jpg";
-//				
-//				String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img" + productDto.getProductId();
-//				FileUtil.createDirectoryNotExists(path);
-//				File fileNew = new File(path, imgName);
-//				
-//				String url = "/static/img" + productDto.getProductId() + "/" +imgName;
-//				img.transferTo(fileNew);
-//				productImg2DService.saveImg2D(productDto.getProductId(), url);
-//				i++;
-//				
-//			
-//			}catch(Exception e){
-//				e.printStackTrace();
-//				//Logger.error("fail");
-//				throw new Error();
-//			}
-//		}
-//		return ResponseEntity.ok("{ \"msg\" : \"update product successfully\" }");
-//	}
+	//add product
 	@PostMapping("admin/product/add")
 	public ModelAndView addProduct(@RequestParam("file") MultipartFile[] file, RedirectAttributes redirectAttributes, Locale locale,
 			@RequestParam(value = "name") String name,
@@ -159,27 +119,29 @@ public class ProductManagementController {
 		
 		productService.createNewProduct(name, category, origin, detail);
 		ModelAndView mav = new ModelAndView("product-add");
-		Product product = new Product();
-		product.setProductName(name);
-		product.setCategory(category);
-		product.setOrigin(origin);
-		product.setProductDetail(detail);
+//		Product product = new Product();
+//		product.setProductName(name);
+//		product.setCategory(category);
+//		product.setOrigin(origin);
+//		product.setProductDetail(detail);
 				
-		Product dto = productService.getIdProductAddNew(name, category, origin);
-		if (dto.getProductId() != null) {
+		//Product dto = productService.getIdProductAddNew(name, category, origin);
+		int id = productService.getIdNew();
+		
+		if ( id != 0) {
 			int i = 1;
 			for (MultipartFile img : file) {
 				try {
 					name = name.replace("", "_");
-					String imgName = dto.getProductId() + "_" + name + "_" + String.valueOf(i) + ".jpg";
+					String imgName = id + "_" + name + "_" + String.valueOf(i) + ".jpg";
 
 					String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img";
 					FileUtil.createDirectoryNotExists(path);
 					File fileNew = new File(path, imgName);
 
-					String url = "/static/img" + dto.getProductId() + "img" + "/" + imgName;
+					String url = "/static/img" + id + "img" + "/" + imgName;
 					img.transferTo(fileNew);
-					productImg2DService.saveImg2D(dto.getProductId(), url);
+					productImg2DService.saveImg2D( id, url);
 					i++;
 
 				} catch (Exception e) {
@@ -193,33 +155,6 @@ public class ProductManagementController {
 		
 	}
 
-
-	
-//	@GetMapping("/admin/product/add")
-//	public ModelAndView getAdd(@Valid @ModelAttribute(value = "searchDto") ProductDto productDto, 
-//			HttpServletRequest request) {
-//	
-//		ModelAndView mav = new ModelAndView("product-add");
-//		List<Category> categories = categoryService.findAllCategory();
-//		mav.addObject("categories", categories);
-//		List<Origin> origins = originService.findAllOrigin();
-//		mav.addObject("origins",origins);
-//		return mav;
-//	}
-	
-	
-//	@PostMapping("/admin/product/add")
-//	public ModelAndView postAdd(@Valid @ModelAttribute(value = "searchDto") ProductDto productDto,
-//			BindingResult bindingResult, Locale locale, RedirectAttributes redirectAttributes,
-//			HttpServletRequest request) throws IOException {
-//		
-//		ModelAndView mav = new ModelAndView("product-add");
-//		
-//		ProductDto product = this.productService.saveProduct(productDto);
-//		redirectAttributes.addAttribute("id", productDto.getProductId());
-//		return mav;
-//		
-//	}
 	// edit Product
 //	@PreAuthorize("hasRole('ROLE_VENDOR')")
 //	@PutMapping("/product/{product_id}")
