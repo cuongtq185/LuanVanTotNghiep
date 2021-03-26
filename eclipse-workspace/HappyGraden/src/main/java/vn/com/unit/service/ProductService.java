@@ -60,6 +60,6 @@ public interface ProductService {
 	
 	public ProductDto saveProduct(@Valid ProductDto productDto);
 	
-	public int getIdProductAddNew(String name, int category, int origin);
+	public Product getIdProductAddNew(String name, int category, int origin);
 	
 }

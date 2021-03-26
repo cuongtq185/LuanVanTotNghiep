@@ -53,8 +53,8 @@ create table origin(
 
 create table product(
 	product_id bigint primary key identity(1,1),
-	product_name nvarchar(250),
-	product_detail nvarchar(250),
+	product_name nvarchar(255),
+	product_detail nvarchar(255),
 	product_disable bit default 0,
 	product_createAt datetime,
 	category bigint not null,

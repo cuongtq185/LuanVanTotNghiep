@@ -353,12 +353,12 @@ public class ProductServiceImpl implements ProductService {
 		return null;
 	}
 	
-	public int getIdProductAddNew(String name, int category, int origin) {
+	public Product getIdProductAddNew(String name, int category, int origin) {
 		try {
 			productRepository.getIdProductAddNew(name, category, origin);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return 0;
+		return null;
 	}
 }

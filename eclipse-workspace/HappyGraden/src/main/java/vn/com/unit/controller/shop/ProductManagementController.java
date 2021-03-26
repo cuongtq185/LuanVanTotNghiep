@@ -157,35 +157,36 @@ public class ProductManagementController {
 			@RequestParam(value = "detail") String detail,
 			HttpServletRequest request) {
 		
-		ModelAndView mav = new ModelAndView("product");
+		productService.createNewProduct(name, category, origin, detail);
+		ModelAndView mav = new ModelAndView("product-add");
 		Product product = new Product();
 		product.setProductName(name);
 		product.setCategory(category);
 		product.setOrigin(origin);
 		product.setProductDetail(detail);
-		
-		productService.createNewProduct(name, category, origin, detail);
-		int id = productService.getIdProductAddNew(name, category, origin);		
-		int i =1;
-		for(MultipartFile img : file) {
-			try {
-				name = name.replace("", "_");
-				String imgName = id+"_"+ name +"_"+ String.valueOf(i)+".jpg";
 				
-				String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img";
-				FileUtil.createDirectoryNotExists(path);
-				File fileNew = new File(path, imgName);
-				
-				String url = "/static/img" + id + "img" + "/" +imgName;
-				img.transferTo(fileNew);
-				productImg2DService.saveImg2D(id, url);
-				i++;
-				
-			
-			}catch(Exception e){
-				e.printStackTrace();
-				//Logger.error("fail");
-				throw new Error();
+		Product dto = productService.getIdProductAddNew(name, category, origin);
+		if (dto.getProductId() != null) {
+			int i = 1;
+			for (MultipartFile img : file) {
+				try {
+					name = name.replace("", "_");
+					String imgName = dto.getProductId() + "_" + name + "_" + String.valueOf(i) + ".jpg";
+
+					String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img";
+					FileUtil.createDirectoryNotExists(path);
+					File fileNew = new File(path, imgName);
+
+					String url = "/static/img" + dto.getProductId() + "img" + "/" + imgName;
+					img.transferTo(fileNew);
+					productImg2DService.saveImg2D(dto.getProductId(), url);
+					i++;
+
+				} catch (Exception e) {
+					e.printStackTrace();
+					// Logger.error("fail");
+					throw new Error();
+				}
 			}
 		}
 		return mav;

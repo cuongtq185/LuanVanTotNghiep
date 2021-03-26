@@ -15,7 +15,7 @@ public class ProductImg2DServiceImpl implements ProductImg2DService{
 	ProductImg2DRepository productImg2DRepository;
 	
 	@Override
-	public void saveImg2D(int id, String url) {
+	public void saveImg2D(Long id, String url) {
 		try {
 			productImg2DRepository.saveImg2D(id, url);
 		} catch (Exception e) {
