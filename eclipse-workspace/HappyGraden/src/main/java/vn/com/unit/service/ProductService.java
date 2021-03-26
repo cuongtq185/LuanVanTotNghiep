@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.data.repository.query.Param;
+
 import vn.com.unit.dto.ProductDto;
 import vn.com.unit.entity.Product;
 import vn.com.unit.entity.ProductImg2D;
@@ -57,5 +59,7 @@ public interface ProductService {
 	public  List<ProductDto> findAllProductActive(int limit,int offset);
 	
 	public ProductDto saveProduct(@Valid ProductDto productDto);
+	
+	public int getIdProductAddNew(String name, int category, int origin);
 	
 }

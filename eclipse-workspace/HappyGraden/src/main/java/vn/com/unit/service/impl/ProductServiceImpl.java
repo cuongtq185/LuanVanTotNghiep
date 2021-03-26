@@ -352,4 +352,13 @@ public class ProductServiceImpl implements ProductService {
 //        entity.setProbationFlag(aaGroupDisciplineDto.getProbationFlag());
 		return null;
 	}
+	
+	public int getIdProductAddNew(String name, int category, int origin) {
+		try {
+			productRepository.getIdProductAddNew(name, category, origin);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return 0;
+	}
 }

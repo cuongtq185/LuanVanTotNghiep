@@ -93,4 +93,6 @@ public interface ProductRepository extends MirageRepository<Product, Long> {
 	
 	public List<ProductDto> findAllProductActive(@Param("sizeOfPage") Integer sizeOfPage, @Param("offset") Integer offset);
 	
+	public void getIdProductAddNew(@Param("name") String name, @Param("category") int category, @Param("origin") int origin);
+	
 }

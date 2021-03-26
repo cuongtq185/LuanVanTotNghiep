@@ -1,0 +1,1 @@
+select product_id from product where product_name = /*name*/ and category = /*category*/ and origin = /*origin*/

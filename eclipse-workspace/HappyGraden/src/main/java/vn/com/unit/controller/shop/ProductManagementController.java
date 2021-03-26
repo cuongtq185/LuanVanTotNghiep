@@ -157,26 +157,28 @@ public class ProductManagementController {
 			@RequestParam(value = "detail") String detail,
 			HttpServletRequest request) {
 		
-		ModelAndView mav = new ModelAndView("product-list");
+		ModelAndView mav = new ModelAndView("product");
 		Product product = new Product();
 		product.setProductName(name);
 		product.setCategory(category);
 		product.setOrigin(origin);
 		product.setProductDetail(detail);
-				
+		
+		productService.createNewProduct(name, category, origin, detail);
+		int id = productService.getIdProductAddNew(name, category, origin);		
 		int i =1;
 		for(MultipartFile img : file) {
 			try {
 				name = name.replace("", "_");
-				String imgName = product.getProductId()+"_"+ name +"_"+ String.valueOf(i)+".jpg";
+				String imgName = id+"_"+ name +"_"+ String.valueOf(i)+".jpg";
 				
-				String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img" + product.getProductId();
+				String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img";
 				FileUtil.createDirectoryNotExists(path);
 				File fileNew = new File(path, imgName);
 				
-				String url = "/static/img" + product.getProductId() + "img" + "/" +imgName;
+				String url = "/static/img" + id + "img" + "/" +imgName;
 				img.transferTo(fileNew);
-				productImg2DService.saveImg2D(product.getProductId(), url);
+				productImg2DService.saveImg2D(id, url);
 				i++;
 				
 			
