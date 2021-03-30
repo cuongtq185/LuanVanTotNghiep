@@ -252,6 +252,13 @@
 			<artifactId>netty-socketio</artifactId>
 			<version>1.7.18</version>
 		</dependency>
+		
+		<!-- validate -->
+		<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.4.1.Final</version>
+        </dependency>
 
 
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-jwt -->

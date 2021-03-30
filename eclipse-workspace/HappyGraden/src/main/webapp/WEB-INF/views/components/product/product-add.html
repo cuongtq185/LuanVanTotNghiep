@@ -14,6 +14,9 @@
 				<div class="main-card mb-3 card">
 					<div class="card-body">
 						<h4 class="card-title">ADD PRODUCT MANAGEMENT</h4>
+						<th:block >
+							<h4 class="card-title" th:each="msgInfo: ${msgInfo}" th:text ="CREATE_DATA_SUCCESS"></h4>
+						</th:block>						
 						<form class="col-md-10 mx-auto" th:action="@{/admin/product/add}"
 							enctype="multipart/form-data" method="POST">
 							<div class="form-group">
@@ -61,6 +64,12 @@
 										class="form-control-file">
 								</div>
 							</div>
+							<!-- <div class="form-group">
+								<label>Images</label>
+								<div>
+									<div id= "preview"></div>
+								</div>
+							</div> -->
 
 							<div class="form-group right">
 								<a th:href="@{/admin/product/list}"> <span
@@ -91,6 +100,25 @@
 				</div>
 			</div>
 		</div>
+	<!-- 	<script th:inline="javascript">
+		function previewImage(){
+			var $preview = $('#preview').empty();
+			if(this.files) $.each(this.file, readAndPreview);
+			
+			function readAndPreview(i, file){
+				if(!/\.(jpe?g|png|gif)$/i.test(file.name)){
+					return alert(file.name + "is not an image");
+				}
+				
+				var reader = new FileReader();
+				$(reader).on("load", function(){
+					$preview.append($("<img/>",{src:this.result, height:100,}));
+				});
+				
+				reader.readAsDataURL(file);
+			}
+		}
+		</script> -->
 	</th:block>
 </body>
 </html>

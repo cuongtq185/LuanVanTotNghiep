@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -58,6 +59,7 @@ import vn.com.unit.service.UploadImgService;
 import vn.com.unit.service.WareHouseService;
 import vn.com.unit.utils.CommonUtils;
 import vn.com.unit.utils.FileUtil;
+import vn.com.unit.utils.MessageList;
 import vn.com.unit.pageable.PageRequest;
 import javax.validation.Valid;
 
@@ -94,6 +96,9 @@ public class ProductManagementController {
 	@Autowired
 	ProductImg2DService productImg2DService; 
 	
+	@Autowired
+	protected MessageSource msg;
+	
 	
 	@GetMapping("/admin/product/add")
 	@ResponseBody
@@ -117,6 +122,7 @@ public class ProductManagementController {
 			@RequestParam(value = "detail") String detail,
 			HttpServletRequest request) {
 		
+		MessageList messageList = new MessageList("success");	
 		productService.createNewProduct(name, category, origin, detail);
 		ModelAndView mav = new ModelAndView("product-add");
 //		Product product = new Product();
@@ -139,7 +145,7 @@ public class ProductManagementController {
 					FileUtil.createDirectoryNotExists(path);
 					File fileNew = new File(path, imgName);
 
-					String url = "/static/img" + id + "img" + "/" + imgName;
+					String url = "/static/img/" + imgName;
 					img.transferTo(fileNew);
 					productImg2DService.saveImg2D( id, url);
 					i++;
@@ -151,6 +157,10 @@ public class ProductManagementController {
 				}
 			}
 		}
+		String[] args = new String[1];
+		String msgInfo = msg.getMessage("post.office.submit.success", args, locale);
+		mav.addObject("msgInfo", msgInfo);
+
 		return mav;
 		
 	}

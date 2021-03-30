@@ -2,6 +2,8 @@ package vn.com.unit.entity;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.Id;
 
 import jp.sf.amateras.mirage.annotation.Column;
@@ -17,6 +19,7 @@ public class Product {
 	@Column(name = "product_id")
 	private Long productId;
 
+	//@NotNull(message = "Không được bỏ trống")
 	@Column(name = "product_name")
 	private String productName;
 	
