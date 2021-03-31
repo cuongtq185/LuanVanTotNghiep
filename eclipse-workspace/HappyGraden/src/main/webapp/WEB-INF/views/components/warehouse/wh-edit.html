@@ -8,90 +8,55 @@
 
 </head>
 <body>
-	<th:block th:fragment="wh-edit">
-		<div class="main-content">
-			<div class="section__content section__content--p30">
-				<div class="container-fluid">
-					<div class="row">
-
-						<div class="col-lg-12">
-							<div class="card">
-								<a href="">
-									<div class="card-header">
-										<strong> Phiếu nhập hàng</strong> 
-									</div>
-								</a>
-								<div class="card-body card-block">
-									<form class="form-horizontal" th:object="${product}">
-
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label for="text-input" class=" form-control-label"> Tên loại sản phẩm:</label>
-											</div>
-											<div class="col-12 col-md-9">
-												<input type="text" id="productName" name="text-input" th:field="*{productName}"
-													 class="form-control" disabled>
-											</div>
-										</div>
-										
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label for="text-input" class=" form-control-label"> Chi tiết nhập hàng :</label>
-											</div>
-											<div class="col-12 col-md-9">
-												<textarea name="textarea-input" id="detailImp" rows="7"
-                                                        placeholder="Mô tả chi tiết nhập hàng..." class="form-control"></textarea>
-											</div>
-										</div>
-										
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label for="text-input" class=" form-control-label"> Số lượng:</label>
-											</div>
-											<div class="col-12 col-md-9">
-												<input type="text" id="quantityImp" name="text-input" 
-													 class="form-control">
-											</div>
-										</div>
-										
-										<div class="row form-group">
-											<div class="col col-md-3">
-												<label for="text-input" class=" form-control-label"> Giá:</label>
-											</div>
-											<div class="col-12 col-md-9">
-												<input type="text" id="priceImp" name="text-input" 
-													 class="form-control" placeholder="vnđ" >
-											</div>
-										</div>
-									
-									</form>
-								</div>
-								<div class="card-footer" align = "right">
-									<button type="submit" class="btn btn-primary btn-sm" onClick="impProduct()">
-										<i class="fa fa-dot-circle-o"></i> Lưu
-									</button>
-									
-									<a th:href ="@{/admin/warehouse/list}">
-									<button type="reset" class="btn btn-danger btn-sm">
-										<i class="fa fa-ban"></i> Thoát
-									</button>
-									</a>
+	<th:block th:fragment="category-edit">
+		<div class="app-main__outer">
+			<div class="app-main__inner">
+				<div class="main-card mb-3 card">
+					<div class="card-body">
+						<h4 class="card-title">EDIT CATEGORY MANAGEMENT</h4>
+						<form class="col-md-10 mx-auto" action="" th:object="${category}">
+							<div class="form-group">
+								<label>Category name</label>
+								<div>
+									<input type="text" id="categoryName" class="form-control"	
+									 placeholder="Category name" th:field="*{categoryName}" maxlength="255"/>
 								</div>
 							</div>
+
+							<div class="form-group right">
+								<a th:href="@{/admin/category/list}"> 
+									<span class="btn btn-warning" >
+									<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+									BACK</span>
+									
+								</a> &nbsp;
+								<span type="submit" class="btn btn-primary"
+									onClick="editCategory()">
+									<i class="fa fa-floppy-o" aria-hidden="true"></i>
+									SUBMIT</span>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="app-wrapper-footer">
+				<div class="app-footer">
+					<div class="app-footer__inner">
+
+						<div class="app-footer-right">
+							<ul class="header-megamenu nav">
+								<li class="nav-item"><a data-placement="top"
+									rel="popover-focus" data-offset="300"
+									data-toggle="popover-custom" class="nav-link"> Copyright ©
+										2021 All rights reserved by Happy Graden </a></li>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="copyright">
-						<p style="color: green">Copyright © 2020 Happy Graden. All
-							rights reserved.</p>
-					</div>
-				</div>
-			</div>
 		</div>
-		</div>		
+
+
+
 	</th:block>
 
 </body>
