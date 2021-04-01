@@ -3,15 +3,11 @@ package vn.com.unit.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import vn.com.unit.dto.ProductDto;
-import vn.com.unit.entity.Brand;
-import vn.com.unit.entity.Category;
 import vn.com.unit.entity.Product;
 import vn.com.unit.entity.ProductImg2D;
 import vn.com.unit.repository.BrandRepository;
@@ -44,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	CategoryService categoryService;
-	
+
 	@Autowired
 	ProductImg2DRepository productImg2DRepository;
 
@@ -179,7 +175,7 @@ public class ProductServiceImpl implements ProductService {
 
 		ProductDto product_dto = new ProductDto();
 		try {
-			product_dto = productRepository.findProductByProductId(product_id);		
+			product_dto = productRepository.findProductByProductId(product_id);
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -189,16 +185,12 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product createNewProduct(String name,int category,int origin,String detail) {
-		productRepository.createNewProduct(name,  category, origin, detail);
+	public Product createNewProduct(String name, int category, int origin, String detail) {
+
+		productRepository.createNewProduct(name, category, origin, detail);
+
 		return null;
 	}
-
-//	@Override
-//	public Product createNewProduct(Product product) {
-//		product.setProductId(null);
-//		return productRepository.save(product);
-//	}
 
 	@Override
 	public boolean setDisableProductByProductId(Long product_id) {
@@ -214,7 +206,7 @@ public class ProductServiceImpl implements ProductService {
 //			}
 
 //			productRepository.save(product_temp);
-			
+
 			return true;
 		} catch (Exception e) {
 
@@ -224,7 +216,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void saveProduct(Long product_id, String name, int price, String detail, int category, int brand,
-		int quantity) {
+			int quantity) {
 //
 //		try {
 ////			productRepository.saveProduct(product_id, name, price, quantity, category, brand, detail);
@@ -255,16 +247,12 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.findProductByName(name);
 		// List<Product> product = new ArrayList<Product>();
 		/*
-		try {
-			// product = productRepository.findProductByName(name);
-			if (name != null) {
-				return productRepository.findProductByName(name);
-			}
-		} catch (Exception e) {
-
-		}
-		return productRepository.findAllActiveProductOfShopActiveOfVendorActive();
-		*/
+		 * try { // product = productRepository.findProductByName(name); if (name !=
+		 * null) { return productRepository.findProductByName(name); } } catch
+		 * (Exception e) {
+		 * 
+		 * } return productRepository.findAllActiveProductOfShopActiveOfVendorActive();
+		 */
 	}
 
 	@Override
@@ -314,16 +302,16 @@ public class ProductServiceImpl implements ProductService {
 	public Product findOne(Long id) {
 		return productRepository.findOne(id);
 	}
-	
+
 	// bo sung product_img2D
 	public ProductImg2D save(ProductImg2D productImg2D) {
 		return productImg2DRepository.save(productImg2D);
 	}
-	
+
 	public int countAllProductActive() {
 		return productRepository.countAllProductActive();
-	}  
-	
+	}
+
 //	public Product findAllProductActive() {
 //		return productRepository.findAllProductActive();	
 //	}
@@ -352,19 +340,21 @@ public class ProductServiceImpl implements ProductService {
 //        entity.setProbationFlag(aaGroupDisciplineDto.getProbationFlag());
 		return null;
 	}
+
 	@Override
 	public Product getIdProductAddNew(String name, int category, int origin) {
 		try {
 			productRepository.getIdProductAddNew(name, category, origin);
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return null;
 	}
-	
+
 	@Override
 	public int getIdNew() {
-		return productRepository.getIDProduct();	
+		return productRepository.getIDProduct();
 	}
-	
+
 }

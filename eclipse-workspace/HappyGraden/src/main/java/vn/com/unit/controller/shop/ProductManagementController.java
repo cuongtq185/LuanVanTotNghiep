@@ -1,18 +1,12 @@
 package vn.com.unit.controller.shop;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
@@ -20,10 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -34,19 +26,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-
-import vn.com.unit.dto.BillSeparateShopViewDto;
-import vn.com.unit.dto.ProductDto;
-import vn.com.unit.dto.ShopCreateDto;
-import vn.com.unit.entity.Account;
 import vn.com.unit.entity.Category;
 import vn.com.unit.entity.Origin;
-import vn.com.unit.entity.Product;
-import vn.com.unit.entity.ProductImg2D;
-import vn.com.unit.pageable.PageRequest;
 import vn.com.unit.service.AccountService;
 import vn.com.unit.service.BillItemService;
 import vn.com.unit.service.BillSeparateService;
@@ -55,13 +36,9 @@ import vn.com.unit.service.OriginService;
 import vn.com.unit.service.ProductImg2DService;
 import vn.com.unit.service.ProductService;
 import vn.com.unit.service.RoleService;
-import vn.com.unit.service.UploadImgService;
 import vn.com.unit.service.WareHouseService;
-import vn.com.unit.utils.CommonUtils;
 import vn.com.unit.utils.FileUtil;
 import vn.com.unit.utils.MessageList;
-import vn.com.unit.pageable.PageRequest;
-import javax.validation.Valid;
 
 @Controller
 public class ProductManagementController {
@@ -133,6 +110,7 @@ public class ProductManagementController {
 				
 		//Product dto = productService.getIdProductAddNew(name, category, origin);
 		int id = productService.getIdNew();
+		wareHouseService.insert(id);
 		
 		if ( id != 0) {
 			int i = 1;

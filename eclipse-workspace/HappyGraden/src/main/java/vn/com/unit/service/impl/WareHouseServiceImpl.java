@@ -62,7 +62,8 @@ public class WareHouseServiceImpl implements WareHouseService {
 	}
 	
 	@Override
-	public void insert(Long id) {
+	public void insert(int id) {
 		wareHouseRepository.insert(id);
 	}
+	
 }

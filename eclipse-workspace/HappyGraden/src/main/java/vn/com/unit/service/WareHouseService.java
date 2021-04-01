@@ -14,6 +14,6 @@ public interface WareHouseService {
 	
 	public void updateProductById(ProductDto product);
 	
-	public void insert(Long id);
+	public void insert(int id);	
 
 }
