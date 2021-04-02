@@ -56,7 +56,8 @@
 										<td style="text-align: center;"
 											<a th:href="@{'/admin/warehouse/edit/' + ${warehouse.product}}">
 												<button rel="tooltip" title="Input product quantity" type="button"
-													class="btn btn-primary btn-just-icon">
+													class="btn btn-primary btn-just-icon"
+													th:href="@{'/admin/warehouse/edit/' + ${warehouse.product}}">
 													<i class="fas fa-file-import"></i>
 												</button>
 											</a>
@@ -84,7 +85,7 @@
 							<ul class="header-megamenu nav">
 								<li class="nav-item"><a data-placement="top"
 									rel="popover-focus" data-offset="300"
-									data-toggle="popover-custom" class="nav-link"> Copyright ©
+									data-toggle="popover-custom" class="nav-link" style="color:red"> Copyright ©
 										2021 All rights reserved by Happy Graden </a></li>
 						</div>
 					</div>

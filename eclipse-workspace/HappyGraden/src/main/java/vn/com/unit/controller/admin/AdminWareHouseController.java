@@ -70,8 +70,8 @@ public class AdminWareHouseController {
 	@GetMapping("/admin/warehouse/edit/{product_id}")
 	public ModelAndView impProduct(@PathVariable("product_id") long product_id, Model model,
 			HttpServletRequest request) {
-		Product product = productService.findProductByProductId(product_id);
-		model.addAttribute("product",product);
+		Product warehouse = productService.findProductByProductId(product_id);
+		model.addAttribute("warehouse",warehouse);
 		return new ModelAndView("import-product-card");
 	}
 	

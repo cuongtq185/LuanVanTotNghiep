@@ -18,58 +18,5 @@
 	</div>					
     	<th:block th:replace="components/admin/admin-footer :: admin-footer"></th:block>
 
-    <script th:src="@{/static/admin/js/plugins/sweetalert2@9.js}"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    
-    <script th:inline="javascript">
-		const warehouse = [[${ warehouse }]];
-	</script>
-	
-    <script>
-		function editCategory() {
-			var token = $("meta[name='_csrf']").attr("content");
-			var header = $("meta[name='_csrf_header']").attr("content");
-			category.categoryName = $("#categoryName").val();
-			console.log(category)
-			$.ajax({
-				url: `/admin/category/edit`,
-				type: 'PUT',
-				dataType: "json",
-				contentType: "application/json",
-				data: JSON.stringify(category),
-				beforeSend: function (xhr) {
-					xhr.setRequestHeader(header, token);
-				},
-				success: function (data, status, xhr) {
-					// alert(status)
-					// window.location.href = '/admin/category/list';
-					 try {
-                          Swal.fire({
-               		  position: 'center',
-               		  icon: 'success',
-               		  title: 'Update Success',
-               		  showConfirmButton: false,
-               		  timer: 800
-                   		}).then(()=>{
-                               window.location.href = '/admin/category/list';
-
-                   		})             
-                     } catch (error) { }
-
-				},
-				error: function (request, status, error) {
-					  try {
-						  Swal.fire({
-							  icon: 'error',
-							  title: 'Oops...',
-							  text: request.responseJSON.msg,
-							})
-                      } catch (error) { }
-                  }
-				
-			});
-		}
-
-	</script>
 </body>
 </html>
