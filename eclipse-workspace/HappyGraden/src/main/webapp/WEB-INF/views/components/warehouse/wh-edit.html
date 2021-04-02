@@ -18,8 +18,8 @@
 							<div class="form-group">
 								<label>Product name</label>
 								<div>
-									<input type="text" id="productName" class="form-control"	
-									 placeholder="Category name" th:field="*{productName}" maxlength="255"/>
+									<input type="text" id="productName" class="form-control" disabled ="disabled"	
+									 placeholder="Product name" th:field="*{productName}" maxlength="255"/>
 								</div>
 							</div>
 							<div class="form-group">
@@ -58,6 +58,7 @@
 									SUBMIT</span>
 							</div>
 						</form>
+						<input type="hidden" id="productId"></input>
 					</div>
 				</div>
 			</div>

@@ -26,17 +26,20 @@
 	</script>
 	
     <script>
-		function editCategory() {
+		function importQuantityProduct() {
 			var token = $("meta[name='_csrf']").attr("content");
 			var header = $("meta[name='_csrf_header']").attr("content");
-			category.categoryName = $("#categoryName").val();
-			console.log(category)
+			warehouse.productId = $("#productId").val();
+			warehouse.impDetail = $("#importDetail").val();
+			warehouse.impQuantity = $("#quantity").val();
+			warehouse.impProductPrice = $("#price").val();
+			console.log(warehouse)
 			$.ajax({
-				url: `/admin/category/edit`,
+				url: `/admin/warehouse/edit`,
 				type: 'PUT',
 				dataType: "json",
 				contentType: "application/json",
-				data: JSON.stringify(category),
+				data: JSON.stringify(warehouse),
 				beforeSend: function (xhr) {
 					xhr.setRequestHeader(header, token);
 				},
@@ -51,7 +54,7 @@
                		  showConfirmButton: false,
                		  timer: 800
                    		}).then(()=>{
-                               window.location.href = '/admin/category/list';
+                               window.location.href = '/admin/warehouse/list';
 
                    		})             
                      } catch (error) { }
@@ -61,7 +64,7 @@
 					  try {
 						  Swal.fire({
 							  icon: 'error',
-							  title: 'Oops...',
+							  title: 'Error...',
 							  text: request.responseJSON.msg,
 							})
                       } catch (error) { }

@@ -74,10 +74,12 @@ create table warehouse(
 
 create table import_product_card(
 	imp_id bigint primary key identity(1,1),
+	product bigint,
 	imp_detail nvarchar(250),
 	imp_createAt datetime default getutcdate(),
 	imp_quantity int,
 	imp_product_price float
+	constraint fk_product_imp_product foreign key (product) references product(product_id)
 )
 
 create table rate(
@@ -194,10 +196,10 @@ insert into category( category_name) values (N'Cây Cảnh Trong Nhà')
 insert into category( category_name) values (N'Cây Cảnh Văn Phòng')
 
 --insert origi
-insert into origin( origin_name) values (N'Đà Lạt')
-insert into origin( origin_name) values (N'Trà Vinh')
-insert into origin( origin_name) values (N'Đồng Nai')
-insert into origin( origin_name) values (N'Vĩnh Long')
+	insert into origin( origin_name) values (N'Đà Lạt')
+	insert into origin( origin_name) values (N'Trà Vinh')
+	insert into origin( origin_name) values (N'Đồng Nai')
+	insert into origin( origin_name) values (N'Vĩnh Long')
 
 --insert product
 insert into product(product_name,product_detail,product_disable, category, origin, product_createAt)

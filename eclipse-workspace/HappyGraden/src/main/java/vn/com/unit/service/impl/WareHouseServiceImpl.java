@@ -46,24 +46,22 @@ public class WareHouseServiceImpl implements WareHouseService {
 	}
 
 	@Override
-	public void updateProductById(ProductDto product) {
+	public void updateProductById(ImportProductCard product) {
 		try {
-			ImportProductCard card = new ImportProductCard();
+//			ImportProductCard card = new ImportProductCard();
+//			
+//			card.setProduct(product.getProductId());		
 			
-			card.setProduct(product.getProductId());		
-			
-			wareHouseRepository.updateProductById(product.getProductId(), product.getImpDetail(), product.getImpQuantity(), product.getImpProductPrice());
-			wareHouseRepository.updateQuantity(product.getProductId(), product.getImpQuantity());
+			wareHouseRepository.updateProductById(product.getImpId(), product.getImpDetail(), product.getImpQuantity(), product.getImpProductPrice());
+			wareHouseRepository.updateQuantity(product.getImpId(), product.getImpQuantity());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		// TODO Auto-generated method stub
-
 	}
 	
 	@Override
 	public void insert(int id) {
 		wareHouseRepository.insert(id);
 	}
-	
+
 }

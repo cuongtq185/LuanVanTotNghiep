@@ -15,7 +15,7 @@ public interface WareHouseRepository extends MirageRepository<WareHouse, Long>{
 	public List<WareHouse> findWareHousePageable(@Param("sizeOfPage") Integer sizeOfPage,@Param("offset") Integer offset);
 	
 	public void updateProductById(@Param("id") Long id, @Param("detail") String detail, 
-			@Param("quantity") int quantity, @Param("price") int price );
+			@Param("quantity") int quantity, @Param("price") float price );
 	
 	public void updateQuantity(@Param("id") Long id, @Param("quantity") int quantity);
 	

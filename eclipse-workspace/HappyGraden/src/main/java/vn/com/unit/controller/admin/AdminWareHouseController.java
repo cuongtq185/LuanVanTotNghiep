@@ -5,11 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import vn.com.unit.dto.ProductDto;
-import vn.com.unit.entity.Category;
+import vn.com.unit.entity.ImportProductCard;
 import vn.com.unit.entity.Product;
 import vn.com.unit.entity.WareHouse;
 import vn.com.unit.pageable.PageRequest;
@@ -77,10 +74,9 @@ public class AdminWareHouseController {
 	
 	@PutMapping("/admin/warehouse/edit")
 	@ResponseBody
-	public ResponseEntity<String> impProduct(@RequestBody ProductDto product, Model model) {
+	public ResponseEntity<String> impProduct(@RequestBody ImportProductCard imp, Model model) {
 		
-		houseService.updateProductById(product);
-
+		houseService.updateProductById(imp);
 		return ResponseEntity.ok("{ \"msg\" : \"import product successfully.\" }");
 	}
 

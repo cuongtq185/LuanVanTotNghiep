@@ -1,31 +1,44 @@
 package vn.com.unit.entity;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 
 import jp.sf.amateras.mirage.annotation.Column;
 import jp.sf.amateras.mirage.annotation.PrimaryKey;
-import jp.sf.amateras.mirage.annotation.Table;
 import jp.sf.amateras.mirage.annotation.PrimaryKey.GenerationType;
+import jp.sf.amateras.mirage.annotation.Table;
 
 @Table(name = "import_product_card")
 public class ImportProductCard {
-	
+
 	@Id
 	@PrimaryKey(generationType = GenerationType.IDENTITY) // Primary key // Auto increment
+	@Column(name = "imp_id")
+	private Long impId;
+
 	@Column(name = "product")
 	private Long product;
-	
+
 	@Column(name = "imp_detail")
-	private Long impDetail;
-	
+	private String impDetail;
+
 	@Column(name = "imp_createAt")
-	private Long impCreateAt; 	
-	
+	private Date impCreateAt;
+
 	@Column(name = "imp_quantity")
-	private Long impQuantity;
-	
+	private int impQuantity;
+
 	@Column(name = "imp_product_price")
-	private Long impProductPrice;
+	private float impProductPrice;
+
+	public Long getImpId() {
+		return impId;
+	}
+
+	public void setImpId(Long impId) {
+		this.impId = impId;
+	}
 
 	public Long getProduct() {
 		return product;
@@ -35,38 +48,36 @@ public class ImportProductCard {
 		this.product = product;
 	}
 
-	public Long getImpDetail() {
+	public String getImpDetail() {
 		return impDetail;
 	}
 
-	public void setImpDetail(Long impDetail) {
+	public void setImpDetail(String impDetail) {
 		this.impDetail = impDetail;
 	}
 
-	public Long getImpCreateAt() {
+	public Date getImpCreateAt() {
 		return impCreateAt;
 	}
 
-	public void setImpCreateAt(Long impCreateAt) {
+	public void setImpCreateAt(Date impCreateAt) {
 		this.impCreateAt = impCreateAt;
 	}
 
-	public Long getImpQuantity() {
+	public int getImpQuantity() {
 		return impQuantity;
 	}
 
-	public void setImpQuantity(Long impQuantity) {
+	public void setImpQuantity(int impQuantity) {
 		this.impQuantity = impQuantity;
 	}
 
-	public Long getImpProductPrice() {
+	public float getImpProductPrice() {
 		return impProductPrice;
 	}
 
-	public void setImpProductPrice(Long impProductPrice) {
+	public void setImpProductPrice(float impProductPrice) {
 		this.impProductPrice = impProductPrice;
 	}
-	
-	
 
 }
