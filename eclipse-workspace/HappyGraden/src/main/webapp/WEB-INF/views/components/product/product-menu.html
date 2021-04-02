@@ -44,11 +44,11 @@
                 <div class="scrollbar-sidebar">
                     <div class="app-sidebar__inner">
                         <ul class="vertical-nav-menu">
-                            <li class="app-sidebar__heading">Menu</li>
+                            <li class="app-sidebar__heading">Menu Management</li>
                             <li class="mm-active">
                                 <a href="#">
-                                    MENU MANAGEMENT
-                                    <i class="metismenu-state-icon fa fa-caret-down"></i>
+                                    <i class="metismenu-icon pe-7s-menu"></i>Account Management
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul>
                                 	<li>
@@ -57,38 +57,72 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a th:href="@{/admin/account/list}" >
-                                            <i class="metismenu-icon"></i>Account Management
+                                        <a th:href="@{/admin/account/list}">
+                                            <i class="metismenu-icon"></i>Account
                                         </a>
-                                    </li>
-                                    
+                                    </li> 
+                                </ul>
+                            </li>
+                            <li class="mm-active">
+                                <a href="#">
+                                    <i class="metismenu-icon pe-7s-menu"></i>Product 
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul> 
                                     <li>
                                         <a th:href="@{/admin/category/list}">
-                                            <i class="metismenu-icon"></i>Category Management
+                                            <i class="metismenu-icon"></i>Category 
                                         </a>
                                     </li>
                                     
                                     <li>
                                         <a th:href="@{/admin/origin/list}">
-                                            <i class="metismenu-icon"></i>Origin Management
+                                            <i class="metismenu-icon"></i>Origin 
                                         </a>
                                     </li>
                                     <li>
                                         <a th:href="@{/admin/product/list}" class="mm-active">
                                             <i class="metismenu-icon">
-                                            </i>Product Management
+                                            </i>Product 
                                         </a>
                                     </li>
-                                    
                                     <li>
-                                        <a href="dashboards-crm.html">
-                                            <i class="metismenu-icon"></i> CRM
+                                        <a th:href="@{/admin/warehouse/list}">
+                                            <i class="metismenu-icon">
+                                            </i>Warehouse 
                                         </a>
                                     </li>
+                                    <li>
+                                        <a th:href="@{/admin/wh-import-product/list}">
+                                            <i class="metismenu-icon">
+                                            </i>Import Product 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/admin/product-price/list}">
+                                            <i class="metismenu-icon">
+                                            </i>Product Price 
+                                        </a>
+                                    </li>                                                                      
+                                   
                                 </ul>
                             </li>
                             
-                            
+                              <li class="mm-active">
+                                <a href="#">
+                                    <i class="metismenu-icon pe-7s-menu"></i>Bill Management
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>                                                    
+                                     <li>
+                                        <a th:href="@{/admin/bill/list}">
+                                            <i class="metismenu-icon">
+                                            </i>Bill
+                                        </a>
+                                    </li>
+                                   
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>

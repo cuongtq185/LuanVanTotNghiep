@@ -54,10 +54,9 @@
                                     <tbody>
                                         <tr  th:if="${!pageable.data.empty or pageable.data != null}"
 												th:each="origin, i : ${pageable.data}">
-                                            <td><span
+                                            <td style="text-align: center;"><span
 												th:text="${i.count+(pageable.limit*(pageable.page -1))}"></span></td>
-                                            <td><span th:text="${origin.originName}"></span></td>											
-                                           
+                                            <td style="text-align: center;"><span th:text="${origin.originName}"></span></td>											                                           
                                             <td style ="text-align: center;">
                                             	<button rel="tooltip" title="Delete origin" type="button"
 													class="btn btn-danger btn-just-icon"

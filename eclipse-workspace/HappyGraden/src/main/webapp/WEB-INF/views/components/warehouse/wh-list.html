@@ -6,7 +6,7 @@
 
 </head>
 <body>
-	<th:block th:fragment="category-list">
+	<th:block th:fragment="wh-list">
 		<div class="app-main__outer">
 			<div class="app-main__inner">
 				<div class="app-page-title">
@@ -21,14 +21,14 @@
 						</div>
 						<div class="page-title-actions">
 
-							<div class="d-inline-block dropdown">
+							<!-- <div class="d-inline-block dropdown">
 								<a th:href="@{/admin/wh/add}">
 									<button title="Add" aria-expanded="false"
 										class="btn btn-primary btn-just-icon">
 										<i class="fas fa-plus-circle"></i>
 									</button>
 								</a>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -40,24 +40,24 @@
 								class="table table-hover table-striped table-bordered">
 								<thead>
 									<tr>
-										<th>ID</th>
-										<th>Product Name</th>
-										<th>Product Price</th>
-										<th>Action</th>
+										<th style="text-align: center;">ID</th>
+										<th style="text-align: center;">Product Name</th>
+										<th style="text-align: center;">Quantity</th>
+										<th style="text-align: center;">Action</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr th:if="${!pageable.data.empty or pageable.data != null}"
 										th:each="warehouse, i : ${pageable.data}">
-										<td><span
+										<td style="text-align: center;"><span
 											th:text="${i.count+(pageable.limit*(pageable.page -1))}"></span></td>
-										<td><span th:text="${warehouse.productName}"></span></td>
-										<td><span th:text="${warehouse.productQuantity}"></span></td>
+										<td style="text-align: center;"><span th:text="${warehouse.productName}"></span></td>
+										<td style="text-align: center;"><span th:text="${warehouse.productQuantity}"></span></td>
 										<td style="text-align: center;"
-											<a th:href="@{'/admin/wh-import-product/edit/' + ${category.categoryId}}">
-												<button rel="tooltip" title="Edit origin" type="button"
+											<a th:href="@{'/admin/warehouse/edit/' + ${warehouse.product}}">
+												<button rel="tooltip" title="Input product quantity" type="button"
 													class="btn btn-primary btn-just-icon">
-													<i class="fas fa-pencil-alt"></i>
+													<i class="fas fa-file-import"></i>
 												</button>
 											</a>
 										</td>
@@ -65,10 +65,10 @@
 								</tbody>
 								<tfoot>
 									<tr>
-										<th>ID</th>
-										<th>Product Name</th>
-										<th>Product Price</th>
-										<th>Action</th>
+										<th style="text-align: center;">ID</th>
+										<th style="text-align: center;">Product Name</th>
+										<th style="text-align: center;">Quantity</th>
+										<th style="text-align: center;">Action</th>
 									</tr>
 								</tfoot>
 							</table>
