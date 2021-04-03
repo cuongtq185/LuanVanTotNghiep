@@ -31,6 +31,8 @@ public class ImportProductCard {
 
 	@Column(name = "imp_product_price")
 	private float impProductPrice;
+	
+	private String productName;
 
 	public Long getImpId() {
 		return impId;
@@ -79,5 +81,14 @@ public class ImportProductCard {
 	public void setImpProductPrice(float impProductPrice) {
 		this.impProductPrice = impProductPrice;
 	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	
 
 }

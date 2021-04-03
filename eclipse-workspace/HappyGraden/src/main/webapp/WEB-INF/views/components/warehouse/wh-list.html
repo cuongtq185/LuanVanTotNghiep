@@ -55,11 +55,11 @@
 										<td style="text-align: center;"><span th:text="${warehouse.productQuantity}"></span></td>
 										<td style="text-align: center;"
 											<a th:href="@{'/admin/warehouse/edit/' + ${warehouse.product}}">
-												<button rel="tooltip" title="Input product quantity" type="button"
+												<a rel="tooltip" title="Input product quantity" type="button"
 													class="btn btn-primary btn-just-icon"
 													th:href="@{'/admin/warehouse/edit/' + ${warehouse.product}}">
 													<i class="fas fa-file-import"></i>
-												</button>
+												</a>
 											</a>
 										</td>
 									</tr>

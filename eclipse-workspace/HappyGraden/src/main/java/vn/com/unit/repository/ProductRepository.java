@@ -97,4 +97,6 @@ public interface ProductRepository extends MirageRepository<Product, Long> {
 	
 	public int getIDProduct();
 	
+	public int getIdProductByName(@Param("name") String name);
+	
 }

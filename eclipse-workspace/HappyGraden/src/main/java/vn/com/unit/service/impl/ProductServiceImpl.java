@@ -356,5 +356,11 @@ public class ProductServiceImpl implements ProductService {
 	public int getIdNew() {
 		return productRepository.getIDProduct();
 	}
+	
+	@Override
+	public int getIdByProductName(String name) {
+
+		return productRepository.getIdProductByName(name);
+	}
 
 }

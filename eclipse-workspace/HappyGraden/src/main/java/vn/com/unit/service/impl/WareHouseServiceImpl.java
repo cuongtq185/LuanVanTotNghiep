@@ -12,6 +12,7 @@ import vn.com.unit.entity.ImportProductCard;
 import vn.com.unit.entity.Product;
 import vn.com.unit.entity.WareHouse;
 import vn.com.unit.repository.WareHouseRepository;
+import vn.com.unit.service.ProductService;
 import vn.com.unit.service.WareHouseService;
 
 @Service
@@ -21,6 +22,9 @@ public class WareHouseServiceImpl implements WareHouseService {
 	
 	@Autowired
 	WareHouseRepository wareHouseRepository;
+	
+	@Autowired
+	ProductService productService;
 	
 	@Override
 	public int countAllWarehouse() {
@@ -48,12 +52,11 @@ public class WareHouseServiceImpl implements WareHouseService {
 	@Override
 	public void updateProductById(ImportProductCard product) {
 		try {
-//			ImportProductCard card = new ImportProductCard();
-//			
-//			card.setProduct(product.getProductId());		
 			
-			wareHouseRepository.updateProductById(product.getImpId(), product.getImpDetail(), product.getImpQuantity(), product.getImpProductPrice());
-			wareHouseRepository.updateQuantity(product.getImpId(), product.getImpQuantity());
+			int id = productService.getIdByProductName(product.getProductName());
+			Long impId = Long.valueOf(id);
+			wareHouseRepository.updateProductById(impId, product.getImpDetail(), product.getImpQuantity(), product.getImpProductPrice());
+			wareHouseRepository.updateQuantity(impId, product.getImpQuantity());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
