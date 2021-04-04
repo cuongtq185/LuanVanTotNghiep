@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -76,6 +77,14 @@ public class AdminWareHouseController {
 	@ResponseBody
 	public ResponseEntity<String> impProduct(@RequestBody ImportProductCard imp, Model model) {
 		
+		if (imp.getImpProductPrice() <= 0.0) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Price must be less than 0.0\" }");
+		}
+		
+		if (imp.getImpQuantity() <= 0) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Quantity must be less than 0\" }");
+		}
+
 		houseService.updateProductById(imp);
 		return ResponseEntity.ok("{ \"msg\" : \"import product successfully.\" }");
 	}
