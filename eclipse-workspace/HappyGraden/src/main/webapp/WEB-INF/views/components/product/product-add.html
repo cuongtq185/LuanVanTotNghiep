@@ -15,7 +15,7 @@
 					<div class="card-body">
 						<h4 class="card-title">ADD PRODUCT MANAGEMENT</h4>
 						<th:block >
-							<h4 class="card-title" th:each="msgInfo: ${msgInfo}" th:text ="CREATE_DATA_SUCCESS"></h4>
+							<h4 class="card-title" th:each="msgInfo: ${msgInfo}" th:text ="product.sucess"></h4>
 						</th:block>						
 						<form class="col-md-10 mx-auto" th:action="@{/admin/product/add}"
 							enctype="multipart/form-data" method="POST">
