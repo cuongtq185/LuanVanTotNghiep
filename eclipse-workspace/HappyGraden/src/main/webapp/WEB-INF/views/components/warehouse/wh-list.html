@@ -43,6 +43,7 @@
 										<th style="text-align: center;">ID</th>
 										<th style="text-align: center;">Product Name</th>
 										<th style="text-align: center;">Quantity</th>
+										<th style="text-align: center;">Price</th>
 										<th style="text-align: center;">Action</th>
 									</tr>
 								</thead>
@@ -53,6 +54,7 @@
 											th:text="${i.count+(pageable.limit*(pageable.page -1))}"></span></td>
 										<td style="text-align: center;"><span th:text="${warehouse.productName}"></span></td>
 										<td style="text-align: center;"><span th:text="${warehouse.productQuantity}"></span></td>
+										<td style="text-align: center;"><span th:text="${warehouse.productPrice}"></span></td>
 										<td style="text-align: center;"
 											<a th:href="@{'/admin/warehouse/edit/' + ${warehouse.product}}">
 												<a rel="tooltip" title="Input product quantity" type="button"
@@ -60,8 +62,16 @@
 													th:href="@{'/admin/warehouse/edit/' + ${warehouse.product}}">
 													<i class="fas fa-file-import"></i>
 												</a>
+											</a> &nbsp;
+											<a th:href="@{'/admin/price/edit/' + ${warehouse.product}}">
+												<a rel="tooltip" title="Input product price" type="button"
+													class="btn btn-warning btn-just-icon"
+													th:href="@{'/admin/price/edit/' + ${warehouse.product}}">
+													<i class="fas fa-file-import"></i>
+												</a>
 											</a>
 										</td>
+									
 									</tr>
 								</tbody>
 								<tfoot>
@@ -69,6 +79,7 @@
 										<th style="text-align: center;">ID</th>
 										<th style="text-align: center;">Product Name</th>
 										<th style="text-align: center;">Quantity</th>
+										<th style="text-align: center;">Price</th>
 										<th style="text-align: center;">Action</th>
 									</tr>
 								</tfoot>

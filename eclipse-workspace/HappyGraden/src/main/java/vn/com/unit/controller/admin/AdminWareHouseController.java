@@ -88,5 +88,13 @@ public class AdminWareHouseController {
 		houseService.updateProductById(imp);
 		return ResponseEntity.ok("{ \"msg\" : \"import product successfully.\" }");
 	}
+	
+	@GetMapping("/admin/price/edit/{product_id}")
+	public ModelAndView impProductPrice(@PathVariable("product_id") long product_id, Model model,
+			HttpServletRequest request) {
+		Product warehouse = productService.findProductByProductId(product_id);
+		model.addAttribute("warehouse", warehouse);
+		return new ModelAndView("import-product-price");
+	}
 
 }

@@ -20,6 +20,8 @@ public class WareHouse {
 	private String productQuantity;
 	
 	private String productName;
+	
+	private float productPrice;
 
 	public String getProductName() {
 		return productName;
@@ -43,6 +45,14 @@ public class WareHouse {
 
 	public void setProductQuantity(String productQuantity) {
 		this.productQuantity = productQuantity;
+	}
+
+	public float getProductPrice() {
+		return productPrice;
+	}
+
+	public void setProductPrice(float productPrice) {
+		this.productPrice = productPrice;
 	}
 	
 	

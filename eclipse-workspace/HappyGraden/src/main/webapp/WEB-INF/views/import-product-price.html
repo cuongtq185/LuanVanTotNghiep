@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+	
+<head>
+    <th:block th:include="components/admin/admin-head :: admin-head"></th:block>
+	<meta th:name="_csrf" th:content="${_csrf.token}" />
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}" />
+</head>
+<body>
+	<div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
+       		<div th:replace="components/admin/admin-header :: admin-header"></div>
+       		<div class="app-main">
+				<div th:replace="components/warehouse/wh-menu :: wh-menu"></div>
+				<div th:replace="components/warehouse/wh-price :: wh-price"></div>
+        	</div>
+	</div>					
+    	<th:block th:replace="components/admin/admin-footer :: admin-footer"></th:block>
+
+    <script th:src="@{/static/admin/js/plugins/sweetalert2@9.js}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    
+    <script th:inline="javascript">
+		const warehouse = [[${ warehouse }]];
+	</script>
+	
+    <script>
+		function importPriceProduct() {
+			var token = $("meta[name='_csrf']").attr("content");
+			var header = $("meta[name='_csrf_header']").attr("content");
+			warehouse.productName = $("#productName").val();
+			warehouse.productId = $("#productId").val();
+			warehouse.productPrice = $("#productPrice").val();
+			console.log(warehouse)
+			$.ajax({
+				url: `/admin/price/edit`,
+				type: 'PUT',
+				dataType: "json",
+				contentType: "application/json",
+				data: JSON.stringify(warehouse),
+				beforeSend: function (xhr) {
+					xhr.setRequestHeader(header, token);
+				},
+				success: function (data, status, xhr) {
+					// alert(status)
+					// window.location.href = '/admin/category/list';
+					 try {
+                          Swal.fire({
+               		  position: 'center',
+               		  icon: 'success',
+               		  title: 'Update Success',
+               		  showConfirmButton: false,
+               		  timer: 800
+                   		}).then(()=>{
+                               window.location.href = '/admin/warehouse/list';
+
+                   		})             
+                     } catch (error) { }
+
+				},
+				error: function (request, status, error) {
+					  try {
+						  Swal.fire({
+							  icon: 'error',
+							  title: 'Error...',
+							  text: request.responseJSON.msg,
+							})
+                      } catch (error) { }
+                  }
+				
+			});
+		}
+
+	</script>
+</body>
+</html>
