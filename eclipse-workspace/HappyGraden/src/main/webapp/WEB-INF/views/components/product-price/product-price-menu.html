@@ -7,7 +7,7 @@
 
 </head>
 <body>
-	<th:block th:fragment="admin-menu">
+	<th:block th:fragment="imp-card-menu">
 	  <div class="app-sidebar sidebar-shadow">
                 <div class="app-header__logo">
                     <div class="logo-src"></div>
@@ -52,12 +52,12 @@
                                 </a>
                                 <ul>
                                 	<li>
-                                        <a th:href="@{/admin}" class="mm-active">
+                                        <a th:href="@{/admin}">
                                             <i class="metismenu-icon"></i>Dashboards
                                         </a>
                                     </li>
                                     <li>
-                                        <a th:href="@{/admin/account/list}">
+                                        <a th:href="@{/admin/account/list}" >
                                             <i class="metismenu-icon"></i>Account
                                         </a>
                                     </li> 
@@ -92,18 +92,18 @@
                                             </i>Warehouse 
                                         </a>
                                     </li>
-                                     <li>
+                                    <li>
                                         <a th:href="@{/admin/imp-card/list}">
                                             <i class="metismenu-icon">
                                             </i>Import Product 
                                         </a>
                                     </li>
                                     <li>
-                                        <a th:href="@{/admin/product-price/list}">
+                                        <a th:href="@{/admin/product-price/list}" class="mm-active">
                                             <i class="metismenu-icon">
                                             </i>Product Price 
                                         </a>
-                                    </li>                                                                     
+                                    </li>                                                                      
                                    
                                 </ul>
                             </li>

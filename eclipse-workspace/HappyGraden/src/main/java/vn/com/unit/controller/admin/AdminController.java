@@ -1,3 +1,4 @@
+
 package vn.com.unit.controller.admin;
 
 import java.util.List;
@@ -18,18 +19,17 @@ import vn.com.unit.pageable.PageRequest;
 import vn.com.unit.service.LogService;
 
 @Controller
-@PreAuthorize("hasRole('ROLE_ADMIN')")
-
-
+//@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class AdminController {
 	@Autowired
 	private LogService logService;
+
 	@RequestMapping("/admin")
 	public ModelAndView home(Model model) {
 
 		return new ModelAndView("admin");
 	}
-	
+
 	@GetMapping("/admin/log/list")
 	public ModelAndView ShopList(Model model,
 			@RequestParam(value = "page", required = false, defaultValue = "1") int page,
@@ -38,9 +38,7 @@ public class AdminController {
 
 		int totalitems = logService.countAllLog();
 		int totalpages = (int) Math.ceil((double) totalitems / (double) limit);
-
 		PageRequest pageable = new PageRequest(page, limit, totalitems, totalpages);
-
 		List<Log> logs = logService.findAllLog(pageable.getLimit(), pageable.getOffset());
 		model.addAttribute("logs", logs);
 		model.addAttribute("pageable", pageable);
