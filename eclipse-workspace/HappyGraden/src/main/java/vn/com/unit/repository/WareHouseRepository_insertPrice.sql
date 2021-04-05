@@ -1,0 +1,1 @@
+insert into product_price(product_price_id, product_price) values(/*id*/,/*price*/)

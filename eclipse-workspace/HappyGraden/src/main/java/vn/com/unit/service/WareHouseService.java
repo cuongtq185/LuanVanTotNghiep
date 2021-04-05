@@ -3,6 +3,7 @@ package vn.com.unit.service;
 import java.util.List;
 
 import vn.com.unit.entity.ImportProductCard;
+import vn.com.unit.entity.ImportProductPrice;
 import vn.com.unit.entity.WareHouse;
 
 public interface WareHouseService {
@@ -14,5 +15,7 @@ public interface WareHouseService {
 	public void updateProductById(ImportProductCard importProductCard);
 	
 	public void insert(int id);	
+	
+	public void insertProductPrice(ImportProductPrice imp);
 
 }

@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import vn.com.unit.dto.ProductDto;
-import vn.com.unit.entity.Category;
 import vn.com.unit.entity.ImportProductCard;
-import vn.com.unit.entity.Product;
+import vn.com.unit.entity.ImportProductPrice;
 import vn.com.unit.entity.WareHouse;
 import vn.com.unit.repository.WareHouseRepository;
 import vn.com.unit.service.ProductService;
@@ -65,6 +63,18 @@ public class WareHouseServiceImpl implements WareHouseService {
 	@Override
 	public void insert(int id) {
 		wareHouseRepository.insert(id);
+	}
+	
+	@Override
+	public void insertProductPrice(ImportProductPrice product) {
+		try {
+			
+			int id = productService.getIdByProductName(product.getProductName());
+			//Long impId = Long.valueOf(id);		
+			wareHouseRepository.insertPrice(id, product.getProductPrice());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.com.unit.entity.ImportProductCard;
+import vn.com.unit.entity.ImportProductPrice;
 import vn.com.unit.entity.Product;
 import vn.com.unit.entity.WareHouse;
 import vn.com.unit.pageable.PageRequest;
@@ -95,6 +96,14 @@ public class AdminWareHouseController {
 		Product warehouse = productService.findProductByProductId(product_id);
 		model.addAttribute("warehouse", warehouse);
 		return new ModelAndView("import-product-price");
+	}
+	
+	@PutMapping("/admin/price/edit")
+	@ResponseBody
+	public ResponseEntity<String> impProductPrice(@RequestBody ImportProductPrice imp, Model model) {
+		
+		houseService.insertProductPrice(imp);
+		return ResponseEntity.ok("{ \"msg\" : \"import price successfully.\" }");
 	}
 
 }

@@ -26,5 +26,8 @@ public interface WareHouseRepository extends MirageRepository<WareHouse, Long>{
 	
 	@Modifying
 	public WareHouse insertWareHouse(@Param("id") int id, @Param("quantity") int quantity);
+	
+	@Modifying
+	public void insertPrice(@Param("id") int id, @Param("price") float price);
 
 }
