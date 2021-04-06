@@ -6,7 +6,7 @@
 
 </head>
 <body>
-	<th:block th:fragment="imp-card-list">
+	<th:block th:fragment="product-price-list">
 		<div class="app-main__outer">
 			<div class="app-main__inner">
 				<div class="app-page-title">
@@ -16,7 +16,7 @@
 								<i class="fa fa-home" aria-hidden="true"></i>
 							</div>
 							<div>
-								<b>IMPORT PRODUCT CARD</b>
+								<b>PRODUCT PRICE</b>
 							</div>
 						</div>
 						<div class="page-title-actions">
@@ -33,32 +33,26 @@
 									<tr>
 										<th style="text-align: center;">ID</th>
 										<th style="text-align: center;">Product Name</th>
-										<th style="text-align: center;">Detail</th>
 										<th style="text-align: center;">Create at</th>
-										<th style="text-align: center;">Quantity</th>
 										<th style="text-align: center;">Price</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr th:if="${!pageable.data.empty or pageable.data != null}"
-										th:each="impCard, i : ${pageable.data}">
+										th:each="impPrice, i : ${pageable.data}">
 										<td style="text-align: center;"><span
 											th:text="${i.count+(pageable.limit*(pageable.page -1))}"></span></td>
 										<td style="text-align: center;"><span th:text="${impCard.productName}"></span></td>
-										<td style="text-align: center;"><span th:text="${impCard.impDetail}"></span></td>
 										<td style="text-align: center;"><span
-												th:text=" ${impCard.impCreateAt} ? ${#dates.format(impCard.impCreateAt, 'dd-MM-yyyy')} "></span></td>
-										<td style="text-align: center;"><span th:text="${impCard.impQuantity}"></span></td>
-										<td style="text-align: center;"><span th:text="${impCard.impProductPrice}"></span></td>
+												th:text=" ${impPrice.createAt} ? ${#dates.format(impPrice.createAt, 'dd-MM-yyyy')} "></span></td>
+										<td style="text-align: center;"><span th:text="${impPrice.productPrice}"></span></td>
 									</tr>
 								</tbody>
 								<tfoot>
 									<tr>
 										<th style="text-align: center;">ID</th>
 										<th style="text-align: center;">Product Name</th>
-										<th style="text-align: center;">Detail</th>
 										<th style="text-align: center;">Create at</th>
-										<th style="text-align: center;">Quantity</th>
 										<th style="text-align: center;">Price</th>
 									</tr>
 								</tfoot>
