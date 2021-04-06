@@ -1,5 +1,7 @@
 package vn.com.unit.entity;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 
 import jp.sf.amateras.mirage.annotation.Column;
@@ -13,7 +15,7 @@ public class ImportProductPrice {
 	@Id
 	@PrimaryKey(generationType = GenerationType.IDENTITY) // Primary key // Auto increment
 	@Column(name = "create_at")
-	private Long createAt;
+	private Date createAt;
 	
 	@Column(name = "product_price_id")
 	private Long productPriceId;
@@ -23,11 +25,12 @@ public class ImportProductPrice {
 	
 	private String productName;
 
-	public Long getCreateAt() {
+
+	public Date getCreateAt() {
 		return createAt;
 	}
 
-	public void setCreateAt(Long createAt) {
+	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
 	}
 
