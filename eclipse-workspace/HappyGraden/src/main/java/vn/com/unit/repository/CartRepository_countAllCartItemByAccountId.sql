@@ -2,8 +2,9 @@ select count (*)
 from
 	(
 	select *
-	from p2p_cart
-	where account = /*account_id*/
-	) cart
-left join p2p_product product
-on product.id = cart.product
+	from cart as a
+	left join cart_item as b on a.cart_id = b.cart 	
+	) as cart
+left join product as c
+on c.product_id = cart.product
+where cart.status = 1

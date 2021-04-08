@@ -57,7 +57,7 @@ public class CartController {
 		model.addAttribute("total_price", total);
 
 		model.addAttribute("title", "Cart");
-		return new ModelAndView("cart");
+		return new ModelAndView("shopping-cart");
 	}
 
 	@PutMapping("/cart/add")
