@@ -64,8 +64,7 @@ public class CartController {
 	@ResponseBody
 	public ResponseEntity<String> add(Model model, @RequestBody Map<String, String> json) {		
 		
-		int quantity = 1;
-		
+		int quantity = 1;	
 		if (json.get("quantity") != null) {
 			quantity = Integer.valueOf(json.get("quantity"));
 		}

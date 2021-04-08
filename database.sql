@@ -116,7 +116,10 @@ create table product_price(
 
 create table cart(
 	cart_id bigint primary key identity(1,1),
-	cart_createAt datetime default getutcdate()
+	cart_createAt datetime default getutcdate(),
+	account bigint,
+	status int,
+	constraint fk_account_id_cart foreign key(account) references account(account_id)
 )
 
 create table cart_item(
@@ -127,6 +130,7 @@ create table cart_item(
 
 	constraint fk_product_id_products foreign key(product) references product(product_id),
 	constraint fk_product_id_cartitem_id foreign key(cart) references cart(cart_id)
+	
 )
 
 create table promotion(

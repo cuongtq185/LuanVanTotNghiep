@@ -1,15 +1,19 @@
 package vn.com.unit.entity;
 
-import java.util.Date;
-
 import jp.sf.amateras.mirage.annotation.Column;
 import jp.sf.amateras.mirage.annotation.Table;
 
-@Table(name = "p2p_cart")
+@Table(name = "cart_item")
 public class Cart {
+	
+	@Column(name = "cartitem_id")
+	private Long cartitemId;
 	
 	@Column(name = "account")
 	private Long account;
+	
+	@Column(name = "cart")
+	private Long cart;
 	
 	@Column(name = "product")
 	private Long product;
@@ -17,10 +21,18 @@ public class Cart {
 	@Column(name = "quantity")
 	private int quantity;
 	
-	@Column(name = "create_at")
-	private Date createAt;
+	@Column(name = "status")
+	private int status;
 
 	public Cart() {
+	}
+
+	public Long getCartitemId() {
+		return cartitemId;
+	}
+
+	public void setCartitemId(Long cartitemId) {
+		this.cartitemId = cartitemId;
 	}
 
 	public Long getAccount() {
@@ -29,6 +41,14 @@ public class Cart {
 
 	public void setAccount(Long account) {
 		this.account = account;
+	}
+
+	public Long getCart() {
+		return cart;
+	}
+
+	public void setCart(Long cart) {
+		this.cart = cart;
 	}
 
 	public Long getProduct() {
@@ -47,12 +67,12 @@ public class Cart {
 		this.quantity = quantity;
 	}
 
-	public Date getCreateAt() {
-		return createAt;
+	public int getStatus() {
+		return status;
 	}
 
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
+	public void setStatus(int status) {
+		this.status = status;
 	}
-	
+
 }

@@ -117,7 +117,7 @@ public class ProductManagementController {
 			for (MultipartFile img : file) {
 				try {
 					name = name.replace("", "_");
-					String imgName = id + "_" + name + "_" + String.valueOf(i) + ".jpg";
+					String imgName = id + name + "_" + String.valueOf(i) + ".jpg";
 
 					String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img";
 					FileUtil.createDirectoryNotExists(path);
@@ -135,9 +135,9 @@ public class ProductManagementController {
 				}
 			}
 		}
-		String[] args = new String[1];
-		String msgInfo = msg.getMessage("post.office.submit.success", args, locale);
-		mav.addObject("msgInfo", msgInfo);
+//		String[] args = new String[1];
+//		String msgInfo = msg.getMessage("post.office.submit.success", args, locale);
+//		mav.addObject("msgInfo", msgInfo);
 
 		return mav;
 		
