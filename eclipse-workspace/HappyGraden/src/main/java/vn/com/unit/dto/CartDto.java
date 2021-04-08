@@ -1,8 +1,8 @@
 package vn.com.unit.dto;
 
-import vn.com.unit.entity.Cart;
+import vn.com.unit.entity.CartItem;
 
-public class CartDto extends Cart {
+public class CartDto extends CartItem {
 
 	private String img;
 
@@ -38,8 +38,8 @@ public class CartDto extends Cart {
 		return this.getPrice() * this.getQuantity();
 	}
 	
-	public Cart extractCart() {
-		return (Cart) this;
+	public CartItem extractCart() {
+		return (CartItem) this;
 	}
 	
 }

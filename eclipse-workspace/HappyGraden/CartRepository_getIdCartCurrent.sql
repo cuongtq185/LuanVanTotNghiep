@@ -1,0 +1,1 @@
+select cart_id from cart where account = /*account*/'' and status = 1

@@ -1,16 +1,19 @@
 package vn.com.unit.entity;
 
+import org.springframework.data.annotation.Id;
+
 import jp.sf.amateras.mirage.annotation.Column;
+import jp.sf.amateras.mirage.annotation.PrimaryKey;
 import jp.sf.amateras.mirage.annotation.Table;
+import jp.sf.amateras.mirage.annotation.PrimaryKey.GenerationType;
 
 @Table(name = "cart_item")
-public class Cart {
+public class CartItem {
 	
+	@Id
+	@PrimaryKey(generationType = GenerationType.IDENTITY)
 	@Column(name = "cartitem_id")
 	private Long cartitemId;
-	
-	@Column(name = "account")
-	private Long account;
 	
 	@Column(name = "cart")
 	private Long cart;
@@ -20,11 +23,8 @@ public class Cart {
 	
 	@Column(name = "quantity")
 	private int quantity;
-	
-	@Column(name = "status")
-	private int status;
 
-	public Cart() {
+	public CartItem() {
 	}
 
 	public Long getCartitemId() {
@@ -33,14 +33,6 @@ public class Cart {
 
 	public void setCartitemId(Long cartitemId) {
 		this.cartitemId = cartitemId;
-	}
-
-	public Long getAccount() {
-		return account;
-	}
-
-	public void setAccount(Long account) {
-		this.account = account;
 	}
 
 	public Long getCart() {
@@ -65,14 +57,6 @@ public class Cart {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
-	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
 	}
 
 }

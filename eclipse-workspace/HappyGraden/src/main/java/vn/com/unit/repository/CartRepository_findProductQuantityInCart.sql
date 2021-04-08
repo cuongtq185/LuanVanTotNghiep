@@ -1,3 +1,4 @@
-select quantity
-from p2p_cart
-where account = /*account_id*/ and product = /*product_id*/
+select b.quantity 
+from cart as a
+left join cart_item as b on b.cart = a.cart_id
+where a.account = /*account_id*/'' and b.product = /*product_id*/''

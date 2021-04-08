@@ -43,6 +43,17 @@ public class Account {
 	
 	@Column(name = "role")
 	private Long role;
+	
+	private String roleStr;
+	
+
+	public String getRoleStr() {
+		return roleStr;
+	}
+
+	public void setRoleStr(String roleStr) {
+		this.roleStr = roleStr;
+	}
 
 	public Account() {
 	}

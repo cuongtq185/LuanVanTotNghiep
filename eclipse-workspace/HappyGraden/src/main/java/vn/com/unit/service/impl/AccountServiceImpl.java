@@ -164,10 +164,10 @@ public class AccountServiceImpl implements AccountService {
 	public Account findCurrentAccount() {
 		String currentUsername = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
 		Account account = findByUsername(currentUsername);
-		AccountWithRoleDto account_role_dto = new AccountWithRoleDto(account);
-		List<Role> roles = roleService.findRoleByAccount(account);
-		account_role_dto.setRoles(roles);
-		return account_role_dto;
+		//AccountWithRoleDto account_role_dto = new AccountWithRoleDto(account);
+//		List<Role> roles = roleService.findRoleByAccount(account);
+//		account_role_dto.setRoles(roles);
+		return account;
 	}
 
 	// setPassword

@@ -7,10 +7,6 @@ import vn.com.unit.entity.Role;
 
 public class AccountWithRoleDto extends Account {
 
-	public AccountWithRoleDto(Account account) {
-		//super(account);
-	}
-
 	List<Role> roles;
 
 	public List<Role> getRoles() {

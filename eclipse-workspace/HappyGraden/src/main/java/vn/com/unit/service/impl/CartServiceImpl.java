@@ -1,5 +1,6 @@
 package vn.com.unit.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import vn.com.unit.dto.CartDto;
-import vn.com.unit.entity.Cart;
+import vn.com.unit.entity.CartItem;
+import vn.com.unit.entity.CartProduct;
+import vn.com.unit.repository.CartItemRepository;
 import vn.com.unit.repository.CartRepository;
 import vn.com.unit.service.AccountService;
 import vn.com.unit.service.CartService;
@@ -21,6 +24,9 @@ public class CartServiceImpl implements CartService {
 
 	@Autowired
 	CartRepository cartRepository;
+	
+	@Autowired
+	CartItemRepository cartItemRepository;
 
 	@Override
 	public List<CartDto> findAllCartItemByCurrentAccount() {
@@ -78,14 +84,20 @@ public class CartServiceImpl implements CartService {
 			quantity_new = quantity_in_cart + quantity;
 		}
 
-		Cart cart_temp = new Cart();
-
+		CartProduct cart_temp = new CartProduct();
 		cart_temp.setAccount(curent_account_id);
-		cart_temp.setProduct(product_id);
-		cart_temp.setQuantity(quantity_new);
-
+		cart_temp.setStatus(1);
+		cart_temp.setCartCreateAt(new Date());
+		
 		cartRepository.save(cart_temp);
-
+		
+		//Long id = cartRepository.getIdCartCurrent(curent_account_id);		
+		CartItem item = new CartItem();
+		item.setCart(cart_temp.getCartId());
+		item.setProduct(product_id);
+		item.setQuantity(quantity_new);
+		cartItemRepository.save(item);
+		
 	}
 
 }
