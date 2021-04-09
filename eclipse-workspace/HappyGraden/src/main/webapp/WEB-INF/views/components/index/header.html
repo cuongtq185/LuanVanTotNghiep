@@ -14,6 +14,7 @@
 			<div class="humberger__menu__logo">
 				<a href="index.html"><img th:src="@{static/template/theme/ogani/img/logohp.png}"></a>
 			</div>
+			 <th:block sec:authorize="isAuthenticated()">
 			<div class="humberger__menu__cart">
 				<ul>
 					<li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
@@ -23,6 +24,7 @@
 					item: <span>$150.00</span>
 				</div>
 			</div>
+			</th:block>
 			<div class="humberger__menu__widget">
 				<div class="header__top__right__language">
 					<img src="img/language.png" alt="">
@@ -152,6 +154,7 @@
                         </ul>
                     </nav>
                 </div>
+                 <th:block sec:authorize="isAuthenticated()">
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
@@ -161,6 +164,7 @@
                         <div class="header__cart__price">Tổng giá: <span>$150.00</span></div>
                     </div>
                 </div>
+                </th:block>
             </div>
             <div class="humberger__open">
                 <i class="fa fa-bars"></i>
