@@ -17,7 +17,7 @@
 			<div class="humberger__menu__cart">
 				<ul>
 					<li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-					<li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+					<li><a th:href="@{/cart}"><i class="fa fa-shopping-bag"></i> <span>13</span></a></li>
 				</ul>
 				<div class="header__cart__price">
 					item: <span>$150.00</span>
@@ -70,41 +70,61 @@
 		<header class="header">
         <div class="header__top">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="header__top__left">
-                            <ul>
-                                <li><i class="fa fa-envelope"></i> happygraden@gmail.com</li>
-                                <li>0398 915 767</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="header__top__right">
-                           <!--  <div class="header__top__right__social">
+					<div class="row">
+						<div class="col-lg-6 col-md-6">
+							<div class="header__top__left">
+								<ul>
+									<li><i class="fa fa-envelope"></i> happygraden@gmail.com</li>
+									<li>0398 915 767</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6">
+							<div class="header__top__right">
+								<!--  <div class="header__top__right__social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
                                 <a href="#"><i class="fa fa-linkedin"></i></a>
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div> -->
-                            <div class="header__top__right__language">
-                                <img th:src="@{/static/template/theme/agani/img/language.png}"
-                                    alt="">
-                                <div>Tiếng Việt</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Tiếng Việt</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div>
-                            <div class="header__top__right__auth">
-                                <a th:href="@{/login}"><i class="fa fa-user"></i> Login</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+								<div class="header__top__right__language">
+									<img th:src="@{/static/template/theme/agani/img/language.png}"
+										alt="">
+									<div>Tiếng Việt</div>
+									<span class="arrow_carrot-down"></span>
+									<ul>
+										<li><a href="#">Tiếng Việt</a></li>
+										<li><a href="#">English</a></li>
+									</ul>
+								</div>
+								<th:block sec:authorize="!isAuthenticated()">
+									<div class="header__top__right__language">
+										<a th:href="@{/login}"><i class="fa fa-user"></i>
+											Login/Register</a>
+									</div>
+								</th:block>
+								<th:block sec:authorize="isAuthenticated()">
+
+									<div class="header__top__right__language" style="top:0px;">
+										<div>
+											<span>Hi, <span th:text="${#authentication.name}"></span></span>
+										</div>
+										<span class="arrow_carrot-down"></span>
+										<ul>
+											<li sec:authorize="hasRole('ROLE_ADMIN')"><a
+												href="/admin">Admin Page</a></li>
+											<li sec:authorize="isAuthenticated()"><a
+												href="/profile/home">My Profile</a></li>
+											<li sec:authorize="isAuthenticated()"><a href="/logout">Log
+													out</a></li>
+											<li sec:authorize="!isAuthenticated()"><a hre
+										</ul>
+
+									</div></div>
+									</div>
+						</div>
+					</div>
+				</div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -136,7 +156,7 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a th:href="@{/cart}"><i class="fa fa-shopping-bag"></i> <span>13</span></a></li>
                         </ul>
                         <div class="header__cart__price">Tổng giá: <span>$150.00</span></div>
                     </div>
@@ -147,6 +167,15 @@
             </div>
         </div>
     </header>
+    <style type="text/css">
+		.header__top__right__language span {
+		    font-size: 14px;
+		    color: #1c1c1c;
+		    position: relative;
+		    top: 0px;
+		}
+		    
+    </style>
 	</th:block>
 
 </body>
