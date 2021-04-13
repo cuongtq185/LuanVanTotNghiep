@@ -1,4 +1,4 @@
-select cart.*, d.product_img, e.product_price
+select cart.*, d.product_img, e.product_price, c.product_name
 from
 	(
 	select *

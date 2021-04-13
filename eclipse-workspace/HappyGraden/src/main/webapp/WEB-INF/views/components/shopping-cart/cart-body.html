@@ -17,6 +17,7 @@
 								<thead>
 									<tr>
 										<th class="shoping__product">Products</th>
+										<th>Image</th>
 										<th>Price</th>
 										<th>Quantity</th>
 										<th>Total</th>
@@ -24,52 +25,20 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td class="shoping__cart__item"><img
-											src="img/cart/cart-1" alt="">
-											<h5>Vegetable’s Package</h5></td>
-										<td class="shoping__cart__price">$55.00</td>
-										<td class="shoping__cart__quantity">
-											<div class="quantity">
-												<div class="pro-qty">
-													<input type="text" value="1">
-												</div>
-											</div>
-										</td>
-										<td class="shoping__cart__total">$110.00</td>
-										<td class="shoping__cart__item__close"><span
-											class="icon_close"></span></td>
-									</tr>
-									<tr>
-										<td class="shoping__cart__item"><img
-											src="img/cart/cart-2" alt="">
-											<h5>Fresh Garden Vegetable</h5></td>
-										<td class="shoping__cart__price">$39.00</td>
-										<td class="shoping__cart__quantity">
-											<div class="quantity">
-												<div class="pro-qty">
-													<input type="text" value="1">
-												</div>
-											</div>
-										</td>
-										<td class="shoping__cart__total">$39.99</td>
-										<td class="shoping__cart__item__close"><span
-											class="icon_close"></span></td>
-									</tr>
-									<tr>
-										<td class="shoping__cart__item"><img
-											src="img/cart/cart-3" alt="">
-											<h5>Organic Bananas</h5></td>
-										<td class="shoping__cart__price">$69.00</td>
-										<td class="shoping__cart__quantity">
-											<div class="quantity">
-												<div class="pro-qty">
-													<input type="text" value="1">
-												</div>
-											</div>
-										</td>
-										<td class="shoping__cart__total">$69.99</td>
-										<td class="shoping__cart__item__close"><span
+									<tr th:each="cart_item, i : ${list_cart_item}"
+										th:onclick="window.location=[[@{/product/__${cart_item.product}__}]];">
+										<td th:text="${cart_item.productName}">Product Name</td>									
+										<td><img th:src="@{__${cart_item.productImg}__}"
+											th:onerror="this.onerror=null;this.src=[[@{/static/img/default.png}]];"
+											alt="" style="width: 100px; height: 100px;"></td>
+											
+										<td th:text="${cart_item.quantity}">999999999</td>
+										
+										<td><span th:inline="text">$ [[${#numbers.formatDecimal(cart_item.productPrice, 0, 'COMMA', 0, 'POINT')}]]</span></td>
+										
+                                        <td><span th:inline="text">$ [[${#numbers.formatDecimal(cart_item.total, 0, 'COMMA', 0, 'POINT')}]]</span></td>	
+                                        								
+										<td class="shoping__cart__item__close" th:onclick="|deleteProduct(${cart_item.product})|"><span
 											class="icon_close"></span></td>
 									</tr>
 								</tbody>

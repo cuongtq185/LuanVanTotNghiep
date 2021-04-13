@@ -14,7 +14,68 @@
         	<div th:replace="components/shopping-cart/cart-body :: cart-body"></div>
 			<div th:replace="components/index/footer :: index-footer"></div>
 						
-    	<th:block th:replace="layout/footer :: footer"></th:block>
+    		<th:block th:replace="layout/footer :: footer"></th:block>
+    		
+    	<script th:src="@{/static/admin/js/plugins/sweetalert2@9.js}"></script>
+    <script th:inline="javascript">
+	function deleteProduct(product_id) {
+		//stop function out side
+		   if (!e) var e = window.event;
+		    e.cancelBubble = true;
+		    if (e.stopPropagation) e.stopPropagation();
+   	 		//////////////////////////////////////////
+		    var token = $("meta[name='_csrf']").attr("content");
+	        var header = $("meta[name='_csrf_header']").attr("content");
+	        data = `{"product_id" : ${product_id}}`;
+           
+           Swal.fire({
+           	  title: 'Are you sure?',
+           	  html: 'This product will be delete!',
+           	  icon: 'warning',
+           	  showCancelButton: true,
+           	  confirmButtonColor: '#3085d6',
+           	  cancelButtonColor: '#d33',
+           	  confirmButtonText: 'Yes, delete it!'
+           	}).then((result) => {
+           		
+           	  if (result.value) {
+ 	                $.ajax({
+	                    url: `/cart/deletee`,
+	                    type: 'DELETE',
+
+	                    dataType: "json",
+	                    contentType: "application/json",
+
+	                    // data: JSON.stringify(`{"product_id" : ${product_id}}`),
+	                    data: data,
+	                    // data: JSON.stringify(data),
+
+	                    beforeSend: function (xhr) {
+	                        xhr.setRequestHeader(header, token);
+	                    },
+
+	                    success: function (data, status, xhr) {
+	                    	//md.showAddProductNoti('bottom','right',data.msg)
+	                    //  
+							Swal.fire({
+	                    		  position: 'center',
+	                    		  icon: 'success',
+	                    		  title: 'Delete Success',
+	                    		  showConfirmButton: false,
+	                    		  timer: 1000
+		                    		}).then(()=>{
+		                                window.location.href = window.location.href;
+		                    		}) 
+	                     },
+	                    error: function (request, status, error) {
+
+	                    	window.location.href = window.location.href;
+	                    }
+	                });
+           	  }
+           	})           	
+       }
+    </script>
 </body>
 
 </html>

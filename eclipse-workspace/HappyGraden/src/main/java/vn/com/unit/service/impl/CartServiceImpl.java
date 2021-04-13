@@ -81,7 +81,7 @@ public class CartServiceImpl implements CartService {
 
 		Integer quantity_new = quantity;
 		if (quantity_in_cart != null) {
-			quantity_new = quantity;
+			quantity_new = quantity_in_cart + quantity;
 		}
 
 		CartProduct cart_temp = new CartProduct();

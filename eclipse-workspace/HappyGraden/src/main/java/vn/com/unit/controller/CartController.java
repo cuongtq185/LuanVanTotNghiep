@@ -43,8 +43,7 @@ public class CartController {
 		Account account = accountService.findCurrentAccount();
 		total_cart_item = cartService.countAllCartItemByCurrentAccount(account.getAccountId());
 		model.addAttribute("total_cart_item", total_cart_item);
-
-		
+	
 		model.addAllAttributes(CommonUtils.getMapHeaderAtribute(model, categoryService));
 
 		List<CartDto> list_cart_item = cartService.findAllCartItemByCurrentAccount();
@@ -86,7 +85,7 @@ public class CartController {
 		cartService.deleteCartItemCurrentAccount(Long.valueOf(json.get("product_id")), curent_account_id);
 		
 		return ResponseEntity.ok(
-				"{\"msg\" : \"Delete product succes! Please check again!\" }");
+				"{\"msg\" : \"Delete product succces! Please check again!\" }");
 	}
 
 	@GetMapping("/cart/add/{productId}")
