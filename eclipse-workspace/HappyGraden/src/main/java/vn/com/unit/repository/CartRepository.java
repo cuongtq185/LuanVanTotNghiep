@@ -27,5 +27,8 @@ public interface CartRepository extends MirageRepository<CartProduct, Long> {
 	public Integer findProductQuantityInCart(@Param("account_id") Long account_id, @Param("product_id") Long product_id);
 	
 	public Long getIdCartCurrent(@Param("account") Long account);
+	
+	@Modifying
+	public void updateQuantityCart(@Param("account_id") Long account_id, @Param("product_id") Long product_id, @Param("quantity") Integer quantity);
 
 }

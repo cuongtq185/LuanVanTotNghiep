@@ -82,8 +82,10 @@ public class CartServiceImpl implements CartService {
 		Integer quantity_new = quantity;
 		if (quantity_in_cart != null) {
 			quantity_new = quantity_in_cart + quantity;
-		}
-
+			cartRepository.updateQuantityCart(curent_account_id, product_id, quantity_new);
+		}else {
+			
+		quantity_new = quantity;
 		CartProduct cart_temp = new CartProduct();
 		cart_temp.setAccount(curent_account_id);
 		cart_temp.setStatus(1);
@@ -97,7 +99,7 @@ public class CartServiceImpl implements CartService {
 		item.setProduct(product_id);
 		item.setQuantity(quantity_new);
 		cartItemRepository.save(item);
-		
+		}
 	}
 
 }
