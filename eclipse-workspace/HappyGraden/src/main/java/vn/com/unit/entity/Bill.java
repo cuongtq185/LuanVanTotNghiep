@@ -9,43 +9,47 @@ import jp.sf.amateras.mirage.annotation.PrimaryKey;
 import jp.sf.amateras.mirage.annotation.Table;
 import jp.sf.amateras.mirage.annotation.PrimaryKey.GenerationType;
 
-@Table(name = "p2p_bill")
+@Table(name = "bill")
 public class Bill {
 
 	@Id
 	@PrimaryKey(generationType = GenerationType.IDENTITY) // Primary key // Auto increment
-	@Column(name = "id")
-	private Long id;
-	
-	@Column(name = "account")
-	private Long account;
+	@Column(name = "bill_id")
+	private Long billId;
 	
 	@Column(name = "address")
 	private String address;
 	
-	@Column(name = "payment")
-	private int payment;
+	@Column(name = "phone")
+	private String phone;
 	
-	@Column(name = "create_at")
-	private Date createAt;
+	@Column(name = "bill_createAt")
+	private Date billCreateAt;
+	
+	@Column(name = "bill_status")
+	private int billStatus;
+	
+	@Column(name = "quantity")
+	private int quantity;
+	
+	@Column(name = "tottal_price")
+	private float tottalPrice;
+	
+	@Column(name = "bill_cart")
+	private int bill_cart;
+	
+	@Column(name ="account")
+	private Long account;
 	
 	public Bill() {
 	}
 
-	public Long getId() {
-		return id;
+	public Long getBillId() {
+		return billId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Long getAccount() {
-		return account;
-	}
-
-	public void setAccount(Long account) {
-		this.account = account;
+	public void setBillId(Long billId) {
+		this.billId = billId;
 	}
 
 	public String getAddress() {
@@ -56,20 +60,60 @@ public class Bill {
 		this.address = address;
 	}
 
-	public int getPayment() {
-		return payment;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setPayment(int payment) {
-		this.payment = payment;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
-	public Date getCreateAt() {
-		return createAt;
+	public Date getBillCreateAt() {
+		return billCreateAt;
 	}
 
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
+	public void setBillCreateAt(Date billCreateAt) {
+		this.billCreateAt = billCreateAt;
 	}
-		
+
+	public int getBillStatus() {
+		return billStatus;
+	}
+
+	public void setBillStatus(int billStatus) {
+		this.billStatus = billStatus;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public float getTottalPrice() {
+		return tottalPrice;
+	}
+
+	public void setTottalPrice(float tottalPrice) {
+		this.tottalPrice = tottalPrice;
+	}
+
+	public int getBill_cart() {
+		return bill_cart;
+	}
+
+	public void setBill_cart(int bill_cart) {
+		this.bill_cart = bill_cart;
+	}
+
+	public Long getAccount() {
+		return account;
+	}
+
+	public void setAccount(Long account) {
+		this.account = account;
+	}
+
 }
