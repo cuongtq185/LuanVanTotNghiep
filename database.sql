@@ -158,11 +158,12 @@ create table bill(
 	phone nvarchar(20),
 	bill_createAt datetime default getutcdate(),
 	bill_status tinyint,
-	quantity int,
 	tottal_price float,
 	bill_cart bigint,
+	account bigint,
 
-	constraint fk_cart_id_bill_id foreign key (bill_cart) references cart(cart_id)
+	constraint fk_cart_id_bill_id foreign key (bill_cart) references cart(cart_id),
+	constraint fk_cart_id_account foreign key (account) references account(account_id)
 )
 
 

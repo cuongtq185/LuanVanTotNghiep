@@ -49,7 +49,6 @@ public class BillServiceImpl implements BillService {
 //		return billRepository.createBill(account_id, address);
 		Bill bill_temp = new Bill();
 		bill_temp.setAccount(account_id);
-		//bill_temp.setBill_cart(bill_cart);
 		bill_temp.setAddress(address);
 		
 		return billRepository.save(bill_temp).getBillId();
