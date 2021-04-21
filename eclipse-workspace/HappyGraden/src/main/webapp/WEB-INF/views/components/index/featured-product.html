@@ -6,7 +6,6 @@
 </head>
 <body>
 	<th:block th:fragment="index-featured-product">
-
     <section class="featured spad">
     
         <div class="container">
@@ -34,13 +33,18 @@
                         <div class="featured__item">
                             <div class="featured__item__pic set-bg" th:data-setbg="@{ ${product.productImg} }">
                                 <ul class="featured__item__pic__hover">
+                                 <th:block sec:authorize="isAuthenticated()">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                 </th:block>   
+                                 
                                     <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                  <th:block sec:authorize="isAuthenticated()">   
                                     <li>
-                                        <a href="#"
+                                        <a href="#" class ="productMSG" type ="button"
                                             th:onclick="$.get([[@{'/cart/add/' + ${product.productId}}]], (data) => { console.log(data); } ); return false;">
                                             <i class="fa fa-shopping-cart"></i></a>
                                     </li>
+                                  </th:block>  
                                 </ul>
                             </div>
                             <div class="featured__item__text">
@@ -49,8 +53,7 @@
                             </div>
                         </div>
                     </div>
-    
-                </th:block>
+					</th:block>
     
             </div>
     
@@ -202,6 +205,13 @@
         </div>
     </section> -->
     <!-- Featured Section End -->
+
+	<!-- 	<script>
+			function Showmessage(data) {
+				$('#notID').html('Successfully Submitted');
+			}
+		</script>
+		<div id="notID">123</div> -->
 	</th:block>
 </body>
 </html>

@@ -40,7 +40,7 @@ public class MomoPayment {
 
 			String convert_address = CommonUtils.convertEncode(address);
 
-			Long bill_id = paymentService.createBill(convert_address);
+			Long bill_id = paymentService.createBill(convert_address);		
 
 			String total = paymentService.calculateBillTotal(bill_id).toString();
 
@@ -54,7 +54,9 @@ public class MomoPayment {
 
 			String BASE_URL = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
 			String returnUrl =  BASE_URL + "/bill/" + bill_id.toString();
-			String notifyUrl = "https://2d5b673c6c4f.ngrok.io/webhook/momo";
+			//String notifyUrl = "https://2d5b673c6c4f.ngrok.io/webhook/momo";
+			String notifyUrl = " https://2e63aa53296e.ngrok.io/webhook/momo";
+
 
 			String extraData = "";
 

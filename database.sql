@@ -1,4 +1,5 @@
 ﻿
+drop table bill_item;
 drop table bill;
 drop table payment;
 drop table promotion;
@@ -147,9 +148,6 @@ create table payment(
 	payment_id bigint primary key identity(1,1),
 	payment_information nvarchar(250),
 	payment_status int,
-	cart bigint,
-
-	constraint fk_cart_id_payment_id foreign key (cart) references cart(cart_id)
 )
 
 create table bill(
@@ -159,13 +157,26 @@ create table bill(
 	bill_createAt datetime default getutcdate(),
 	bill_status tinyint,
 	tottal_price float,
+	total_quantity int,
 	bill_cart bigint,
 	account bigint,
+	payment_id bigint,
 
 	constraint fk_cart_id_bill_id foreign key (bill_cart) references cart(cart_id),
-	constraint fk_cart_id_account foreign key (account) references account(account_id)
+	constraint fk_cart_id_account_aa foreign key (account) references account(account_id),
+	constraint fk_bill_payment foreign key (payment_id) references payment(payment_id)
 )
 
+create table bill_item(
+	id bigint primary key identity(1,1),
+	bill bigint,
+	product bigint,
+	quantity int,
+
+	constraint fk_bill_item foreign key (bill) references bill(bill_id),
+	constraint fk_bill_item_product foreign key (product) references product(product_id),
+
+)
 
 
 --insert

@@ -14,6 +14,7 @@ public interface BillRepository extends MirageRepository<Bill, Long> {
 	
 	public Bill findBillByBillId(@Param("bill_id") Long bill_id);
 
+	@Modifying
 	public Long createBill(@Param("account_id") Long account_id, @Param("address") String address);
 
 	@Modifying

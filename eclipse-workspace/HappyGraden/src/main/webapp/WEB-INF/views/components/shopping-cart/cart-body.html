@@ -68,11 +68,16 @@
 					<div class="col-lg-6">
 						<div class="shoping__checkout">
 							<h5>Cart Total</h5>
-							<ul>
-								<li>Subtotal <span>$454.98</span></li>
-								<li>Total <span>$454.98</span></li>
-							</ul>
-							<a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+							<form  th:action="@{/cart/payment/momo}" method="POST">
+								<ul>
+									<li>Account <input type="text" placeholder="Enter your account" style="float:right"></li>
+									<li>Address <input type="text" placeholder="Enter your address" style="float:right"></li>
+									<li>Phone <input type="address" required="required" name="address" placeholder="Enter your phone" style="float:right"></li>
+									<!-- <li>Subtotal <span>$454.98</span></li> -->
+									<li>Total <span th:inline="text">$ [[${#numbers.formatDecimal(total, 0, 'COMMA', 0, 'POINT')}]]</span></li>
+								</ul>
+								<button class="primary-btn">PROCEED TO CHECKOUT</button>
+							</form>
 						</div>
 					</div>
 				</div>

@@ -29,8 +29,8 @@ public class Bill {
 	@Column(name = "bill_status")
 	private int billStatus;
 	
-	@Column(name = "quantity")
-	private int quantity;
+	@Column(name = "total_quantity")
+	private int totalQuantity;
 	
 	@Column(name = "tottal_price")
 	private float tottalPrice;
@@ -40,6 +40,10 @@ public class Bill {
 	
 	@Column(name ="account")
 	private Long account;
+	
+	@Column(name = "payment_id")
+	private Long paymentId;
+	
 	
 	public Bill() {
 	}
@@ -84,12 +88,13 @@ public class Bill {
 		this.billStatus = billStatus;
 	}
 
-	public int getQuantity() {
-		return quantity;
+	
+	public int getTotalQuantity() {
+		return totalQuantity;
 	}
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setTotalQuantity(int totalQuantity) {
+		this.totalQuantity = totalQuantity;
 	}
 
 	public float getTottalPrice() {
@@ -114,6 +119,14 @@ public class Bill {
 
 	public void setAccount(Long account) {
 		this.account = account;
+	}
+
+	public Long getPaymentId() {
+		return paymentId;
+	}
+
+	public void setPaymentId(Long paymentId) {
+		this.paymentId = paymentId;
 	}
 
 }
