@@ -178,6 +178,14 @@ create table bill_item(
 
 )
 
+create table log (
+	id bigint primary key identity(1,1),
+	log nvarchar(3000),
+	type nvarchar(50),
+	author nvarchar(500),
+	create_at datetime default getutcdate(),
+)
+
 
 --insert
 insert into role(role_name) values ('ROLE_ADMIN')
