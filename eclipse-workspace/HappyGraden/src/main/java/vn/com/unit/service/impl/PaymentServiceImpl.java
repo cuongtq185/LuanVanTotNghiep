@@ -28,11 +28,15 @@ public class PaymentServiceImpl implements PaymentService {
 	public Long createBill(String address) {
 
 		Account current_account = accountService.findCurrentAccount();
-		Long current_account_id = current_account.getAccountId();		
+		Long current_account_id = current_account.getAccountId();
+		
 		// Need check cart before create bill
-
-		Long bill_id = billService.createBill(current_account_id, address);
-
+		try {
+			billService.createBill(current_account_id, address);	
+		} catch (Exception e) {
+			// TODO: handle exception
+		}		
+		Long bill_id = billService.getIdPayment();
 		billService.addBillItemFromCart(bill_id, current_account_id);
 
 		return bill_id;

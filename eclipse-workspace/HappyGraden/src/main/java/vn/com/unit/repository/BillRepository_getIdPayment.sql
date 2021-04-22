@@ -1,0 +1,1 @@
+select max(bill_id) from bill

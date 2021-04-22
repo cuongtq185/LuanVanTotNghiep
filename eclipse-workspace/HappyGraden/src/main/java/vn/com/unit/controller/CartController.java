@@ -3,6 +3,8 @@ package vn.com.unit.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -78,16 +80,16 @@ public class CartController {
 	}
 	
 	
-	@DeleteMapping("/cart/deletee")
-	@ResponseBody
-	public ResponseEntity<String> delete(Model model, @RequestBody Map<String, String> json) {
-		
-		Long curent_account_id = accountService.findCurrentAccount().getAccountId();
-		cartService.deleteCartItemCurrentAccount(Long.valueOf(json.get("product_id")), curent_account_id);
-		
-		return ResponseEntity.ok(
-				"{\"msg\" : \"Delete product succces! Please check again!\" }");
-	}
+//	@DeleteMapping("/cart/deletee")
+//	@ResponseBody
+//	public ResponseEntity<String> delete(Model model, @RequestBody Map<String, String> json) {
+//		
+//		Long curent_account_id = accountService.findCurrentAccount().getAccountId();
+//		cartService.deleteCartItemCurrentAccount(Long.valueOf(json.get("product_id")), curent_account_id);
+//		
+//		return ResponseEntity.ok(
+//				"{\"msg\" : \"Delete product succces! Please check again!\" }");
+//	}
 
 	@GetMapping("/cart/add/{productId}")
 	@ResponseBody
@@ -95,5 +97,13 @@ public class CartController {
 		cartService.addCartItemCurrentAccount(productId, 1);
 		return new ResponseEntity<String>("Add product succes! Please check again!", HttpStatus.OK);
 		//return ResponseEntity.ok("{}");
+	}
+	
+	@DeleteMapping("/cart/delete/{product_id}")
+	public ResponseEntity<Boolean> AdminDisable(Model model, @PathVariable("product_id") Long product_id,
+			HttpServletRequest request) {
+		Long curent_account_id = accountService.findCurrentAccount().getAccountId();
+		cartService.deleteCartItemCurrentAccount(product_id, curent_account_id);
+		return  ResponseEntity.ok(null);
 	}
 }

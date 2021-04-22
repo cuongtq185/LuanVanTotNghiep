@@ -10,7 +10,9 @@ public interface BillService {
 	
 	public Bill findBillByBillId(Long bill_id);
 
-	public Long createBill(Long account_id, String address);
+	public void createBill(Long account_id, String address);
+	
+	public Long getIdPayment();
 
 	public void addBillItemFromCart(Long bill_id, Long account_id);
 

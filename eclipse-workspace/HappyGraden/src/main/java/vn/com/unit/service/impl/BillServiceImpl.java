@@ -44,20 +44,25 @@ public class BillServiceImpl implements BillService {
 	}
 
 	@Override
-	public Long createBill(Long account_id, String address) {
+	public void createBill(Long account_id, String address) {
 		
-		return billRepository.createBill(account_id, address);
+		billRepository.createBill(account_id, address);
 //		Bill bill_temp = new Bill();
 //		bill_temp.setAccount(account_id);
 //		bill_temp.setAddress(address);
 //		
-//		return billRepository.save(bill_temp).getBillId();
+//		return true;
 	}
 
 	@Override
 	public void addBillItemFromCart(Long billId, Long currentAccountId) {
 		
 		billRepository.addBillItemFromCart(billId, currentAccountId);
+	}
+	
+	@Override
+	public Long getIdPayment() {
+		return billRepository.getIdPayment();
 	}
 
 	@Override
