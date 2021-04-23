@@ -1,0 +1,1 @@
+insert into payment(payment_status, bill) values(0,/*bill_id*/'')

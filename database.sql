@@ -1,7 +1,8 @@
 ﻿
+drop table log;
+drop table payment;
 drop table bill_item;
 drop table bill;
-drop table payment;
 drop table promotion;
 drop table cart_item;
 drop table cart;
@@ -144,27 +145,21 @@ create table promotion(
 	constraint fk_product_id_product_promotion foreign key(product_promotion) references product(product_id)
 )
 
-create table payment(
-	payment_id bigint primary key identity(1,1),
-	payment_information nvarchar(250),
-	payment_status int,
-)
-
 create table bill(
 	bill_id bigint primary key identity(1,1),
 	address nvarchar(250),
 	phone nvarchar(20),
 	bill_createAt datetime default getutcdate(),
-	bill_status tinyint,
+	--bill_status tinyint,
 	tottal_price float,
 	total_quantity int,
 	bill_cart bigint,
 	account bigint,
-	payment_id bigint,
+	--payment_id bigint,
 
 	constraint fk_cart_id_bill_id foreign key (bill_cart) references cart(cart_id),
-	constraint fk_cart_id_account_aa foreign key (account) references account(account_id),
-	constraint fk_bill_payment foreign key (payment_id) references payment(payment_id)
+	constraint fk_cart_id_account_aa foreign key (account) references account(account_id)
+	--constraint fk_bill_payment foreign key (payment_id) references payment(payment_id)
 )
 
 create table bill_item(
@@ -176,6 +171,15 @@ create table bill_item(
 	constraint fk_bill_item foreign key (bill) references bill(bill_id),
 	constraint fk_bill_item_product foreign key (product) references product(product_id),
 
+)
+
+create table payment(
+	payment_id bigint primary key identity(1,1),
+	payment_information nvarchar(250),
+	payment_status int,
+	bill bigint,
+
+	constraint fk_bill_payment foreign key (bill) references bill(bill_id)
 )
 
 create table log (
@@ -233,9 +237,9 @@ values(N'Cây bạch mã hoàng tử', N' Hợp với tuổi dần', 0,4,2, getu
 
 --insert product_price
 insert into product_price(create_at, product_price_id, product_price)
-values(getutcdate(),1, 2000000)
+values(getutcdate(),1, 2000)
 insert into product_price(create_at, product_price_id, product_price)
-values(getutcdate(),2,3000000)
+values(getutcdate(),2,3000)
 
 --insert product-img2D
 insert into product_img2D(id_product_img2D,	product_img)

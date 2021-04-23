@@ -26,8 +26,8 @@ public class Bill {
 	@Column(name = "bill_createAt")
 	private Date billCreateAt;
 	
-	@Column(name = "bill_status")
-	private int billStatus;
+//	@Column(name = "bill_status")
+//	private int billStatus;
 	
 	@Column(name = "total_quantity")
 	private int totalQuantity;
@@ -41,8 +41,8 @@ public class Bill {
 	@Column(name ="account")
 	private Long account;
 	
-	@Column(name = "payment_id")
-	private Long paymentId;
+//	@Column(name = "payment_id")
+//	private Long paymentId;
 	
 	
 	public Bill() {
@@ -80,13 +80,13 @@ public class Bill {
 		this.billCreateAt = billCreateAt;
 	}
 
-	public int getBillStatus() {
-		return billStatus;
-	}
-
-	public void setBillStatus(int billStatus) {
-		this.billStatus = billStatus;
-	}
+//	public int getBillStatus() {
+//		return billStatus;
+//	}
+//
+//	public void setBillStatus(int billStatus) {
+//		this.billStatus = billStatus;
+//	}
 
 	
 	public int getTotalQuantity() {
@@ -121,12 +121,12 @@ public class Bill {
 		this.account = account;
 	}
 
-	public Long getPaymentId() {
-		return paymentId;
-	}
-
-	public void setPaymentId(Long paymentId) {
-		this.paymentId = paymentId;
-	}
+//	public Long getPaymentId() {
+//		return paymentId;
+//	}
+//
+//	public void setPaymentId(Long paymentId) {
+//		this.paymentId = paymentId;
+//	}
 
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import vn.com.unit.entity.Account;
+import vn.com.unit.repository.PaymentRepository;
 import vn.com.unit.service.AccountService;
 import vn.com.unit.service.BillService;
 import vn.com.unit.service.PaymentService;
@@ -19,6 +20,9 @@ public class PaymentServiceImpl implements PaymentService {
 	// Order
 	@Autowired
 	BillService billService;
+	
+	@Autowired
+	PaymentRepository paymentRepository;
 
 	// Get current account id
 	// -- Check cart to create bill
@@ -37,6 +41,10 @@ public class PaymentServiceImpl implements PaymentService {
 			// TODO: handle exception
 		}		
 		Long bill_id = billService.getIdPayment();
+		
+		//create payment status 0
+		paymentRepository.createPaymentByBill(bill_id);
+		
 		billService.addBillItemFromCart(bill_id, current_account_id);
 
 		return bill_id;

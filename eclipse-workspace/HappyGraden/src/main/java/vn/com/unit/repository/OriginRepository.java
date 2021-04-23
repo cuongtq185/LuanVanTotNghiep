@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.data.mirage.repository.MirageRepository;
 import org.springframework.data.repository.query.Param;
 
-import vn.com.unit.entity.Category;
 import vn.com.unit.entity.Origin;
 
 public interface OriginRepository extends MirageRepository<Origin, Long> {
