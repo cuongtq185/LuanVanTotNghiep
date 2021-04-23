@@ -42,7 +42,7 @@ public class BillController {
 		
 		model.addAttribute("bill_item", bill_item);
 		
-		return new ModelAndView("/bill");
+		return new ModelAndView("bill");
 	}
 	
 }

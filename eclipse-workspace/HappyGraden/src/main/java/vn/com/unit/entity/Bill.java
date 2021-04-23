@@ -42,9 +42,17 @@ public class Bill {
 	private Long account;
 	
 //	@Column(name = "payment_id")
-//	private Long paymentId;
+	private int payment;
 	
 	
+	public int getPayment() {
+		return payment;
+	}
+
+	public void setPayment(int payment) {
+		this.payment = payment;
+	}
+
 	public Bill() {
 	}
 

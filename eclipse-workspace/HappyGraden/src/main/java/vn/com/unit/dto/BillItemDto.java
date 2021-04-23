@@ -5,14 +5,22 @@ import vn.com.unit.entity.BillItem;
 public class BillItemDto extends BillItem {
 
 	private String productName;
-
-	private String brandName;
 	 
 	private String categoryName;
+	
+	private String originName;
+
+	public String getOriginName() {
+		return originName;
+	}
+
+	public void setOriginName(String originName) {
+		this.originName = originName;
+	}
 
 	private String img;
 
-	private Long price;
+	private float productPrice;
 
 	public BillItemDto() {
 	}
@@ -23,14 +31,6 @@ public class BillItemDto extends BillItem {
 
 	public String getProductName() {
 		return productName;
-	}
-	
-	public String getBrandName() {
-		return brandName;
-	}
-
-	public void setBrandName(String brandName) {
-		this.brandName = brandName;
 	}
 
 	public String getCategoryName() {
@@ -55,16 +55,17 @@ public class BillItemDto extends BillItem {
 		this.img = img;
 	}
 
-	public Long getPrice() {
-		return price;
+
+	public float getProductPrice() {
+		return productPrice;
 	}
 
-	public void setPrice(Long price) {
-		this.price = price;
+	public void setProductPrice(float productPrice) {
+		this.productPrice = productPrice;
 	}
 
-	public Long getTotal() {
-		return this.getPrice() * this.getQuantity();
+	public float getTotal() {
+		return this.getProductPrice() * this.getQuantity();
 	}
 	
 	public BillItem extractBillItem( ) {
