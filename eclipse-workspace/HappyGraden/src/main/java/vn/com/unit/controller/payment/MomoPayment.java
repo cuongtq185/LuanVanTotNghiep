@@ -55,7 +55,7 @@ public class MomoPayment {
 			String BASE_URL = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
 			String returnUrl =  BASE_URL + "/bill/" + bill_id.toString();
 			//String notifyUrl = "https://2d5b673c6c4f.ngrok.io/webhook/momo";
-			String notifyUrl = " https://2e63aa53296e.ngrok.io/webhook/momo";
+			String notifyUrl = "https://bf1850a6ceb3.ngrok.io/webhook/momo";
 
 
 			String extraData = "";

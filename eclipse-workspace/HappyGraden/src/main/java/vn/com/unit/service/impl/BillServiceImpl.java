@@ -72,14 +72,13 @@ public class BillServiceImpl implements BillService {
 	}
 
 	@Override
-	public Bill saveBillPaymentStatus(Long bill_id, int payment_status) {
-//		billRepository.saveBillPaymentStatus(bill_id, payment_status);
+	public void saveBillPaymentStatus(Long bill_id, int payment_status) {
+		billRepository.saveBillPaymentStatus(bill_id, payment_status);
 //		Bill bill_temp = new Bill();
 //		bill_temp.setId(bill_id);
-		Bill bill_temp = billRepository.findOne(bill_id);
+//		Bill bill_temp = billRepository.findOne(bill_id);
 //		bill_temp.setPayment(payment_status);
-		
-		return billRepository.save(bill_temp);
+ 
 	}
 
 	@Override
