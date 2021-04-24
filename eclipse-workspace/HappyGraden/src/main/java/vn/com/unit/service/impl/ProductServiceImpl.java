@@ -243,7 +243,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> searchProductByName(String name) {
+	public List<ProductDto> searchProductByName(String name) {
 		return productRepository.findProductByName(name);
 		// List<Product> product = new ArrayList<Product>();
 		/*

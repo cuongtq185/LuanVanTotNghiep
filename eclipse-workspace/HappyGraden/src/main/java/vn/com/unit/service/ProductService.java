@@ -33,7 +33,7 @@ public interface ProductService {
 
 	public List<Product> findAllActiveProductOfShopActiveOfVendorActive();
 
-	public List<Product> searchProductByName(String name);
+	public List<ProductDto> searchProductByName(String name);
 
 	public int CountAllProductByShopId(Long shop_id);
 

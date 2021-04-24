@@ -114,32 +114,28 @@ public class HomeController {
 		return new ModelAndView("index");
 	}
 
-//	@GetMapping("/product-by-search")
-//	public ModelAndView test(Model model, @RequestParam("name") String name) {
-//		
-//		// Prevent sql injection
-//		name = String.join("%", name.split(""));
-//		
-//		model.addAllAttributes(CommonUtils.getMapHeaderAtribute(model, categoryService));
-//		
-//		List<Product> products = productService.searchProductByName(name);
-//		model.addAttribute("products", products);
-//		model.addAttribute("name", name);
-//		
-//		List<Brand> brands = brandService.findAllBrand();
-//		model.addAttribute("brands", brands);
-//
-//		
-//		int total_cart_item= 0;
-//		Long total = 0L;
-//		Account account = accountService.findCurrentAccount();
+	@GetMapping("/product-by-search")
+	public ModelAndView test(Model model, @RequestParam("name") String name) {
+		
+		// Prevent sql injection
+		name = String.join("%", name.split(""));
+		
+		//model.addAllAttributes(CommonUtils.getMapHeaderAtribute(model, categoryService));
+		
+		List<ProductDto> products = productService.searchProductByName(name);
+		model.addAttribute("products", products);
+		model.addAttribute("name", name);
+	
+		int total_cart_item= 0;
+		Long total = 0L;
+		Account account = accountService.findCurrentAccount();
 //		total_cart_item = cartService.countAllCartItemByCurrentAccount(account.getAccountId());
-//		model.addAttribute("total_cart_item", total_cart_item);
-//		
+		model.addAttribute("total_cart_item", total_cart_item);
+		
 //		total = cartService.calculateCartTotalByCurrentAccount();
-//		model.addAttribute("total_price", total);
-//		return new ModelAndView("product-by-search");
-//	}
+		model.addAttribute("total_price", total);
+		return new ModelAndView("search-product");
+	}
 	
 //	@GetMapping("/category")
 //	public ModelAndView category(Model model, 
@@ -219,9 +215,9 @@ public class HomeController {
 	//search Ajax
 	@PostMapping("/search-ajax")
 	@ResponseBody
-	public ResponseEntity<List<Product>> test(Model model, @RequestBody String key,HttpServletResponse response) {
+	public ResponseEntity<List<ProductDto>> test(Model model, @RequestBody String key,HttpServletResponse response) {
 		String key_value = key;
-		List<Product> products = productService.searchProductByName(key_value);
+		List<ProductDto> products = productService.searchProductByName(key_value);
 
 		return ResponseEntity.ok(products);
 	}

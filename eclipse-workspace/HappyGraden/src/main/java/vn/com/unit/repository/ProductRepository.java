@@ -54,7 +54,7 @@ public interface ProductRepository extends MirageRepository<Product, Long> {
 	
 	public List<Product> findAllActiveProductOfShopActiveOfVendorActive();
 	
-	public List<Product> findProductByName(@Param("name") String name);
+	public List<ProductDto> findProductByName(@Param("name") String name);
 	
 	public int countAllProductByShopId(@Param("shop_id") Long shop_id);
 	

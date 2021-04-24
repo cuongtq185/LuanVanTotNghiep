@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head>
+    <th:block th:include="layout/head :: head"></th:block>
+
+</head>
+
+<body>
+       	 	<div th:replace="components/index/header :: index-header"></div>
+			<div th:replace="components/search-product/banner-search :: banner-search "></div>
+        	<div th:replace="components/search-product/search-body :: search-body"></div>
+			<div th:replace="components/index/footer :: index-footer"></div>
+						
+    		<th:block th:replace="layout/footer :: footer"></th:block>
+	
+</body>
+
+</html>
