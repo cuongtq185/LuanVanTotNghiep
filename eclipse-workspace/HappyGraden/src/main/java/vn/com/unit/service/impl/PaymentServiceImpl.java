@@ -36,14 +36,14 @@ public class PaymentServiceImpl implements PaymentService {
 	// Create bill (account id, address)
 	// Move all product in cart to bill item
 	@Override
-	public Long createBill(String address) {
+	public Long createBill(String address, String phone, String fullname) {
 
 		Account current_account = accountService.findCurrentAccount();
 		Long current_account_id = current_account.getAccountId();
 		
 		// Need check cart before create bill
 		try {
-			billService.createBill(current_account_id, address);	
+			billService.createBill(current_account_id, address, phone, fullname);	
 		} catch (Exception e) {
 			// TODO: handle exception
 		}		

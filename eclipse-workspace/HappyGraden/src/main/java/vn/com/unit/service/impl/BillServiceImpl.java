@@ -45,9 +45,9 @@ public class BillServiceImpl implements BillService {
 	}
 
 	@Override
-	public void createBill(Long account_id, String address) {
+	public void createBill(Long account_id, String address, String phone, String fullname) {
 		
-		billRepository.createBill(account_id, address);
+		billRepository.createBill(account_id, address, phone, fullname);
 //		Bill bill_temp = new Bill();
 //		bill_temp.setAccount(account_id);
 //		bill_temp.setAddress(address);

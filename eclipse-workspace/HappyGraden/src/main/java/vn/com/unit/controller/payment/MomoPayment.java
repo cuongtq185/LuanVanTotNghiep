@@ -34,13 +34,15 @@ public class MomoPayment {
 	private Environment environment = Environment.selectEnv(target, process);
 
 	@PostMapping("/cart/payment/momo")
-	public ModelAndView momoPayment(Model model, @RequestParam(value = "address") String address) {
+	public ModelAndView momoPayment(Model model, @RequestParam(value = "address") String address,
+			@RequestParam(value = "fullname") String fullname,
+			@RequestParam(value = "phone") String phone) {
 
 		try {
 
 			String convert_address = CommonUtils.convertEncode(address);
 
-			Long bill_id = paymentService.createBill(convert_address);		
+			Long bill_id = paymentService.createBill(convert_address, phone, fullname);		
 
 			String total = paymentService.calculateBillTotal(bill_id).toString();
 
@@ -55,7 +57,7 @@ public class MomoPayment {
 			String BASE_URL = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
 			String returnUrl =  BASE_URL + "/bill/" + bill_id.toString();
 			//String notifyUrl = "https://2d5b673c6c4f.ngrok.io/webhook/momo";
-			String notifyUrl = "https://bf1850a6ceb3.ngrok.io/webhook/momo";
+			String notifyUrl = "https://8625ae36345d.ngrok.io/webhook/momo";
 
 
 			String extraData = "";

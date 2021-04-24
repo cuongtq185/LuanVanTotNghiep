@@ -11,7 +11,7 @@ public interface BillService {
 	
 	public Bill findBillByBillId(Long bill_id);
 
-	public void createBill(Long account_id, String address);
+	public void createBill(Long account_id, String address, String phone, String fullname);
 	
 	public Long getIdPayment();
 

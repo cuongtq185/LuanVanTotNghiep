@@ -16,35 +16,45 @@ public class Bill {
 	@PrimaryKey(generationType = GenerationType.IDENTITY) // Primary key // Auto increment
 	@Column(name = "bill_id")
 	private Long billId;
-	
+
 	@Column(name = "address")
 	private String address;
-	
+
 	@Column(name = "phone")
 	private String phone;
-	
+
 	@Column(name = "bill_createAt")
 	private Date billCreateAt;
-	
+
 //	@Column(name = "bill_status")
 //	private int billStatus;
-	
+
 	@Column(name = "total_quantity")
 	private int totalQuantity;
-	
+
 	@Column(name = "tottal_price")
 	private float tottalPrice;
-	
-	@Column(name = "bill_cart")
-	private int bill_cart;
-	
-	@Column(name ="account")
+
+//	@Column(name = "bill_cart")
+//	private int bill_cart;
+
+	@Column(name = "account")
 	private Long account;
-	
-//	@Column(name = "payment_id")
+
+	@Column(name = "full_name")
+	private String fullName;
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	// @Column(name = "payment_id")
 	private int payment;
-	
-	
+
 	public int getPayment() {
 		return payment;
 	}
@@ -96,7 +106,6 @@ public class Bill {
 //		this.billStatus = billStatus;
 //	}
 
-	
 	public int getTotalQuantity() {
 		return totalQuantity;
 	}
@@ -113,13 +122,13 @@ public class Bill {
 		this.tottalPrice = tottalPrice;
 	}
 
-	public int getBill_cart() {
-		return bill_cart;
-	}
-
-	public void setBill_cart(int bill_cart) {
-		this.bill_cart = bill_cart;
-	}
+//	public int getBill_cart() {
+//		return bill_cart;
+//	}
+//
+//	public void setBill_cart(int bill_cart) {
+//		this.bill_cart = bill_cart;
+//	}
 
 	public Long getAccount() {
 		return account;

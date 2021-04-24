@@ -1,4 +1,4 @@
-insert into bill (account, address) values (/*account_id*/, /*address*/);
+insert into bill (account, address, phone, full_name) values (/*account_id*/, /*address*/, /*phone*/, /*fullname*/);
 --select scope_identity();
 
 

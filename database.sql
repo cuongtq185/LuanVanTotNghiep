@@ -149,15 +149,16 @@ create table bill(
 	bill_id bigint primary key identity(1,1),
 	address nvarchar(250),
 	phone nvarchar(20),
+	full_name nvarchar(250),
 	bill_createAt datetime default getutcdate(),
 	--bill_status tinyint,
 	tottal_price float,
 	total_quantity int,
-	bill_cart bigint,
+	--bill_cart bigint,
 	account bigint,
 	--payment_id bigint,
 
-	constraint fk_cart_id_bill_id foreign key (bill_cart) references cart(cart_id),
+	--constraint fk_cart_id_bill_id foreign key (bill_cart) references cart(cart_id),
 	constraint fk_cart_id_account_aa foreign key (account) references account(account_id)
 	--constraint fk_bill_payment foreign key (payment_id) references payment(payment_id)
 )
