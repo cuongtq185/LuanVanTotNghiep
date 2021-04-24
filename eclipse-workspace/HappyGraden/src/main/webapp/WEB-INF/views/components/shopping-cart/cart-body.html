@@ -69,9 +69,9 @@
 							<h5>Cart Total</h5>
 							<form  th:action="@{/cart/payment/momo}" method="POST">
 								<ul>
-									<li>Account <input type="text" placeholder="Enter your account" style="float:right"></li>
-									<li>Phone<input type="text" placeholder="Enter your address" style="float:right"></li>
-									<li>Address <input type="address" required="required" name="address" placeholder="Enter your phone" style="float:right"></li>
+									<!-- <li>Full Name <input type="text" required="required" name="fullname" placeholder="Enter your full name" style="float:right"></li>
+									<li>Phone<input type="text" required="required" name="phone" placeholder="Enter your phone" style="float:right"></li> -->
+									<li>Address <input type="address" required="required" name="address" placeholder="Enter your address" style="float:right"></li>
 									<!-- <li>Subtotal <span>$454.98</span></li> -->
 									<li>Total <span th:inline="text">$ [[${#numbers.formatDecimal(total, 0, 'COMMA', 0, 'POINT')}]]</span></li>
 								</ul>

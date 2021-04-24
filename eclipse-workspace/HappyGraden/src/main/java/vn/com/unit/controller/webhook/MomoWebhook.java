@@ -59,7 +59,9 @@ public class MomoWebhook {
 				// Refund if empty product in repository
 				log = "/webhook/momo payment success | " + rawBody;
 
-				paymentService.savePaymentSuccess(bill_id);				
+				paymentService.savePaymentSuccess(bill_id);	
+				
+				paymentService.getListQuantityPayment(bill_id);
 				
 			} else {
 				// Handler error

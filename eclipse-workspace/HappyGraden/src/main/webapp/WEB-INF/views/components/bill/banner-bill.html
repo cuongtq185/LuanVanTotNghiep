@@ -61,7 +61,7 @@
 											<h2>Invoice</h2>
 											<strong>[[${bill?.billCreateAt}]]</strong>
 											<div class="breadcrumb__option">
-												<a href="./index.html">Home</a> <span class="float-right"> <strong>Status:</strong> [[${bill?.payment == 0} ? 'Pending' : '']][[${bill?.payment > 0} ? 'Success' : '']][[${bill?.payment < 0} ? 'Error' : '' ]]</span>
+												<a href="/">Home</a> <span class="float-right"> <strong>Status:</strong> [[${bill?.payment == 0} ? 'Pending' : '']][[${bill?.payment > 0} ? 'Success' : '']][[${bill?.payment < 0} ? 'Error' : '' ]]</span>
 											</div>
 											<div>
 												<strong>To: [[${#authentication.name}]]</strong>

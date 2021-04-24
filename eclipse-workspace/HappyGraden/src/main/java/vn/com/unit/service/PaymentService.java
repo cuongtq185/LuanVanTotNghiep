@@ -1,5 +1,9 @@
 package vn.com.unit.service;
 
+import java.util.List;
+
+import vn.com.unit.entity.BillItem;
+
 public interface PaymentService {
 
 	// Create bill with address
@@ -12,5 +16,7 @@ public interface PaymentService {
 	public void savePaymentSuccess(Long bill_id);
 
 	public void savePaymentError(Long bill_id);
+	
+	public void getListQuantityPayment(Long bill_id);
 	
 }

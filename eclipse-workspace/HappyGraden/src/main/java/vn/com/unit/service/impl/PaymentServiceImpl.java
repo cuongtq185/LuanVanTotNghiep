@@ -1,14 +1,18 @@
 package vn.com.unit.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import vn.com.unit.entity.Account;
+import vn.com.unit.entity.BillItem;
 import vn.com.unit.repository.PaymentRepository;
 import vn.com.unit.service.AccountService;
 import vn.com.unit.service.BillService;
 import vn.com.unit.service.PaymentService;
+import vn.com.unit.service.WareHouseService;
 
 @Service
 @Transactional
@@ -20,6 +24,9 @@ public class PaymentServiceImpl implements PaymentService {
 	// Order
 	@Autowired
 	BillService billService;
+	
+	@Autowired
+	WareHouseService wareHouseService;
 	
 	@Autowired
 	PaymentRepository paymentRepository;
@@ -66,6 +73,15 @@ public class PaymentServiceImpl implements PaymentService {
 	public void savePaymentError(Long bill_id) {
 		// TODO Auto-generated method stub
 		billService.saveBillPaymentStatus(bill_id, -1);
+	}
+	
+	@Override
+	public void getListQuantityPayment(Long bill_id){
+		
+		List<BillItem> lst = billService.getListQuantityPayment(bill_id);
+		for(BillItem dto: lst) {
+			wareHouseService.updateAfterPayment(dto.getProduct(), dto.getQuantity());
+		}
 	}
 
 	

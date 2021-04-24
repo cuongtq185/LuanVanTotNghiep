@@ -7,6 +7,7 @@ import org.springframework.data.mirage.repository.query.Modifying;
 import org.springframework.data.repository.query.Param;
 
 import vn.com.unit.entity.Bill;
+import vn.com.unit.entity.BillItem;
 
 public interface BillRepository extends MirageRepository<Bill, Long> {
 
@@ -30,4 +31,6 @@ public interface BillRepository extends MirageRepository<Bill, Long> {
 	public Bill test(@Param("bill_id") Long bill_id);
 	
 	public Long getIdPayment();
+	
+	public List<BillItem> getListQuantityPayment(@Param("bill_id") Long bill_id);
 }

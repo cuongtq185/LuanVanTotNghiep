@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import vn.com.unit.entity.Account;
 import vn.com.unit.entity.Bill;
+import vn.com.unit.entity.BillItem;
 import vn.com.unit.repository.BillRepository;
 import vn.com.unit.repository.ProductRepository;
 import vn.com.unit.repository.ShopRepository;
@@ -93,6 +94,12 @@ public class BillServiceImpl implements BillService {
 	@Override
 	public Bill test(Long bill_id) {
 		return billRepository.test(bill_id);
+	}
+	
+	@Override
+	public List<BillItem> getListQuantityPayment(Long bill_id){		
+		List<BillItem> lstBill = billRepository.getListQuantityPayment(bill_id);
+		return lstBill;
 	}
 
 }

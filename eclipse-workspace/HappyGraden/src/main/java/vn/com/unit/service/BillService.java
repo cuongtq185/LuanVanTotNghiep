@@ -3,6 +3,7 @@ package vn.com.unit.service;
 import java.util.List;
 
 import vn.com.unit.entity.Bill;
+import vn.com.unit.entity.BillItem;
 
 public interface BillService {
 	
@@ -23,5 +24,7 @@ public interface BillService {
 	public Bill findBillOfCurrentAccountByBillId(Long id);
 	
 	public Bill test(Long bill_id);
+	
+	public List<BillItem> getListQuantityPayment(Long bill_id);
 
 }

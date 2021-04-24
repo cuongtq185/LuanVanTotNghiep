@@ -17,5 +17,7 @@ public interface WareHouseService {
 	public void insert(int id);	
 	
 	public void insertProductPrice(ImportProductPrice imp);
+	
+	public void updateAfterPayment(int product, int quantity);
 
 }
