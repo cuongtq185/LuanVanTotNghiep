@@ -34,6 +34,60 @@
 					});
 				});
 			});
+			
+			const searchForm = document.querySelector("#search-form");
+            const searchFormInput = searchForm.querySelector("input");
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+            if (SpeechRecognition) {
+                console.log("Support");
+                searchForm.insertAdjacentHTML("beforeend", '<button id="searchBtn" type="button" class="header_search_button trans_300"><i class="fa fa-microphone"></i></button>')
+                const micBtn = searchForm.querySelector("button");
+                const micIcon = micBtn.querySelector("i");
+
+                const recognition = new SpeechRecognition();
+                //recognition.continuous = true;
+
+                micBtn.addEventListener("click", micBtnClick);
+
+                recognition.addEventListener("start", startSpeechRecognition);
+                recognition.addEventListener("end", endSpeechRecognition);
+                recognition.addEventListener("result", resultOfSpeechRecognition);
+
+                // recognition.addEventListener("start", startSpeechRecognition);
+                function startSpeechRecognition() {
+                	//debugger;
+                    micIcon.classList.remove("fa-microphone");
+                    micIcon.classList.add("fa-microphone-slash");
+                    console.log("Speech Recognition Active " + Date.now());
+                    searchFormInput.focus();
+                }
+                // recognition.addEventListener("end",endSpeechRecognition);
+                function endSpeechRecognition() {
+                    micIcon.classList.remove("fa-microphone-slash");
+                    micIcon.classList.add("fa-microphone");
+                    console.log("Speech Recognition DeActive")
+                }
+
+                // recognition.addEventListener("result", resultOfSpeechRecognition);
+                function resultOfSpeechRecognition(event) {
+                    const transcript = event.results[0][0].transcript;
+                    searchFormInput.value = transcript;
+                    setTimeout(() => {
+                        searchForm.submit();
+                    }, 750);
+                }
+
+                function micBtnClick() {
+                    if (micIcon.classList.contains("fa-microphone")) {
+                        recognition.start();
+                    } else {
+                        recognition.stop();
+                    }
+                }
+            } else {
+                console.log("No support")
+            }
 		</script>
 </body>
 
