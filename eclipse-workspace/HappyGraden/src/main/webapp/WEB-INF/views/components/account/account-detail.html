@@ -13,17 +13,17 @@
                 <div class="app-main__inner">
                     <div class="main-card mb-3 card">
                         <div class="card-body">
-                            <h4 class="card-title">DETAIL ACCOUNT MANAGEMENT</h4>
+                            <h3 class="card-title">Chi tiết tài khoản người dùng</h3>
                             <form id="signupForm" class="col-md-10 mx-auto" method="post" action="" th:if="account != null" th:object="${account}">
                                 <div class="form-group">
-                                    <label for="firstname">First name</label>
+                                    <label for="firstname">Họ tên</label>
                                     <div>
                                         <input type="text" class="form-control" id="firstname" name="firstname" 
                                         placeholder="First name" th:field="*{accountName}" disabled/>
                                     </div>
                                 </div>	                              
                                 <div class="form-group">
-                                    <label for="username">Username</label>
+                                    <label for="username">Tên tài khoản</label>
                                     <div>
                                         <input type="text" class="form-control" id="username" name="username" 
                                         placeholder="Username" th:field="*{accountUsername}" disabled/>
@@ -37,21 +37,21 @@
                                     </div>
                                 </div>
                                  <div class="form-group">
-                                    <label for="phone">Phone</label>
+                                    <label for="phone">Số điện thoại</label>
                                     <div>
                                         <input type="text" class="form-control" id="phone" name="email"
                                          placeholder="phone" th:field="*{accountPhone}" disabled/>
                                     </div>
                                 </div>
                                  <div class="form-group">
-                                    <label for="address">Address</label>
+                                    <label for="address">Địa chỉ</label>
                                     <div>
                                         <input type="text" class="form-control" id="address" name="address" 
                                         placeholder="address" th:field="*{accountAddress}" disabled/>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="createdAt">Created At</label>
+                                    <label for="createdAt">Ngày tạo</label>
                                     <div>
                                         <input type="text" class="form-control" id="createdAt"
                                          th:value=" ${account.accountCreateAt} ? ${#dates.format(account.accountCreateAt, 'dd-MM-yyyy')} "
@@ -83,7 +83,7 @@
                                     <button type="submit" class="btn btn-primary" action="action"
     									onclick="window.history.go(-1); return false;">
     									<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
-    									BACK</button>
+    									Trờ về</button>
     							</a>		
                                 </div>
                             </form>
