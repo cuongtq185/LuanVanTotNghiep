@@ -33,7 +33,7 @@
 			console.log(category)
 			$.ajax({
 				url: `/admin/category/edit`,
-				type: 'PUT',
+				type: 'POST',
 				dataType: "json",
 				contentType: "application/json",
 				data: JSON.stringify(category),

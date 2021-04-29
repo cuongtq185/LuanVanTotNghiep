@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -82,7 +84,8 @@ public class AdminCategoryController {
 	}
 	
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	@PostMapping("/admin/category/add")
+	//@PostMapping("/admin/category/add")
+	@RequestMapping(value = "/admin/category/add", produces = "text/plain;charset=UTF-8", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> createCategory(@RequestBody Category category, Model model) {
 		Category categoryExits = categoryService.findCategoryByName(category.getCategoryName());
@@ -96,7 +99,9 @@ public class AdminCategoryController {
 		return ResponseEntity.ok("{\"msg\" : \"Thêm thành công\" }");
 		
 	}
-	@PutMapping("/admin/category/edit")
+	
+	//@PutMapping("/admin/category/edit")
+	@RequestMapping(value = "/admin/category/edit", produces = "text/plain;charset=UTF-8", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> editCategory(@RequestBody Category category, Model model) {
 		
