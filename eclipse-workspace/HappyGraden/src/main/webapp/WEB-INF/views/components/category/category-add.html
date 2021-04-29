@@ -13,13 +13,13 @@
 			<div class="app-main__inner">
 				<div class="main-card mb-3 card">
 					<div class="card-body">
-						<h4 class="card-title">ADD CATEGORY MANAGEMENT</h4>
+						<h4 class="card-title">THÊM LOẠI CÂY CẢNH</h4>
 						<form class="col-md-10 mx-auto" action="">
 							<div class="form-group">
-								<label>Category name</label>
+								<label>Tên loại cây cảnh</label>
 								<div>
 									<input type="text" class="form-control" id="addCategoryName"
-										name="addCategoryName" placeholder="Category name" maxlength="255" required="required"/>
+										name="addCategoryName" placeholder="Nhập tên loại cây cảnh" maxlength="255" required="required"/>
 								</div>
 							</div>
 
@@ -27,13 +27,12 @@
 								<a th:href="@{/admin/category/list}"> 
 									<span class="btn btn-warning" >
 									<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
-									BACK</span>
-									
+									Trở về</span>							
 								</a> &nbsp;
 								<span type="submit" class="btn btn-primary"
 									onClick="AddCategory()">
 									<i class="fa fa-floppy-o" aria-hidden="true"></i>
-									SUBMIT</span>
+									Lưu</span>
 							</div>
 						</form>
 					</div>
@@ -54,8 +53,6 @@
 				</div>
 			</div>
 		</div>
-
-
 
 	</th:block>
 

@@ -7,6 +7,7 @@
     <th:block th:include="components/admin/admin-head :: admin-head"></th:block>
 	<meta th:name="_csrf" th:content="${_csrf.token}" />
     <meta th:name="_csrf_header" th:content="${_csrf.headerName}" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
 	<div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
@@ -19,6 +20,7 @@
     	<th:block th:replace="components/admin/admin-footer :: admin-footer"></th:block>
 
     <script th:src="@{/static/admin/js/plugins/sweetalert2@9.js}"></script>
+     <script th:src="@{/static/admin/js/plugins/sweetalert2@9.js}"></script>
     <script
 		th:src="@{/static/template-admin/polygon/cooladmin/vendor/jquery-3.2.1.min.js}"></script>
      <script>
@@ -26,6 +28,7 @@
 			var token = $("meta[name='_csrf']").attr("content");
 			var header = $("meta[name='_csrf_header']").attr("content");
 			let newCategory = new Object();
+			
 			newCategory.categoryName = $("#addCategoryName").val();
 
 			$.ajax({
@@ -42,7 +45,7 @@
                           Swal.fire({
                		  position: 'center',
                		  icon: 'success',
-               		  title: 'Insert Success',
+               		  title: 'Thêm thành công',
                		  showConfirmButton: false,
                		  timer: 800
                    		}).then(()=>{
@@ -56,7 +59,8 @@
 					  try {
 						  Swal.fire({
 							  icon: 'error',
-							  title: 'Error',
+							  title: 'Lỗi',
+							  confirmButtonText: 'Trở lại',
 							  text: request.responseJSON.msg,
 							})
                       } catch (error) { }

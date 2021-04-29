@@ -13,10 +13,10 @@
 			<div class="app-main__inner">
 				<div class="main-card mb-3 card">
 					<div class="card-body">
-						<h4 class="card-title">EDIT CATEGORY MANAGEMENT</h4>
+						<h4 class="card-title">Chỉnh sửa loại cây cảnh</h4>
 						<form class="col-md-10 mx-auto" action="" th:object="${category}">
 							<div class="form-group">
-								<label>Category name</label>
+								<label>Tên loại cây cảnh</label>
 								<div>
 									<input type="text" id="categoryName" class="form-control"	
 									 placeholder="Category name" th:field="*{categoryName}" maxlength="255" required="required"/>
@@ -27,13 +27,13 @@
 								<a th:href="@{/admin/category/list}"> 
 									<span class="btn btn-warning" >
 									<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
-									BACK</span>
+									Trở về</span>
 									
 								</a> &nbsp;
 								<span type="submit" class="btn btn-primary"
 									onClick="editCategory()">
 									<i class="fa fa-floppy-o" aria-hidden="true"></i>
-									SUBMIT</span>
+									Lưu</span>
 							</div>
 						</form>
 					</div>

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,7 +27,7 @@ import vn.com.unit.pageable.PageRequest;
 import vn.com.unit.service.CategoryService;
 
 @Controller
-//@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class AdminCategoryController {
 	@Autowired
 	private CategoryService categoryService;
@@ -45,7 +46,6 @@ public class AdminCategoryController {
 		pageable.setData(categories);
 		return new ModelAndView("category");
 	}
-	
 	
 	
 	@GetMapping("/admin/category/ajax-list")
@@ -87,13 +87,13 @@ public class AdminCategoryController {
 	public ResponseEntity<String> createCategory(@RequestBody Category category, Model model) {
 		Category categoryExits = categoryService.findCategoryByName(category.getCategoryName());
 		if (categoryExits != null) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Category already exists\" }");			
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Loại cây cảnh đã tồn tại trong hệ thống!\" }");			
 			}
-		if (category.getCategoryName() == "") {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Name cannot be empty\" }");
+		if (category.getCategoryName() == "" || category.getCategoryName().isEmpty()) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Tên loại cây cảnh không được để trống!\" }");
 		}
 		categoryService.createCategory(category);		
-		return ResponseEntity.ok("{\"msg\" : \"Create category successfully\" }");
+		return ResponseEntity.ok("{\"msg\" : \"Thêm thành công\" }");
 		
 	}
 	@PutMapping("/admin/category/edit")
@@ -102,14 +102,14 @@ public class AdminCategoryController {
 		
 		
 		if (categoryService.findCategoryByName(category.getCategoryName()) != null) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Category already exists.\" }");}
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Loại cây cảnh đã tồn tại trong hệ thống.\" }");}
 		
-		if (category.getCategoryName() == null) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Name cannot be empty.\" }");
+		if (category.getCategoryName() == null || category.getCategoryName().isEmpty()) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Tên loại cây cảnh không được để trống.\" }");
 		}
 		categoryService.updateCategoryById(category);
 
-		return ResponseEntity.ok("{ \"msg\" : \"update category successfully.\" }");
+		return ResponseEntity.ok("{ \"msg\" : \"Cập nhật thành công.\" }");
 	}
 	@DeleteMapping("/admin/category/delete/{category_id}")
 	public ResponseEntity<Boolean> AdminDisableCategory(Model model, @PathVariable("category_id") Long category_id,

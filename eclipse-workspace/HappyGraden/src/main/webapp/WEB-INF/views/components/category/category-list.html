@@ -15,7 +15,7 @@
                                 <div class="page-title-icon">
                                     <i class="fa fa-home" aria-hidden="true"></i>
                                 </div>
-                                <div> <b>CATEGORY MANAGEMENT</b>
+                                <div> <b>Quản lí loại cây cảnh</b>
                                     <!-- <div class="page-title-subheading">This is an example dashboard created using
                                         build-in elements and components.</div> -->
                                 </div>
@@ -24,7 +24,7 @@
                                
                                 <div class="d-inline-block dropdown">
                                 	<a th:href="@{/admin/category/add}">
-	                                    <button title="Add" aria-expanded="false" class="btn btn-primary btn-just-icon">
+	                                    <button title="Thêm" aria-expanded="false" class="btn btn-primary btn-just-icon">
 	                                       <i class="fas fa-plus-circle"></i>	                                        
 	                                    </button>
                                     </a>
@@ -43,12 +43,12 @@
                                     class="table table-hover table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Category Name</th>
+                                            <th>STT</th>
+                                            <th>Tên loại cây cảnh</th>
                                             <!-- <th>UserName</th>
                                             <th>Email</th>
                                             <th>Create At</th> -->
-                                            <th>Action</th>
+                                            <th>Thao tác</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,7 +59,7 @@
                                             <td style="text-align: center;"><span th:text="${category.categoryName}"></span></td>											
                                            
                                             <td style ="text-align: center;">
-                                            	<button rel="tooltip" title="Delete origin" type="button"
+                                            	<button rel="tooltip" title="Xóa" type="button"
 													class="btn btn-danger btn-just-icon"
 													th:onclick="|DeleteCategory(${category.categoryId})|">
 													<i class="fas fa-trash-alt"></i>
@@ -72,7 +72,7 @@
 													</button>&nbsp;&nbsp;
 												</a> -->
 												<a th:href="@{'/admin/category/edit/' + ${category.categoryId}}">
-													<button rel="tooltip" title="Edit origin" type="button"
+													<button rel="tooltip" title="Sửa" type="button"
 														class="btn btn-primary btn-just-icon"
 														th:href="@{'/admin/category/edit/' + ${category.categoryId}}">
 														<i class="fas fa-pencil-alt"></i>
@@ -86,12 +86,12 @@
                                     </tbody>
                                     <tfoot>
                                          <tr>
-                                            <th>ID</th>
-                                            <th>Category Name</th>
+                                            <th>STT</th>
+                                            <th>Tên loại cây cảnh</th>
                                             <!-- <th>UserName</th>
                                             <th>Email</th>
                                             <th>Create At</th> -->
-                                            <th>Action</th>
+                                            <th>Thao tác</th>
                                         </tr>
                                     </tfoot>
                                 </table>
