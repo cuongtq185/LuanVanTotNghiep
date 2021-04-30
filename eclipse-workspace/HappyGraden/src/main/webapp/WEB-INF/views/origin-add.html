@@ -22,8 +22,6 @@
 		th:src="@{/static/template-admin/polygon/cooladmin/vendor/jquery-3.2.1.min.js}"></script>
 	<script th:src="@{/static/admin/js/plugins/sweetalert2@9.js}"></script>
 
-
-
 	<script>
 		function AddOrigin() {
 			var token = $("meta[name='_csrf']").attr("content");
@@ -45,7 +43,7 @@
                           Swal.fire({
                		  position: 'center',
                		  icon: 'success',
-               		  title: 'Insert Success',
+               		  title: 'Thêm thành công',
                		  showConfirmButton: false,
                		  timer: 800
                    		}).then(()=>{
@@ -59,7 +57,8 @@
 					  try {
 						  Swal.fire({
 							  icon: 'error',
-							  title: 'Error',
+							  title: 'Lỗi',
+							  confirmButtonText: 'Trở lại',
 							  text: request.responseJSON.msg,
 							})
                       } catch (error) { }

@@ -13,13 +13,13 @@
 			<div class="app-main__inner">
 				<div class="main-card mb-3 card">
 					<div class="card-body">
-						<h4 class="card-title">EDIT ORIGIN MANAGEMENT</h4>
+						<h4 class="card-title">Chỉnh sửa xuất xứ cây cảnh</h4>
 						<form class="col-md-10 mx-auto" action="" th:object="${origin}">
 							<div class="form-group">
-								<label>Origin name</label>
+								<label>Tên xuất xứ cây cảnh</label>
 								<div>
 									<input type="text" id="originName" class="form-control"	
-									 placeholder="Origin name" th:field="*{originName}" maxlength="255" required="required"/>
+									 placeholder="Nhập xuất xứ cây cảnh" th:field="*{originName}" maxlength="255" required="required"/>
 								</div>
 							</div>
 
@@ -27,13 +27,13 @@
 								<a th:href="@{/admin/origin/list}"> 
 									<span class="btn btn-warning" >
 									<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
-									BACK</span>
+									Trở về</span>
 									
 								</a> &nbsp;
 								<span type="submit" class="btn btn-primary"
 									onClick="editOrigin()">
 									<i class="fa fa-floppy-o" aria-hidden="true"></i>
-									SUBMIT</span>
+									Lưu</span>
 							</div>
 						</form>
 					</div>

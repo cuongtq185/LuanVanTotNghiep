@@ -15,16 +15,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import vn.com.unit.entity.Origin;
 import vn.com.unit.pageable.PageRequest;
 import vn.com.unit.service.OriginService;
 
 @Controller
-//@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class AdminOriginController {
 		
 	@Autowired
@@ -78,39 +81,31 @@ public class AdminOriginController {
 		return new ModelAndView("origin-edit");
 	}
 	
-	@PostMapping("/admin/origin/add")
+	//@PostMapping("/admin/origin/add")
+	@RequestMapping(value = "/admin/origin/add", produces = "text/plain;charset=UTF-8", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> createOrigin(@RequestBody Origin origin, Model model) {
 		if (originService.findOriginByName(origin.getOriginName()) != null) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Origin already exists.\" }");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Tên xuất xứ đã tồn tại trong hệ thống.\" }");
 			}
 		if (origin.getOriginName() == "") {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Name cannot be empty.\" }");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Tên xuất xứ không được để trống.\" }");
 		}
-//		if (origin.getOriginName().length() > 255) {
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-//					.body("{ \"msg\" : \"Origin name should be less than or equal to 255 character\" }");
-//		}
 		originService.createOrigin(origin);	
 		return ResponseEntity.ok("{ \"msg\" : \"Create origin successfully.\" }");
 	}
-	@PutMapping("/admin/origin/edit")
+	//@PutMapping("/admin/origin/edit")
+	@RequestMapping(value = "/admin/origin/edit", produces = "text/plain;charset=UTF-8", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> editCategory(@RequestBody Origin origin, Model model) {
 		
-		
 		if (originService.findOriginByName(origin.getOriginName()) != null) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Origin already exists.\" }");}
-		
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Tên xuất xứ đã tồn tại trong hệ thống.\" }");
+			}
 		if (origin.getOriginName() == "") {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Name cannot be empty.\" }");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Tên xuất xứ không được để trống.\" }");
 		}
-//		if (origin.getOriginName().length() > 255) {
-//			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-//					.body("{ \"msg\" : \"Origin name should be less than or equal to 255 character\" }");
-//		}		
 		originService.updateOriginById(origin);
-
 		return ResponseEntity.ok("{ \"msg\" : \"update origin successfully.\" }");
 	}
 	
