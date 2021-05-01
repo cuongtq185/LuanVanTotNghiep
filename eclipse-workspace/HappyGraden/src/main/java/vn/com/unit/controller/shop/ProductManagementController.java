@@ -110,7 +110,7 @@ public class ProductManagementController {
 				
 		//Product dto = productService.getIdProductAddNew(name, category, origin);
 		int id = productService.getIdNew();
-		wareHouseService.insert(id);
+		//wareHouseService.insert(id);
 		
 		if ( id != 0) {
 			int i = 1;

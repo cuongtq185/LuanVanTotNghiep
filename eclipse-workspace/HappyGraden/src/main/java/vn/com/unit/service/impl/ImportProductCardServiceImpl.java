@@ -38,5 +38,13 @@ public class ImportProductCardServiceImpl implements ImportProductCardService {
 		}
 		return null;
 	}
+	
+	public void importProductNew(ImportProductCard imp) {
+		try {
+			importProductCardRepository.importProductNew(imp.getName(), imp.getImpDetail(), imp.getImpQuantity(), imp.getImpProductPrice());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 
 }

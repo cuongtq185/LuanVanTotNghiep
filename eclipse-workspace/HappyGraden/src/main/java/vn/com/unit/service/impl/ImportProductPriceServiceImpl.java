@@ -38,5 +38,14 @@ public class ImportProductPriceServiceImpl implements ImportProductPriceService{
 		}
 		return null;
 	}
+	
+	@Override
+	public void insertPrice(int id, float price) {
+		try {
+			importProductPriceRepository.insertPrice(id, price);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 
 }

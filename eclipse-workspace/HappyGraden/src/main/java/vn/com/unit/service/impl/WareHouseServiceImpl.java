@@ -51,9 +51,9 @@ public class WareHouseServiceImpl implements WareHouseService {
 	public void updateProductById(ImportProductCard product) {
 		try {
 			
-			int id = productService.getIdByProductName(product.getProductName());
+			int id = productService.getIdByProductName(product.getName());
 			Long impId = Long.valueOf(id);
-			wareHouseRepository.updateProductById(impId, product.getImpDetail(), product.getImpQuantity(), product.getImpProductPrice());
+			wareHouseRepository.updateProductById(product.getName(), product.getImpDetail(), product.getImpQuantity());
 			wareHouseRepository.updateQuantity(impId, product.getImpQuantity());
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -61,8 +61,8 @@ public class WareHouseServiceImpl implements WareHouseService {
 	}
 	
 	@Override
-	public void insert(int id) {
-		wareHouseRepository.insert(id);
+	public void insert(int id, int quantity) {
+		wareHouseRepository.insert(id, quantity);
 	}
 	
 	@Override

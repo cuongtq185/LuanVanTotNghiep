@@ -58,7 +58,7 @@ create table product(
 	product_name nvarchar(255),
 	product_detail nvarchar(255),
 	product_disable bit default 0,
-	product_createAt datetime,
+	--product_createAt datetime,
 	category bigint not null,
 	origin bigint not null,
 
@@ -76,12 +76,14 @@ create table warehouse(
 
 create table import_product_card(
 	imp_id bigint primary key identity(1,1),
-	product bigint,
+	--product bigint,
+	[name] nvarchar(255),
 	imp_detail nvarchar(250),
 	imp_createAt datetime default getutcdate(),
 	imp_quantity int,
 	imp_product_price float
-	constraint fk_product_imp_product foreign key (product) references product(product_id)
+	
+	--constraint fk_product_imp_product foreign key (product) references product(product_id)
 )
 
 create table rate(
@@ -219,10 +221,9 @@ insert into account(account_name, account_username, account_password, account_em
 values (N'test5', 'test5', '', 'test5@gmail.com','0123456789', 'Châu Thành - Trà Vinh', 2)
 
 --insert category
-insert into category( category_name) values (N'Bonsai')
-insert into category( category_name) values (N'Cây Xương Rồng')
-insert into category( category_name) values (N'Cây Cảnh Trong Nhà')
-insert into category( category_name) values (N'Cây Cảnh Văn Phòng')
+insert into category( category_name) values (N'Cây phong thủy')
+insert into category( category_name) values (N'Cây cảnh trong nhà')
+insert into category( category_name) values (N'Cây cảnh văn phòng')
 
 --insert origi
 	insert into origin( origin_name) values (N'Đà Lạt')
@@ -231,10 +232,10 @@ insert into category( category_name) values (N'Cây Cảnh Văn Phòng')
 	insert into origin( origin_name) values (N'Vĩnh Long')
 
 --insert product
-insert into product(product_name,product_detail,product_disable, category, origin, product_createAt)
-values(N'Cây Ngọc Ngân', N' Hợp với tuổi dần', 0,4,2, getutcdate())
-insert into product(product_name,product_detail,product_disable, category, origin, product_createAt)
-values(N'Cây bạch mã hoàng tử', N' Hợp với tuổi dần', 0,4,2, getutcdate())
+insert into product(product_name,product_detail,product_disable, category, origin)
+values(N'Cây Ngọc Ngân', N' Hợp với tuổi dần', 0,4,2)
+insert into product(product_name,product_detail,product_disable, category, origin)
+values(N'Cây bạch mã hoàng tử', N' Hợp với tuổi dần', 0,4,2)
 
 --insert product_price
 insert into product_price(create_at, product_price_id, product_price)

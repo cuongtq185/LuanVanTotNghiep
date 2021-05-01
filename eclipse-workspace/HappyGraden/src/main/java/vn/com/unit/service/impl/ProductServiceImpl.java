@@ -362,5 +362,15 @@ public class ProductServiceImpl implements ProductService {
 
 		return productRepository.getIdProductByName(name);
 	}
+	
+	@Override
+	public Product getProductByName(String name) {		
+		try {
+			return productRepository.getProductbyName(name);
+		} catch (Exception e) {
+		}
+		return null;
+	}
+	
 
 }

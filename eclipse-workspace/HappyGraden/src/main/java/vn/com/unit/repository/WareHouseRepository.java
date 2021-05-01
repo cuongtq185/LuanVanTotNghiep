@@ -15,14 +15,14 @@ public interface WareHouseRepository extends MirageRepository<WareHouse, Long>{
 	public List<WareHouse> findWareHousePageable(@Param("sizeOfPage") Integer sizeOfPage,@Param("offset") Integer offset);
 	
 	@Modifying
-	public void updateProductById(@Param("id") Long id, @Param("detail") String detail, 
-			@Param("quantity") int quantity, @Param("price") float price );
+	public void updateProductById(@Param("name") String name, @Param("detail") String detail, 
+			@Param("quantity") int quantity);
 	
 	@Modifying
 	public void updateQuantity(@Param("id") Long id, @Param("quantity") int quantity);
 	
 	@Modifying
-	public void insert(@Param("id") int id);
+	public void insert(@Param("id") int id, @Param("quantity") int quantity);
 	
 	@Modifying
 	public WareHouse insertWareHouse(@Param("id") int id, @Param("quantity") int quantity);

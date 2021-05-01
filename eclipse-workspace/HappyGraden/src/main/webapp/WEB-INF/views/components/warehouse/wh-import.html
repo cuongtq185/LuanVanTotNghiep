@@ -8,52 +8,82 @@
 
 </head>
 <body>
-	<th:block th:fragment="wh-edit">
+	<th:block th:fragment="wh-import">
 		<div class="app-main__outer">
 			<div class="app-main__inner">
 				<div class="main-card mb-3 card">
 					<div class="card-body">
-						<h4 class="card-title">Nhập số lượng cây cảnh</h4>
-						<form class="col-md-10 mx-auto" action="" th:object="${warehouse}">
+						<h4 class="card-title">Phiếu nhập cây cảnh</h4>
+						<form class="col-md-10 mx-auto">
 							<div class="form-group">
 								<label>Tên cây cảnh</label>
 								<div>
-									<input type="text" id="productName" class="form-control" disabled ="disabled"	
-									 placeholder="Tên cây cảnh" th:field="*{productName}" maxlength="255"/>
+									<input type="text" id="productName" class="form-control" 	
+									 placeholder="Product name"maxlength="255"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Loại cây cảnh</label>
+								<div>
+									<select name="category" id="addCategoryName"
+										class="form-control">
+										<!-- <option value="">Chọn loại cây cảnh</option> -->
+										<option th:each="category : ${categories}"
+											th:value="${category.categoryId}"
+											th:utext="${category.categoryName}" />
+
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Xuất xứ cây cảnh</label>
+								<div>
+									<select name="origin" id="addOrigintName" class="form-control">
+										<!-- <option value="">Chọn xuất xứ cây cảnh</option> -->
+										<option th:each="origin : ${origins}"
+											th:value="${origin.originId}" th:utext="${origin.originName}" />
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label>Chi tiết nhập</label>
 								<div>
 									<textarea type="textarea" class="form-control"
-										id="importDetail" rows="3" name="detail"
-										placeholder="Chi tiết nhập số lượng" maxlength="1000"></textarea>
+										id="addProductDetail" rows="3" name="detail"
+										placeholder="Nhập thông tin chi tiết" maxlength="1000"></textarea>
 								</div>
 							</div>
 							<div class="form-group">
-								<label>Số lượng cây cảnh</label>
+								<label>Số lượng</label>
 								<div>
 									<input type="number" id="quantity" class="form-control"	
 									 placeholder="Nhập số lượng" maxlength="4" max="1000" min ="1" value="0"/>
 								</div>
 							</div>
-							<!-- <div class="form-group">
-								<label>Price import product</label>
+							<div class="form-group">
+								<label>Giá nhập (VNĐ)</label>
+								<div>
+									<input type="text" id="productPrice" class="form-control"	
+									 placeholder="Nhập giá nhập " maxlength="255" value="0"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Giá bán (VNĐ)</label>
 								<div>
 									<input type="text" id="price" class="form-control"	
-									 placeholder="Input price" maxlength="255"/>
+									 placeholder="Nhập giá bán" maxlength="255" value="0"/>
 								</div>
-							</div> -->
+							</div>
 
 							<div class="form-group right">
 								<a th:href="@{/admin/warehouse/list}"> 
 									<span class="btn btn-warning" >
 									<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
-									Trở về</span>
+									Trở về </span>
 									
 								</a> &nbsp;
 								<span type="submit" class="btn btn-primary"
-									onClick="importQuantityProduct()">
+									onClick="importProduct()">
 									<i class="fa fa-floppy-o" aria-hidden="true"></i>
 									Lưu</span>
 							</div>

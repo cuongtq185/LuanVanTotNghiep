@@ -64,6 +64,8 @@ public interface ProductService {
 	public int getIdNew();
 	
 	public int getIdByProductName(String name);
+	
+	public Product getProductByName(String name);
 
 
 }

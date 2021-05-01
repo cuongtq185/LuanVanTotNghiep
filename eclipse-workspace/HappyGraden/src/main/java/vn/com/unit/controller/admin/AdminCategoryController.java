@@ -104,8 +104,7 @@ public class AdminCategoryController {
 	@RequestMapping(value = "/admin/category/edit", produces = "text/plain;charset=UTF-8", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> editCategory(@RequestBody Category category, Model model) {
-		
-		
+			
 		if (categoryService.findCategoryByName(category.getCategoryName()) != null) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{ \"msg\" : \"Loại cây cảnh đã tồn tại trong hệ thống.\" }");}
 		

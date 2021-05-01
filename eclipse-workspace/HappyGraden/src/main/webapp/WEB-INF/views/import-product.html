@@ -13,7 +13,7 @@
        		<div th:replace="components/admin/admin-header :: admin-header"></div>
        		<div class="app-main">
 				<div th:replace="components/warehouse/wh-menu :: wh-menu"></div>
-				<div th:replace="components/warehouse/wh-price :: wh-price"></div>
+				<div th:replace="components/warehouse/wh-import :: wh-import"></div>
         	</div>
 	</div>					
     	<th:block th:replace="components/admin/admin-footer :: admin-footer"></th:block>
@@ -21,36 +21,35 @@
     <script th:src="@{/static/admin/js/plugins/sweetalert2@9.js}"></script>
     <script
 		th:src="@{/static/template-admin/polygon/cooladmin/vendor/jquery-3.2.1.min.js}"></script>
-    
-    <script th:inline="javascript">
-		const warehouse = [[${ warehouse }]];
-	</script>
-	
-    <script>
-		function importPriceProduct() {
+   <script>
+		function importProduct() {
 			var token = $("meta[name='_csrf']").attr("content");
 			var header = $("meta[name='_csrf_header']").attr("content");
-			warehouse.productName = $("#productName").val();
-			warehouse.productId = $("#productId").val();
-			warehouse.productPrice = $("#productPrice").val();
-			console.log(warehouse)
+			let newProduct = new Object();
+			
+			newProduct.name = $("#productName").val();
+			newProduct.category = $("#addCategoryName").val();
+			newProduct.origin = $("#addOrigintName").val();
+			newProduct.impDetail = $("#addProductDetail").val();
+			newProduct.impQuantity = $("#quantity").val();
+			newProduct.impProductPrice = $("#productPrice").val();
+			newProduct.price = $("#price").val();
+
 			$.ajax({
-				url: `/admin/price/edit`,
+				url: `/admin/warehouse/imp`,
 				type: 'POST',
 				dataType: "json",
 				contentType: "application/json",
-				data: JSON.stringify(warehouse),
+				data: JSON.stringify(newProduct),
 				beforeSend: function (xhr) {
 					xhr.setRequestHeader(header, token);
 				},
 				success: function (data, status, xhr) {
-					// alert(status)
-					// window.location.href = '/admin/category/list';
 					 try {
                           Swal.fire({
                		  position: 'center',
                		  icon: 'success',
-               		  title: 'Cập nhật giá thành công',
+               		  title: 'Nhập hàng thành công',
                		  showConfirmButton: false,
                		  timer: 800
                    		}).then(()=>{
@@ -62,6 +61,7 @@
 				},
 				error: function (request, status, error) {
 					  try {
+						  //console.log(request);
 						  Swal.fire({
 							  icon: 'error',
 							  title: 'Lỗi',
@@ -74,6 +74,6 @@
 			});
 		}
 
-	</script>
+	</script>	 
 </body>
 </html>

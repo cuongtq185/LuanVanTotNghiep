@@ -2,6 +2,7 @@ package vn.com.unit.repository;
 
 import java.util.List;
 
+import org.hibernate.validator.constraints.pl.NIP;
 import org.springframework.data.mirage.repository.MirageRepository;
 import org.springframework.data.mirage.repository.query.Modifying;
 import org.springframework.data.repository.query.Param;
@@ -98,5 +99,7 @@ public interface ProductRepository extends MirageRepository<Product, Long> {
 	public int getIDProduct();
 	
 	public int getIdProductByName(@Param("name") String name);
+	
+	public Product getProductbyName(@Param("name") String name);
 	
 }

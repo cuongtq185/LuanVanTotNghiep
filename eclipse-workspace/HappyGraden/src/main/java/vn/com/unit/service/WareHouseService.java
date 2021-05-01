@@ -14,7 +14,7 @@ public interface WareHouseService {
 	
 	public void updateProductById(ImportProductCard importProductCard);
 	
-	public void insert(int id);	
+	public void insert(int id, int quantity);	
 	
 	public void insertProductPrice(ImportProductPrice imp);
 	

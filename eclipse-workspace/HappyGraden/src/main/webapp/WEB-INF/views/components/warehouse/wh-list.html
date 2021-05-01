@@ -16,19 +16,19 @@
 								<i class="fa fa-home" aria-hidden="true"></i>
 							</div>
 							<div>
-								<b>WAREHOUSE MANAGEMENT</b>
+								<b>Quản lí kho hàng</b>
 							</div>
 						</div>
 						<div class="page-title-actions">
 
-							<!-- <div class="d-inline-block dropdown">
-								<a th:href="@{/admin/wh/add}">
+							<div class="d-inline-block dropdown">
+								<a th:href="@{/admin/wh/import}">
 									<button title="Add" aria-expanded="false"
 										class="btn btn-primary btn-just-icon">
 										<i class="fas fa-plus-circle"></i>
 									</button>
 								</a>
-							</div> -->
+							</div>
 						</div>
 					</div>
 				</div>
@@ -40,11 +40,11 @@
 								class="table table-hover table-striped table-bordered">
 								<thead>
 									<tr>
-										<th style="text-align: center;">ID</th>
-										<th style="text-align: center;">Product Name</th>
-										<th style="text-align: center;">Quantity</th>
-										<th style="text-align: center;">Price</th>
-										<th style="text-align: center;">Action</th>
+										<th style="text-align: center;">STT</th>
+										<th style="text-align: center;">Tên cây cảnh</th>
+										<th style="text-align: center;">Số lượng cây cảnh</th>
+										<th style="text-align: center;">Giá cây cảnh(VNĐ)</th>
+										<th style="text-align: center;">Thao tác</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -58,29 +58,30 @@
 										<td style="text-align: center;"
 											<a th:href="@{'/admin/warehouse/edit/' + ${warehouse.product}}">
 												<a rel="tooltip" title="Input product quantity" type="button"
-													class="btn btn-primary btn-just-icon"
+													class="btn btn-success btn-just-icon"
 													th:href="@{'/admin/warehouse/edit/' + ${warehouse.product}}">
 													<i class="fas fa-file-import"></i>
 												</a>
 											</a> &nbsp;
 											<a th:href="@{'/admin/price/edit/' + ${warehouse.product}}">
-												<a rel="tooltip" title="Input product price" type="button"
-													class="btn btn-warning btn-just-icon"
-													th:href="@{'/admin/price/edit/' + ${warehouse.product}}">
-													<i class="fas fa-file-import"></i>
-												</a>
+												<button rel="tooltip" title="Sửa" type="button"
+														class="btn btn-primary btn-just-icon"
+														th:href="@{'/admin/price/edit/' + ${warehouse.product}}">
+														<i class="fas fa-pencil-alt"></i>
+												</button>
 											</a>
+																					
 										</td>
 									
 									</tr>
 								</tbody>
 								<tfoot>
 									<tr>
-										<th style="text-align: center;">ID</th>
-										<th style="text-align: center;">Product Name</th>
-										<th style="text-align: center;">Quantity</th>
-										<th style="text-align: center;">Price</th>
-										<th style="text-align: center;">Action</th>
+										<th style="text-align: center;">STT</th>
+										<th style="text-align: center;">Tên cây cảnh</th>
+										<th style="text-align: center;">Số lượng cây cảnh</th>
+										<th style="text-align: center;">Giá cây cảnh(VNĐ)</th>
+										<th style="text-align: center;">Thao tác</th>
 									</tr>
 								</tfoot>
 							</table>

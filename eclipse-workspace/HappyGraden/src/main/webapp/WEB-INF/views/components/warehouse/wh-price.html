@@ -13,20 +13,20 @@
 			<div class="app-main__inner">
 				<div class="main-card mb-3 card">
 					<div class="card-body">
-						<h4 class="card-title">IMPORT PRODUCT PRICE</h4>
+						<h4 class="card-title">Cập nhật giá cây cảnh</h4>
 						<form class="col-md-10 mx-auto" action="" th:object="${warehouse}">
 							<div class="form-group">
-								<label>Product name</label>
+								<label>Tên cây cảnh</label>
 								<div>
 									<input type="text" id="productName" class="form-control" disabled ="disabled"	
-									 placeholder="Product name" th:field="*{productName}" maxlength="255"/>
+									 placeholder="Tên cây cảnh" th:field="*{productName}" maxlength="255"/>
 								</div>
 							</div>
 							<div class="form-group">
-								<label>Price import product</label>
+								<label>Giá cây cảnh(VNĐ)</label>
 								<div>
 									<input type="text" id="productPrice" class="form-control"	
-									 placeholder="Input price" maxlength="255"/>
+									 placeholder="Nhập giá cây cảnh" maxlength="255" value="0"/>
 								</div>
 							</div>
 
@@ -34,13 +34,13 @@
 								<a th:href="@{/admin/warehouse/list}"> 
 									<span class="btn btn-warning" >
 									<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
-									BACK</span>
+									Trở về</span>
 									
 								</a> &nbsp;
 								<span type="submit" class="btn btn-primary"
 									onClick="importPriceProduct()">
 									<i class="fa fa-floppy-o" aria-hidden="true"></i>
-									SUBMIT</span>
+									Lưu</span>
 							</div>
 						</form>
 						<input type="hidden" id="productId"></input>

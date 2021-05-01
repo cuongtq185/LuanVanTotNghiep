@@ -17,8 +17,8 @@ public class ImportProductCard {
 	@Column(name = "imp_id")
 	private Long impId;
 
-	@Column(name = "product")
-	private Long product;
+	@Column(name = "name")
+	private String name;
 
 	@Column(name = "imp_detail")
 	private String impDetail;
@@ -31,8 +31,14 @@ public class ImportProductCard {
 
 	@Column(name = "imp_product_price")
 	private float impProductPrice;
+
+	private int category;
+
+	private int origin;
 	
-	private String productName;
+	private int price;
+
+	// private String productName;
 
 	public Long getImpId() {
 		return impId;
@@ -42,13 +48,13 @@ public class ImportProductCard {
 		this.impId = impId;
 	}
 
-	public Long getProduct() {
-		return product;
-	}
-
-	public void setProduct(Long product) {
-		this.product = product;
-	}
+//	public Long getProduct() {
+//		return product;
+//	}
+//
+//	public void setProduct(Long product) {
+//		this.product = product;
+//	}
 
 	public String getImpDetail() {
 		return impDetail;
@@ -82,13 +88,44 @@ public class ImportProductCard {
 		this.impProductPrice = impProductPrice;
 	}
 
-	public String getProductName() {
-		return productName;
+	public String getName() {
+		return name;
 	}
 
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	
+
+	public int getCategory() {
+		return category;
+	}
+
+	public void setCategory(int category) {
+		this.category = category;
+	}
+
+	public int getOrigin() {
+		return origin;
+	}
+
+	public void setOrigin(int origin) {
+		this.origin = origin;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+//	public String getProductName() {
+//		return productName;
+//	}
+//
+//	public void setProductName(String productName) {
+//		this.productName = productName;
+//	}
 
 }

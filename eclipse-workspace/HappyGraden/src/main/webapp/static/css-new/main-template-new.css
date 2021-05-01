@@ -20135,11 +20135,18 @@ scale(
 	color: #3f6ad8
 }
 
-.card-header, .card-title {
+/* .card-header, .card-title {
 	text-transform: uppercase;
 	color: rgb(243 165 22 / 70%);
 	font-weight: bold;
 	font-size: .88rem
+} */
+.card-header, .card-title {
+    text-transform: uppercase;
+    color: rgb(243 165 22 / 70%);
+    font-weight: bold;
+    font-size: 22px;
+    padding-left: 330px;
 }
 
 .card-header {

@@ -9,5 +9,7 @@ public interface ImportProductCardService {
 	public int countAllImportProductCard();
 
 	public List<ImportProductCard> findImportProductCardPageable(int limit, int offset);
+	
+	public void importProductNew(ImportProductCard imp);
 
 }

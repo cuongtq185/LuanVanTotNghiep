@@ -29,8 +29,8 @@ public class Product {
 	@Column(name = "product_disable")
 	private boolean productDisable;
 	
-	@Column(name = "product_createAt")
-	private Date productCreateAt;	
+//	@Column(name = "product_createAt")
+//	private Date productCreateAt;	
 	
 	@Column(name = "category")
 	private int category;
@@ -46,7 +46,7 @@ public class Product {
 		this.productName = product.getProductName();
 		this.productDetail = product.getProductDetail();
 		this.productDisable = product.isProductDisable();
-		this.productCreateAt = product.getProductCreateAt();
+		//this.productCreateAt = product.getProductCreateAt();
 		this.category = product.getCategory();
 		this.origin = product.getOrigin();
 		
@@ -84,13 +84,13 @@ public class Product {
 		this.productDisable = productDisable;
 	}
 
-	public Date getProductCreateAt() {
-		return productCreateAt;
-	}
-
-	public void setProductCreateAt(Date productCreateAt) {
-		this.productCreateAt = productCreateAt;
-	}
+//	public Date getProductCreateAt() {
+//		return productCreateAt;
+//	}
+//
+//	public void setProductCreateAt(Date productCreateAt) {
+//		this.productCreateAt = productCreateAt;
+//	}
 
 	public int getCategory() {
 		return category;
