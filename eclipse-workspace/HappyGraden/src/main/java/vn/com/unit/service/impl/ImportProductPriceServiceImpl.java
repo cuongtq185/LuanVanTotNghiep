@@ -47,5 +47,14 @@ public class ImportProductPriceServiceImpl implements ImportProductPriceService{
 			// TODO: handle exception
 		}
 	}
+	
+	@Override
+	public void insertPriceNew(int id, float price) {
+		try {
+			importProductPriceRepository.insertPriceNew(id, price);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 
 }

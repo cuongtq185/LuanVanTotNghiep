@@ -11,4 +11,6 @@ public interface ImportProductPriceService {
 	public List<ImportProductPrice> findImportProductPricePageable(int limit, int offset);
 	
 	public void insertPrice(int id, float price);
+	
+	public void insertPriceNew(int id, float price);
 }

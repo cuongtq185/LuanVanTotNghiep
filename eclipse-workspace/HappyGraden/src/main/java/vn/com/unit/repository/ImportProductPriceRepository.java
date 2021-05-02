@@ -17,5 +17,8 @@ public interface ImportProductPriceRepository extends MirageRepository<ImportPro
 	
 	@Modifying
 	public void insertPrice(@Param("id") int id, @Param("price") float price);
+	
+	@Modifying
+	public void insertPriceNew(@Param("id") int id, @Param("price") float price);
 
 }

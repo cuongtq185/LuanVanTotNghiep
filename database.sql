@@ -205,20 +205,20 @@ values (N'Trần Quốc Cường', 'admin', '', 'cuongtq.tvh@gmail.com','0398915
 insert into account(account_name, account_username, account_password, account_email,account_phone, account_address, role)
 values (N'Trần Quốc Vinh', 'user', '', 'vinh@gmail.com','0123456789', 'Châu Thành - Trà Vinh', 2)
 
-insert into account(account_name, account_username, account_password, account_email,account_phone, account_address, role)
-values (N'test1', 'test1', '', 'test1@gmail.com','0123456789', 'Châu Thành - Trà Vinh', 2)
+--insert into account(account_name, account_username, account_password, account_email,account_phone, account_address, role)
+--values (N'test1', 'test1', '', 'test1@gmail.com','0123456789', 'Châu Thành - Trà Vinh', 2)
 
-insert into account(account_name, account_username, account_password, account_email,account_phone, account_address, role)
-values (N'test2', 'test2', '', 'test2@gmail.com','0123456789', 'Châu Thành - Trà Vinh', 2)
+--insert into account(account_name, account_username, account_password, account_email,account_phone, account_address, role)
+--values (N'test2', 'test2', '', 'test2@gmail.com','0123456789', 'Châu Thành - Trà Vinh', 2)
 
-insert into account(account_name, account_username, account_password, account_email,account_phone, account_address, role)
-values (N'test3', 'test3', '', 'test3@gmail.com','0123456789', 'Châu Thành - Trà Vinh', 2)
+--insert into account(account_name, account_username, account_password, account_email,account_phone, account_address, role)
+--values (N'test3', 'test3', '', 'test3@gmail.com','0123456789', 'Châu Thành - Trà Vinh', 2)
 
-insert into account(account_name, account_username, account_password, account_email,account_phone, account_address, role)
-values (N'test4', 'test4', '', 'test4@gmail.com','0123456789', 'Châu Thành - Trà Vinh', 2)
+--insert into account(account_name, account_username, account_password, account_email,account_phone, account_address, role)
+--values (N'test4', 'test4', '', 'test4@gmail.com','0123456789', 'Châu Thành - Trà Vinh', 2)
 
-insert into account(account_name, account_username, account_password, account_email,account_phone, account_address, role)
-values (N'test5', 'test5', '', 'test5@gmail.com','0123456789', 'Châu Thành - Trà Vinh', 2)
+--insert into account(account_name, account_username, account_password, account_email,account_phone, account_address, role)
+--values (N'test5', 'test5', '', 'test5@gmail.com','0123456789', 'Châu Thành - Trà Vinh', 2)
 
 --insert category
 insert into category( category_name) values (N'Cây phong thủy')
@@ -231,21 +231,20 @@ insert into category( category_name) values (N'Cây cảnh văn phòng')
 	insert into origin( origin_name) values (N'Đồng Nai')
 	insert into origin( origin_name) values (N'Vĩnh Long')
 
---insert product
-insert into product(product_name,product_detail,product_disable, category, origin)
-values(N'Cây Ngọc Ngân', N' Hợp với tuổi dần', 0,4,2)
-insert into product(product_name,product_detail,product_disable, category, origin)
-values(N'Cây bạch mã hoàng tử', N' Hợp với tuổi dần', 0,4,2)
+----insert product
+--insert into product(product_name,product_detail,product_disable, category, origin)
+--values(N'Cây Ngọc Ngân', N' Hợp với tuổi dần', 0,4,2)
+--insert into product(product_name,product_detail,product_disable, category, origin)
+--values(N'Cây bạch mã hoàng tử', N' Hợp với tuổi dần', 0,4,2)
 
---insert product_price
-insert into product_price(create_at, product_price_id, product_price)
-values(getutcdate(),1, 2000)
-insert into product_price(create_at, product_price_id, product_price)
-values(getutcdate(),2,3000)
+----insert product_price
+--insert into product_price(create_at, product_price_id, product_price)
+--values(getutcdate(),1, 2000)
+--insert into product_price(create_at, product_price_id, product_price)
+--values(getutcdate(),2,3000)
 
---insert product-img2D
-insert into product_img2D(id_product_img2D,	product_img)
-values(1,'/static/img/1.jpg')
-insert into product_img2D(id_product_img2D,	product_img)
-values(2,'/static/img/2.jpg')
-
+----insert product-img2D
+--insert into product_img2D(id_product_img2D,	product_img)
+--values(1,'/static/img/1.jpg')
+--insert into product_img2D(id_product_img2D,	product_img)
+--values(2,'/static/img/2.jpg')

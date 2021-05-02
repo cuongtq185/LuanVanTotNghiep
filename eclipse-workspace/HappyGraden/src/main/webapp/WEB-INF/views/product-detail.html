@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
 <head>
-    <th:block th:include="layout/head :: head"></th:block>
-
+<th:block th:include="components/admin/admin-head :: admin-head"></th:block>
+<meta th:name="_csrf" th:content="${_csrf.token}" />
+<meta th:name="_csrf_header" th:content="${_csrf.headerName}" />
 </head>
-
 <body>
-
-       		<div th:replace="components/index/header :: index-header"></div>
-			<div th:replace="components/cart/menu :: cart-menu"></div>
-			<div th:replace="components/product-detail/banner-product-detail :: banner-product-detail"></div>
-        	<div th:replace="components/product-detail/product :: product-detail-product"></div>
-			<div th:replace="components/index/footer :: index-footer"></div>
-						
-    	<th:block th:replace="layout/footer :: footer"></th:block>
+	<div
+		class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
+		<div th:replace="components/admin/admin-header :: admin-header"></div>
+		<div class="app-main">
+			<div th:replace="components/product/product-menu :: product-menu"></div>
+			<div th:replace="components/product/product-detail :: product-detail"></div>
+		</div>
+	</div>
+	<th:block th:replace="components/admin/admin-footer :: admin-footer"></th:block>
 </body>
-
 </html>

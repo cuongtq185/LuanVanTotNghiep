@@ -54,7 +54,7 @@
                                     <label for="createdAt">Ngày tạo</label>
                                     <div>
                                         <input type="text" class="form-control" id="createdAt"
-                                         th:value=" ${account.accountCreateAt} ? ${#dates.format(account.accountCreateAt, 'dd-MM-yyyy')} "
+                                         th:value=" ${account.accountCreateAt} ? ${#dates.format(account.accountCreateAt, 'dd/MM/yyyy')} "
                                          name="createdAt" placeholder="createdAt" disabled/>
                                     </div>
                                 </div>

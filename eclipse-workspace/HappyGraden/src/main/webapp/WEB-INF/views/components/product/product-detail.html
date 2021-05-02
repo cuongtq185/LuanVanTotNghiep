@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head>
+
+</head>
+<body>
+	<th:block th:fragment="product-detail">
+		<div class="app-main__outer">
+			<div class="app-main__inner">
+				<div class="main-card mb-3 card">
+					<div class="card-body">
+						<h4 class="card-title">Chi tiết cây cảnh</h4>
+						<form class="col-md-10 mx-auto" action="" th:object="${product}">
+							<div class="form-group">
+								<label>Tên cây cảnh</label>
+								<div>
+									<input type="text" class="form-control" th:field="*{productName}" disabled="disabled"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Loại cây cảnh</label>
+								<div>
+									<input type="text" class="form-control" th:field="*{categoryName}" disabled="disabled"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Xuất xứ cây cảnh</label>
+								<div>
+									<input type="text" class="form-control" th:field="*{originName}" disabled="disabled"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Số lượng cây cảnh</label>
+								<div>
+									<input type="text" class="form-control" th:field="*{productQuantity}" disabled="disabled"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Giá bán cây cảnh(VNĐ)</label>
+								<div>
+									<input type="text" class="form-control" th:field="*{productPrice}" disabled="disabled"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Chi tiết cây cảnh</label>
+								<div>
+									<textarea type="textarea" class="form-control" rows="3" th:field="*{productDetail}" disabled="disabled"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label>Hình ảnh</label>
+								<div>
+									<img th:src="@{__${product.productImg}__}"
+											th:onerror="this.onerror=null;this.src=[[@{/static/img/default.png}]];"
+											alt="" style="width: 200px; height: 200px;">
+								</div>
+							</div>
+
+							<div class="form-group right">
+								<a th:href="@{/admin/product/list}"> 
+									<span class="btn btn-warning" >
+									<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+									Trở về</span>
+									
+								</a> 						
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="app-wrapper-footer">
+				<div class="app-footer">
+					<div class="app-footer__inner">
+
+						<div class="app-footer-right">
+							<ul class="header-megamenu nav">
+								<li class="nav-item"><a data-placement="top"
+									rel="popover-focus" data-offset="300"
+									data-toggle="popover-custom" class="nav-link"> Copyright ©
+										2021 All rights reserved by Happy Graden </a></li>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</th:block>
+
+</body>
+</html>

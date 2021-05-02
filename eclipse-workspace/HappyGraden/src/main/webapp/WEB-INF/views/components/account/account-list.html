@@ -61,7 +61,7 @@
 											<td style="text-align: center;"><span th:text="${account.accountUsername}"></span></td>
 											<td style="text-align: center;"><span th:text="${account.accountEmail}"></span></td>
                                             <td style="text-align: center;"><span
-												th:text=" ${account.accountCreateAt} ? ${#dates.format(account.accountCreateAt, 'dd-MM-yyyy')} "></span></td>
+												th:text=" ${account.accountCreateAt} ? ${#dates.format(account.accountCreateAt, 'dd/MM/yyyy')} "></span></td>
                                             <td style ="text-align: center;">
                                             	<button rel="tooltip" title="Xóa" type="button"
 													class="btn btn-danger btn-just-icon"

@@ -205,7 +205,7 @@ public class AdminWareHouseController {
 		houseService.insert(id, imp.getImpQuantity());
 		productImg2DService.saveImg2D( id, null);
 		try {
-			importProductPriceService.insertPrice(id, imp.getPrice());
+			importProductPriceService.insertPriceNew(id, imp.getPrice());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}	

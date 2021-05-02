@@ -35,7 +35,7 @@ import vn.com.unit.service.RoleService;
 import vn.com.unit.service.ShopService;
 
 @Controller
-//@PreAuthorize("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class ProductListController {
 
 	@Autowired
@@ -89,6 +89,16 @@ public class ProductListController {
 		pageable.setData(products);
 		
 		return new ModelAndView("product");
+	}
+
+	@GetMapping("/admin/product/detail/{product_id}")
+	public ModelAndView accountList(Model model,
+			 @PathVariable("product_id") Long product_id,
+			HttpServletRequest request) {
+		
+		ProductDto product = productService.getProductById(product_id);
+		model.addAttribute("product",product);
+		return new ModelAndView("product-detail");
 	}
 	
 	//edit product view

@@ -66,6 +66,7 @@ public interface ProductService {
 	public int getIdByProductName(String name);
 	
 	public Product getProductByName(String name);
-
+	
+	public ProductDto getProductById(Long id);
 
 }

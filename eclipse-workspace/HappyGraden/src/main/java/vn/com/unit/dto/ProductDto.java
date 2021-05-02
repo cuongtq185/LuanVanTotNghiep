@@ -22,6 +22,18 @@ public class ProductDto extends Product {
 	
 	private int impProductPrice;
 	
+	private int productQuantity;
+	
+	public int getProductQuantity() {
+		return productQuantity;
+	}
+
+
+	public void setProductQuantity(int productQuantity) {
+		this.productQuantity = productQuantity;
+	}
+
+
 	public int getOriginId() {
 		return originId;
 	}

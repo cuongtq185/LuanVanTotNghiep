@@ -372,5 +372,12 @@ public class ProductServiceImpl implements ProductService {
 		return null;
 	}
 	
-
+	@Override
+	public ProductDto getProductById(Long id) {
+		try {
+			return productRepository.getProductDetailById(id);
+		} catch (Exception e) {
+		}
+		return null;
+	}
 }
