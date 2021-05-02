@@ -16,7 +16,7 @@
 								<i class="fa fa-home" aria-hidden="true"></i>
 							</div>
 							<div>
-								<b>IMPORT PRODUCT CARD</b>
+								<b>Quản lí phiếu nhập hàng</b>
 							</div>
 						</div>
 						<div class="page-title-actions">
@@ -31,12 +31,12 @@
 								class="table table-hover table-striped table-bordered">
 								<thead>
 									<tr>
-										<th style="text-align: center;">ID</th>
-										<th style="text-align: center;">Product Name</th>
-										<th style="text-align: center;">Detail</th>
-										<th style="text-align: center;">Create at</th>
-										<th style="text-align: center;">Quantity</th>
-										<th style="text-align: center;">Price</th>
+										<th style="text-align: center;">STT</th>
+										<th style="text-align: center;">Tên cây cảnh</th>
+										<th style="text-align: center;">Chi tiết</th>
+										<th style="text-align: center;">Ngày nhập</th>
+										<th style="text-align: center;">Số lượng</th>
+										<th style="text-align: center;">Giá nhập</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -44,7 +44,7 @@
 										th:each="impCard, i : ${pageable.data}">
 										<td style="text-align: center;"><span
 											th:text="${i.count+(pageable.limit*(pageable.page -1))}"></span></td>
-										<td style="text-align: center;"><span th:text="${impCard.productName}"></span></td>
+										<td style="text-align: center;"><span th:text="${impCard.name}"></span></td>
 										<td style="text-align: center;"><span th:text="${impCard.impDetail}"></span></td>
 										<td style="text-align: center;"><span
 												th:text=" ${impCard.impCreateAt} ? ${#dates.format(impCard.impCreateAt, 'dd-MM-yyyy')} "></span></td>
@@ -54,12 +54,12 @@
 								</tbody>
 								<tfoot>
 									<tr>
-										<th style="text-align: center;">ID</th>
-										<th style="text-align: center;">Product Name</th>
-										<th style="text-align: center;">Detail</th>
-										<th style="text-align: center;">Create at</th>
-										<th style="text-align: center;">Quantity</th>
-										<th style="text-align: center;">Price</th>
+										<th style="text-align: center;">STT</th>
+										<th style="text-align: center;">Tên cây cảnh</th>
+										<th style="text-align: center;">Chi tiết</th>
+										<th style="text-align: center;">Ngày nhập</th>
+										<th style="text-align: center;">Số lượng</th>
+										<th style="text-align: center;">Giá nhập</th>
 									</tr>
 								</tfoot>
 							</table>
