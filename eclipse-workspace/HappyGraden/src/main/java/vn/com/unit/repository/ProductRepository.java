@@ -104,4 +104,11 @@ public interface ProductRepository extends MirageRepository<Product, Long> {
 	
 	public ProductDto getProductDetailById(@Param("id") Long id);
 	
+	@Modifying
+	public Product updateProduct(@Param("name") String name,								
+								@Param("category") int category,
+								@Param("origin") int origin,
+								@Param("detail") String detail,
+								@Param("id") int id);
+	
 }

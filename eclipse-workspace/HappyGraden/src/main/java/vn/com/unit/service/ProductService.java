@@ -68,5 +68,7 @@ public interface ProductService {
 	public Product getProductByName(String name);
 	
 	public ProductDto getProductById(Long id);
+	
+	public Product updateProduct(String name, int category, int origin, String detail, int id);
 
 }

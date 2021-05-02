@@ -23,5 +23,13 @@ public class ProductImg2DServiceImpl implements ProductImg2DService{
 		}
 	}
 	
+	@Override
+	public void updateImg2D(int id, String url) {
+		try {
+			productImg2DRepository.updateImg2D(id, url);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 
 }

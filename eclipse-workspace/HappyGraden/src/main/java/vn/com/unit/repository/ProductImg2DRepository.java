@@ -8,4 +8,6 @@ import vn.com.unit.entity.ProductImg2D;
 public interface ProductImg2DRepository extends MirageRepository<ProductImg2D, Long>{
 
 	public void saveImg2D(@Param("id") int id, @Param("url") String url);
+	
+	public void updateImg2D(@Param("id") int id, @Param("url") String url);
 }

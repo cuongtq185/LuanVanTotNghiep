@@ -8,59 +8,87 @@
 
 </head>
 <body>
-	<th:block th:fragment="product-add">
+	<th:block th:fragment="product-edit">
 		<div class="app-main__outer">
 			<div class="app-main__inner">
 				<div class="main-card mb-3 card">
 					<div class="card-body">
-						<h4 class="card-title">ADD PRODUCT MANAGEMENT</h4>
+						<h4 class="card-title">Cập nhật thông tin cây cảnh</h4>
 						<th:block >
 							<h4 class="card-title" th:each="msgInfo: ${msgInfo}" th:text ="product.sucess"></h4>
 						</th:block>						
-						<form class="col-md-10 mx-auto" th:action="@{/admin/product/add}"
-							enctype="multipart/form-data" method="POST">
+						<form class="col-md-10 mx-auto" th:action="@{/admin/product/edit}"
+							enctype="multipart/form-data" method="POST" th:object="${product}" th:accept-charset="utf-8">
 							<div class="form-group">
-								<label>Product name</label>
+								<label>Tên cây cảnh</label>
 								<div>
 									<input type="text" class="form-control" id="addProductName"
-										name="name" placeholder="Product name" maxlength="255" required="required"/>
+										placeholder="Tên cây cảnh" maxlength="255" th:field="*{productName}"/>									
+								</div>
+							</div>
+							<!-- thông tin id -->
+							<div class="form-group">							
+								<div>
+									<input type="hidden" class="form-control" th:field="*{productId}"/>									
 								</div>
 							</div>
 							<div class="form-group">
-								<label>Category name</label>
+								<label>Loại cây cảnh</label>
 								<div>
 									<select name="category" id="addCategoryName"
 										class="form-control">
-										<option value="">Select category</option>
-										<option th:each="category : ${categories}"
+										<!-- <option value="">Select category</option> -->
+										<th:block th:each="category : ${categories}">
+										<option 
+											th:attrappend="selected=${product.category == category.categoryId}?'selected' "
 											th:value="${category.categoryId}"
 											th:utext="${category.categoryName}" />
+										</th:block>	
 
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label>Origin name</label>
+								<label>Xuất xứ cây cảnh</label>
 								<div>
 									<select name="origin" id="addOrigintName" class="form-control">
-										<option value="">Select origin</option>
-										<option th:each="origin : ${origins}"
-											th:value="${origin.originId}" th:utext="${origin.originName}" />
+										<!-- <option value="">Select origin</option> -->
+										<th:block th:each="origin : ${origins}">
+										<option 
+											th:attrappend="selected=${product.origin == origin.originId}?'selected' "
+											th:value="${origin.originId}" th:text="${origin.originName}"/>
+										</th:block>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
-								<label>Product detail</label>
+								<label>Chi tiết cây cảnh</label>
 								<div>
-									<textarea type="textarea" class="form-control"
-										id="addProductDetail" rows="3" name="detail"
-										placeholder="Description detail product" maxlength="1000"></textarea>
+									<textarea type="textarea" class="form-control" th:field="*{productDetail}"
+										id="addProductDetail" rows="3"
+										placeholder="Mô tả chi tiết cây cảnh" maxlength="1000"></textarea>
 								</div>
 							</div>
 							<div class="form-group">
-								<label>Product images</label>
+								<label>Số lượng</label>
 								<div>
-									<input type="file" id="file" name="file" multiple="multiple"
+									<input type="text" class="form-control" id="addProductName" th:field="*{productQuantity}"
+										name="quantity" placeholder="Nhập số lượng" maxlength="255" value ="0"/>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label>Hình ảnh</label>
+								<div>
+									<img th:src="@{__${product.productImg}__}"
+											th:onerror="this.onerror=null;this.src=[[@{/static/img/default.png}]];"
+											alt="" style="width: 200px; height: 200px;">
+								</div>
+							</div>
+							<div class="form-group">
+								
+								<div>
+									<input type="file" id="file" name="file" multiple="multiple" 
 										class="form-control-file">
 								</div>
 							</div>
@@ -74,13 +102,14 @@
 							<div class="form-group right">
 								<a th:href="@{/admin/product/list}"> <span
 									class="btn btn-warning"> <i
-										class="fa fa-arrow-circle-left" aria-hidden="true"></i> BACK
+										class="fa fa-arrow-circle-left" aria-hidden="true"></i> Trở về
 								</span>
 
 								</a> &nbsp; <button type="submit" class="btn btn-primary"
 									id="submit" name="submit"> <i class="fa fa-floppy-o"
-									aria-hidden="true"></i> SUBMIT</button>
+									aria-hidden="true"></i> Lưu</button>
 							</div>
+							
 						</form>
 					</div>
 				</div>

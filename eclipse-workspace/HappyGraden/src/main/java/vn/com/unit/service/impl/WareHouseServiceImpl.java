@@ -81,5 +81,14 @@ public class WareHouseServiceImpl implements WareHouseService {
 	public void updateAfterPayment(int product, int quantity) {
 		wareHouseRepository.updateAfterPayment(product, quantity);
 	}
+	
+	@Override
+	public void updateQuantityProduct(int id, int quantity) {
+		try {
+			wareHouseRepository.updateQuantityProduct(id, quantity);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 
 }

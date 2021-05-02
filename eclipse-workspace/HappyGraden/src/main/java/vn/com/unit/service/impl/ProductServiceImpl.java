@@ -380,4 +380,14 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return null;
 	}
+	
+	@Override
+	public Product updateProduct(String name, int category, int origin, String detail, int id) {
+		try {
+			productRepository.updateProduct(name, category, origin, detail, id);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
 }

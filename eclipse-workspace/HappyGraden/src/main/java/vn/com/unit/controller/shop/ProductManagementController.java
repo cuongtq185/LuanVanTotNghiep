@@ -20,12 +20,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
+import vn.com.unit.dto.ProductDto;
 import vn.com.unit.entity.Category;
 import vn.com.unit.entity.Origin;
 import vn.com.unit.service.AccountService;
@@ -77,47 +81,65 @@ public class ProductManagementController {
 	protected MessageSource msg;
 	
 	
-	@GetMapping("/admin/product/add")
+	@GetMapping("/admin/product/edit/{product_id}")
 	@ResponseBody
-	public ModelAndView productAdd(Model model, 
+	public ModelAndView productList(Model model,
+			 @PathVariable("product_id") Long product_id,
 			HttpServletRequest request) {
 	
 		List<Category> categories = categoryService.findAllCategory();
 		model.addAttribute("categories", categories);
 		List<Origin> origins = originService.findAllOrigin();
 		model.addAttribute("origins",origins);
-		return new ModelAndView("product-add");
+		ProductDto product = productService.getProductById(product_id);
+		model.addAttribute("product",product);
+		return new ModelAndView("product-edit");
+	}
+	
+	@GetMapping("/admin/product/edit?id={product_id}")
+	@ResponseBody
+	public ModelAndView productList2(Model model,
+			 @PathVariable("product_id") Long product_id,
+			HttpServletRequest request) {
+	
+		List<Category> categories = categoryService.findAllCategory();
+		model.addAttribute("categories", categories);
+		List<Origin> origins = originService.findAllOrigin();
+		model.addAttribute("origins",origins);
+		ProductDto product = productService.getProductById(product_id);
+		model.addAttribute("product",product);
+		return new ModelAndView("product-edit");
 	}
 	
 	
 	//add product
-	@PostMapping("admin/product/add")
+	//@PostMapping("admin/product/edit")
+	@RequestMapping(value = "admin/product/edit", produces = "text/plain;charset=UTF-8", method = RequestMethod.POST)
 	public ModelAndView addProduct(@RequestParam("file") MultipartFile[] file, RedirectAttributes redirectAttributes, Locale locale,
-			@RequestParam(value = "name") String name,
+			@RequestParam(value = "productName") String productName,
 			@RequestParam(value = "category") int category,
 			@RequestParam(value = "origin") int origin,
-			@RequestParam(value = "detail") String detail,
+			@RequestParam(value = "productDetail") String productDetail,
+			@RequestParam(value = "productQuantity") int productQuantity,
+			@RequestParam(value = "productId") int productId,
 			HttpServletRequest request) {
 		
 		MessageList messageList = new MessageList("success");	
-		productService.createNewProduct(name, category, origin, detail);
-		ModelAndView mav = new ModelAndView("product-add");
-//		Product product = new Product();
-//		product.setProductName(name);
-//		product.setCategory(category);
-//		product.setOrigin(origin);
-//		product.setProductDetail(detail);
+		productService.updateProduct(productName, category, origin, productDetail, productId);
+		
+		ModelAndView mav = new ModelAndView("product-edit");
 				
 		//Product dto = productService.getIdProductAddNew(name, category, origin);
-		int id = productService.getIdNew();
-		//wareHouseService.insert(id);
-		
-		if ( id != 0) {
+		//int id = productService.getIdNew();
+		if (productQuantity > 0) {
+			wareHouseService.updateQuantityProduct(productId, productQuantity);
+		}
+		if ( productId != 0) {
 			int i = 1;
 			for (MultipartFile img : file) {
 				try {
-					name = name.replace("", "_");
-					String imgName = id + name + "_" + String.valueOf(i) + ".jpg";
+					productName = productName.replace("", "_");
+					String imgName = productId + productName + "_" + String.valueOf(i) + ".jpg";
 
 					String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img";
 					FileUtil.createDirectoryNotExists(path);
@@ -125,7 +147,7 @@ public class ProductManagementController {
 
 					String url = "/static/img/" + imgName;
 					img.transferTo(fileNew);
-					productImg2DService.saveImg2D( id, url);
+					productImg2DService.updateImg2D(productId, url);
 					i++;
 
 				} catch (Exception e) {
@@ -135,6 +157,10 @@ public class ProductManagementController {
 				}
 			}
 		}
+		String url = "admin/product/edit";
+		String viewName = "redirect:".concat("/admin/product/edit");
+		redirectAttributes.addAttribute(productId);
+		mav.setViewName(viewName);
 //		String[] args = new String[1];
 //		String msgInfo = msg.getMessage("post.office.submit.success", args, locale);
 //		mav.addObject("msgInfo", msgInfo);
