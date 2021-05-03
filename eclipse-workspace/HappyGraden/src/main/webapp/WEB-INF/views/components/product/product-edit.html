@@ -14,11 +14,20 @@
 				<div class="main-card mb-3 card">
 					<div class="card-body">
 						<h4 class="card-title">Cập nhật thông tin cây cảnh</h4>
-						<th:block >
-							<h4 class="card-title" th:each="msgInfo: ${msgInfo}" th:text ="product.sucess"></h4>
-						</th:block>						
+
+						<!-- <th:block th:case="'success'">
+							<div class="alert alert-success alert-dismissible">
+								<button aria-hidden="true" data-dismiss="alert" class="close"
+									type="button">×</button>
+								<h4>
+									<i class="icon fa fa-check"></i>
+										<span>Cập nhật thành công</span>									
+								</h4>
+								
+							</div>
+						</th:block> -->
 						<form class="col-md-10 mx-auto" th:action="@{/admin/product/edit}"
-							enctype="multipart/form-data" method="POST" th:object="${product}" th:accept-charset="utf-8">
+							enctype="multipart/form-data" method="POST" th:object="${product}">
 							<div class="form-group">
 								<label>Tên cây cảnh</label>
 								<div>

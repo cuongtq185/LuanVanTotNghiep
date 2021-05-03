@@ -6,6 +6,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -96,17 +97,17 @@ public class ProductManagementController {
 		return new ModelAndView("product-edit");
 	}
 	
-	@GetMapping("/admin/product/edit?id={product_id}")
+	@GetMapping("/admin/product/edit")
 	@ResponseBody
 	public ModelAndView productList2(Model model,
-			 @PathVariable("product_id") Long product_id,
+			@RequestParam(value = "id", required = false) Long id,
 			HttpServletRequest request) {
 	
 		List<Category> categories = categoryService.findAllCategory();
 		model.addAttribute("categories", categories);
 		List<Origin> origins = originService.findAllOrigin();
 		model.addAttribute("origins",origins);
-		ProductDto product = productService.getProductById(product_id);
+		ProductDto product = productService.getProductById(id);
 		model.addAttribute("product",product);
 		return new ModelAndView("product-edit");
 	}
@@ -114,7 +115,7 @@ public class ProductManagementController {
 	
 	//add product
 	//@PostMapping("admin/product/edit")
-	@RequestMapping(value = "admin/product/edit", produces = "text/plain;charset=UTF-8", method = RequestMethod.POST)
+	@RequestMapping(value = "admin/product/edit", produces = "application/json; charset=utf-8", method = RequestMethod.POST)
 	public ModelAndView addProduct(@RequestParam("file") MultipartFile[] file, RedirectAttributes redirectAttributes, Locale locale,
 			@RequestParam(value = "productName") String productName,
 			@RequestParam(value = "category") int category,
@@ -123,8 +124,7 @@ public class ProductManagementController {
 			@RequestParam(value = "productQuantity") int productQuantity,
 			@RequestParam(value = "productId") int productId,
 			HttpServletRequest request) {
-		
-		MessageList messageList = new MessageList("success");	
+					
 		productService.updateProduct(productName, category, origin, productDetail, productId);
 		
 		ModelAndView mav = new ModelAndView("product-edit");
@@ -134,7 +134,7 @@ public class ProductManagementController {
 		if (productQuantity > 0) {
 			wareHouseService.updateQuantityProduct(productId, productQuantity);
 		}
-		if ( productId != 0) {
+		if ( productId != 0 || file != null) {
 			int i = 1;
 			for (MultipartFile img : file) {
 				try {
@@ -159,8 +159,10 @@ public class ProductManagementController {
 		}
 		String url = "admin/product/edit";
 		String viewName = "redirect:".concat("/admin/product/edit");
-		redirectAttributes.addAttribute(productId);
+		redirectAttributes.addAttribute("id",productId);
 		mav.setViewName(viewName);
+		
+		MessageList messageList = new MessageList("success");	
 //		String[] args = new String[1];
 //		String msgInfo = msg.getMessage("post.office.submit.success", args, locale);
 //		mav.addObject("msgInfo", msgInfo);
