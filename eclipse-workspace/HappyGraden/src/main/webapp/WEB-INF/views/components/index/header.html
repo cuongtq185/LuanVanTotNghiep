@@ -109,16 +109,15 @@
 
 									<div class="header__top__right__language" style="top:0px;">
 										<div>
-											<span>Hi, <span th:text="${#authentication.name}"></span></span>
+											<span>Xin chào, <span th:text="${#authentication.name}"></span></span>
 										</div>
 										<span class="arrow_carrot-down"></span>
 										<ul>
 											<li sec:authorize="hasRole('ROLE_ADMIN')"><a
-												href="/admin">Admin Page</a></li>
+												href="/admin">Trang quản lí</a></li>
 											<li sec:authorize="isAuthenticated()"><a
-												href="/profile/home">My Profile</a></li>
-											<li sec:authorize="isAuthenticated()"><a href="/logout">Log
-													out</a></li>
+												href="/profile/home">Thông tin cá nhân</a></li>
+											<li sec:authorize="isAuthenticated()"><a href="/logout">Đăng xuất</a></li>
 											<li sec:authorize="!isAuthenticated()"><a hre
 										</ul>
 

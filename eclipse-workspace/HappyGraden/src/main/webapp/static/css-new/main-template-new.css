@@ -10866,9 +10866,9 @@ scale(
 }
 
 .app-header__logo .logo-src {
-	height: 40px;
+	height: 31px;
 	width: 150;
-	background: url(/static/template/theme/ogani/img/logohp.png)
+	background: url(/static/template/theme/ogani/img/logoadmin.png)
 }
 
 .app-header__menu, .app-header__mobile-menu {

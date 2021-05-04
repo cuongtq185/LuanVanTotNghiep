@@ -11,18 +11,17 @@
 	<th:block th:fragment="admin-header">
 		<div class="app-header header-shadow">
 			<div class="app-header__logo">
-				<div class="logo-src"></div>
-				<div class="header__pane ml-auto">
-					<div>
-						<button type="button"
-							class="x close-sidebar-btn hamburger--elastic"
-							data-class="closed-sidebar">
-							<span class="hamburger-box"> <span class="hamburger-inner"></span>
-							</span>
-						</button>
-					</div>
-				</div>
-			</div>
+                <div class="logo-src"></div>
+                <div class="header__pane ml-auto">
+                    <div>
+                        <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
 			<div class="app-header__mobile-menu">
 				<div>
 					<button type="button"
@@ -34,7 +33,7 @@
 			</div>
 
 			<div class="app-header__content">
-				<div class="app-header-left">
+				<!-- <div class="app-header-left">
 					 <div class="search-wrapper">
                         <div class="input-holder">
                             <input type="text" class="search-input" placeholder="Type to search">
@@ -43,7 +42,7 @@
                         <button class="close"></button>
                     </div>
 
-				</div>
+				</div> -->
 				<div class="app-header-right">
 					<!-- <div class="header-dots">
                         <div class="dropdown">
@@ -105,15 +104,16 @@
 																	<img width="42" class="rounded-circle" src="" alt="">
 																</div>
 																<div class="widget-content-left">
-																	<div class="widget-heading">Alina Mcloughlin</div>
-																	<div class="widget-subheading opacity-8">A short
-																		profile description</div>
+																	<div>
+																		<span>Xin chào, <span
+																			th:text="${#authentication.name}"></span></span>
+																	</div>
 																</div>
 																<div class="widget-content-right mr-2">
 																	<button
 																		class="btn-pill btn-shadow btn-shine btn btn-focus"
 																		sec:authorize="isAuthenticated()">
-																		<a href="/logout">Logout</a>
+																		<a href="/logout">Đăng xuất</a>
 																	</button>
 																</div>
 															</div>
@@ -123,16 +123,11 @@
 											</div>
 											<div class="scroll-area-xs" style="height: 150px;">
 												<div class="scrollbar-container ps">
-													<ul class="nav flex-column">
-														<li class="nav-item-header nav-item">Activity</li>
+													<ul class="nav flex-column">														
 														<li class="nav-item"><a href="javascript:void(0);"
-															class="nav-link">Chat
-																<div class="ml-auto badge badge-pill badge-info">8</div>
-														</a></li>
-														<li class="nav-item"><a href="javascript:void(0);"
-															class="nav-link">Recover Password</a></li>
-														<li class="nav-item-header nav-item">My Account</li>
-
+															class="nav-link">Đổi mật khẩu</a></li>
+														<li class="nav-item" sec:authorize="isAuthenticated()"><a class="nav-link"
+															href="/profile/home">Thông tin cá nhân</a></li>
 													</ul>
 												</div>
 											</div>
@@ -142,8 +137,12 @@
 									</div>
 								</div>
 								<div class="widget-content-left  ml-3 header-user-info">
-									<div class="widget-heading">Alina Mclourd</div>
-									<div class="widget-subheading">VP People Manager</div>
+									<div class="widget-heading">
+										<span>Xin chào, <span th:text="${#authentication.name}"></span></span>
+									</div>
+									<!-- <div class="widget-subheading">
+										<span>Xin chào, <span th:text="${#authentication.address}"></span></span>
+									</div> -->
 								</div>
 
 							</div>
