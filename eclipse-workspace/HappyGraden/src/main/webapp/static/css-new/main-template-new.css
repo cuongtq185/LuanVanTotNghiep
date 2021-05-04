@@ -10866,8 +10866,8 @@ scale(
 }
 
 .app-header__logo .logo-src {
-	height: 31px;
-	width: 150;
+	height: 29px;
+	width: 140px;
 	background: url(/static/template/theme/ogani/img/logoadmin.png)
 }
 
@@ -11868,7 +11868,7 @@ scale(
 .app-theme-white .app-footer .app-footer__inner, .app-theme-white .app-header
 	{
 	/* background: #fafbfc */
-	background: #7fad39
+	background: #ecea86
 }
 
 .app-theme-white.fixed-header .app-header__logo {
