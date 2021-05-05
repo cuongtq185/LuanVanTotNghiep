@@ -8,6 +8,7 @@ import jp.sf.amateras.mirage.annotation.Column;
 import jp.sf.amateras.mirage.annotation.PrimaryKey;
 import jp.sf.amateras.mirage.annotation.Table;
 import jp.sf.amateras.mirage.annotation.PrimaryKey.GenerationType;
+import jp.sf.amateras.mirage.annotation.Transient;
 
 @Table(name = "bill")
 public class Bill {
@@ -43,6 +44,17 @@ public class Bill {
 
 	@Column(name = "full_name")
 	private String fullName;
+	
+	@Transient
+	private int status;
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
 	public String getFullName() {
 		return fullName;

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head>
+
+</head>
+<body>
+	<th:block th:fragment="admin-bill-list">
+		<div class="app-main__outer">
+			<div class="app-main__inner">
+				<div class="app-page-title">
+					<div class="page-title-wrapper">
+						<div class="page-title-heading">
+							<div class="page-title-icon">
+								<i class="fa fa-home" aria-hidden="true"></i>
+							</div>
+							<div>
+								<b>Quản lí giá cây cảnh</b>
+							</div>
+						</div>
+						<div class="page-title-actions">
+						</div>
+					</div>
+				</div>
+
+				<div class="tabs-animation">
+					<div class="card mb-3">
+						<div class="card-body">
+							<table style="width: 100%;" id="example"
+								class="table table-hover table-striped table-bordered">
+								<thead>
+									<tr>
+										<th style="text-align: center;">STT</th>
+										<th style="text-align: center;">Họ tên</th>
+										<th style="text-align: center;">Địa chỉ</th>
+										<th style="text-align: center;">Số điện thoại</th>
+										<th style="text-align: center;">Tổng giá</th>									
+										<th style="text-align: center;">Tổng số lượng</th>
+										<th style="text-align: center;">Ngày tạo</th>
+										<th style="text-align: center;">Trạng thái</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:if="${!pageable.data.empty or pageable.data != null}"
+										th:each="bill, i : ${pageable.data}">
+										<td style="text-align: center;"><span
+											th:text="${i.count+(pageable.limit*(pageable.page -1))}"></span></td>
+										<td style="text-align: center;"><span th:text="${bill.fullName}"></span></td>
+										<td style="text-align: center;"><span th:text="${bill.address}"></span></td>
+										<td style="text-align: center;"><span th:text="${bill.phone}"></span></td>
+										<td style="text-align: center;"><span th:text="${bill.tottalPrice}"></span></td>
+										<td style="text-align: center;"><span th:text="${bill.totalQuantity}"></span></td>
+										<td style="text-align: center;"><span
+												th:text=" ${impPrice.billCreateAt} ? ${#dates.format(impPrice.billCreateAt, 'dd-MM-yyyy')} "></span></td>
+										<td style="text-align: center;"><span th:text="${impPrice.status}"></span></td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<th style="text-align: center;">STT</th>
+										<th style="text-align: center;">Họ tên</th>
+										<th style="text-align: center;">Địa chỉ</th>
+										<th style="text-align: center;">Số điện thoại</th>
+										<th style="text-align: center;">Tổng giá</th>									
+										<th style="text-align: center;">Tổng số lượng</th>
+										<th style="text-align: center;">Ngày tạo</th>
+										<th style="text-align: center;">Trạng thái</th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="app-wrapper-footer">
+				<div class="app-footer">
+					<div class="app-footer__inner">
+
+						<div class="app-footer-right">
+							<ul class="header-megamenu nav">
+								<li class="nav-item"><a data-placement="top"
+									rel="popover-focus" data-offset="300"
+									data-toggle="popover-custom" class="nav-link" style="color:red"> Copyright ©
+										2021 All rights reserved by Happy Graden </a></li>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</th:block>
+
+</body>
+</html>
