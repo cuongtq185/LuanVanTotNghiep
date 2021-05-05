@@ -1,6 +1,9 @@
 package vn.com.unit.controller.shop;
 
 import java.io.File;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -81,6 +84,9 @@ public class ProductManagementController {
 	@Autowired
 	protected MessageSource msg;
 	
+	private static final Charset UTF_8 = Charset.forName("UTF-8");
+	private static final Charset ISO = Charset.forName("ISO-8859-1");
+	
 	
 	@GetMapping("/admin/product/edit/{product_id}")
 	@ResponseBody
@@ -115,8 +121,8 @@ public class ProductManagementController {
 	
 	//add product
 	//@PostMapping("admin/product/edit")
-	@RequestMapping(value = "admin/product/edit", produces = "application/json; charset=utf-8", method = RequestMethod.POST)
-	public ModelAndView addProduct(@RequestParam("file") MultipartFile[] file, RedirectAttributes redirectAttributes, Locale locale,
+	@RequestMapping(value = "admin/product/edit", produces = "text/plain; charset=utf-8", method = RequestMethod.POST)
+	public ModelAndView addProduct(@Valid @RequestParam(required = false) MultipartFile[] file, RedirectAttributes redirectAttributes, Locale locale,
 			@RequestParam(value = "productName") String productName,
 			@RequestParam(value = "category") int category,
 			@RequestParam(value = "origin") int origin,
@@ -124,8 +130,12 @@ public class ProductManagementController {
 			@RequestParam(value = "productQuantity") int productQuantity,
 			@RequestParam(value = "productId") int productId,
 			HttpServletRequest request) {
+		
+		//ByteBuffer byteBuffer = StandardCharsets.UTF_8.encode(productName);
+		String name = new String(productName.getBytes(ISO),UTF_8);
+		String detail = new String(productDetail.getBytes(ISO),UTF_8);
 					
-		productService.updateProduct(productName, category, origin, productDetail, productId);
+		productService.updateProduct(name, category, origin, detail, productId);
 		
 		ModelAndView mav = new ModelAndView("product-edit");
 				
@@ -133,27 +143,29 @@ public class ProductManagementController {
 		//int id = productService.getIdNew();
 		if (productQuantity > 0) {
 			wareHouseService.updateQuantityProduct(productId, productQuantity);
-		}
-		if ( productId != 0 || file != null) {
+		}		
+		if ( productId != 0) {
 			int i = 1;
 			for (MultipartFile img : file) {
-				try {
-					productName = productName.replace("", "_");
-					String imgName = productId + productName + "_" + String.valueOf(i) + ".jpg";
+				 if (file != null && file.length > 0) {
+					try {
+						name = name.replace("", "_");
+						String imgName = productId + name + "_" + String.valueOf(i) + ".jpg";
 
-					String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img";
-					FileUtil.createDirectoryNotExists(path);
-					File fileNew = new File(path, imgName);
+						String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img";
+						FileUtil.createDirectoryNotExists(path);
+						File fileNew = new File(path, imgName);
 
-					String url = "/static/img/" + imgName;
-					img.transferTo(fileNew);
-					productImg2DService.updateImg2D(productId, url);
-					i++;
+						String url = "/static/img/" + imgName;
+						img.transferTo(fileNew);
+						productImg2DService.updateImg2D(productId, url);
+						i++;
 
-				} catch (Exception e) {
-					e.printStackTrace();
-					// Logger.error("fail");
-					throw new Error();
+					} catch (Exception e) {
+						e.printStackTrace();
+						// Logger.error("fail");
+						throw new Error();
+					}
 				}
 			}
 		}
@@ -170,46 +182,71 @@ public class ProductManagementController {
 		return mav;
 		
 	}
+	
+	@GetMapping("/admin/product/add")
+	@ResponseBody
+	public ModelAndView addProduct(Model model,
+			HttpServletRequest request) {
+	
+		List<Category> categories = categoryService.findAllCategory();
+		model.addAttribute("categories", categories);
+		List<Origin> origins = originService.findAllOrigin();
+		model.addAttribute("origins",origins);
+		return new ModelAndView("product-add");
+	}
+	
+	@RequestMapping(value = "admin/product/add", produces = "text/plain; charset=utf-8", method = RequestMethod.POST)
+	public ModelAndView addProduct2(@Valid @RequestParam(required = false) MultipartFile[] file,
+			RedirectAttributes redirectAttributes, Locale locale,
+			@RequestParam(value = "productName") String productName, @RequestParam(value = "category") int category,
+			@RequestParam(value = "origin") int origin, @RequestParam(value = "productDetail") String productDetail,
+			@RequestParam(value = "productQuantity") int productQuantity,
+			HttpServletRequest request) {
 
-	// edit Product
-//	@PreAuthorize("hasRole('ROLE_VENDOR')")
-//	@PutMapping("/product/{product_id}")
-//	@ResponseBody
-//	public ResponseEntity<Product> editShop(@RequestBody Product product, @PathVariable("product_id") Long product_id,
-//			Model model) {
-//		
-//		Product product_old = productService.findOne(product_id);
-//		
-//		Account account_current = accountService.findCurrentAccount();
-//		
-//		if (product_old.getShop() != account_current.getId()) {
-//			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(product);
-//		}
-//		
-//		String name = product.getName();
-//		int category = product.getCategory();
-//		int brand = product.getBrand();
-//		int price = product.getPrice();
-//		int quantity = product.getQuantity();
-//		String detail = product.getDetail();
-////		productService.saveProduct(product_id, name, price, detail, category, brand, quantity);
-//
-////		product.setShop(null);
-////		
-////		product.setId(product_id);
-//		
-//		product_old.setName(name);
-//		product_old.setCategory(category);
-//		product_old.setBrand(brand);
-//		product_old.setPrice(price);
-//		product_old.setQuantity(quantity);
-//		product_old.setDetail(detail);
-//		
-//		Product product_new = productService.save(product_old);
-//		
-//		return ResponseEntity.ok(product_new);
-//
-//	}
+		// ByteBuffer byteBuffer = StandardCharsets.UTF_8.encode(productName);
+		String name = new String(productName.getBytes(ISO), UTF_8);
+		String detail = new String(productDetail.getBytes(ISO), UTF_8);
+
+		productService.createNewProduct(name, category, origin, detail);
+		int id = productService.getIdNew();					
+		wareHouseService.insert(id, productQuantity);
+		if (id != 0) {
+			int i = 1;
+			for (MultipartFile img : file) {
+				if (file != null && file.length > 0) {
+					try {
+						name = name.replace("", "_");
+						String imgName = id + name + "_" + String.valueOf(i) + ".jpg";
+
+						String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img";
+						FileUtil.createDirectoryNotExists(path);
+						File fileNew = new File(path, imgName);
+
+						String url = "/static/img/" + imgName;
+						img.transferTo(fileNew);
+						productImg2DService.saveImg2D(id, url);
+						i++;
+
+					} catch (Exception e) {
+						e.printStackTrace();
+						// Logger.error("fail");
+						throw new Error();
+					}
+				}
+			}
+		}
+		ModelAndView mav = new ModelAndView("product-add");
+		String url = "admin/product/edit";
+		String viewName = "redirect:".concat("/admin/product/edit");
+		redirectAttributes.addAttribute("id", id);
+		mav.setViewName(viewName);
+
+		MessageList messageList = new MessageList("success");
+
+		return mav;
+
+	}
+
 
 	// deleteProduct
 	@DeleteMapping("/admin/product/delete/{product_id}")

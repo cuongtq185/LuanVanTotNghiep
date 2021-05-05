@@ -53,7 +53,7 @@ public class WareHouseServiceImpl implements WareHouseService {
 			
 			int id = productService.getIdByProductName(product.getName());
 			Long impId = Long.valueOf(id);
-			wareHouseRepository.updateProductById(product.getName(), product.getImpDetail(), product.getImpQuantity());
+			wareHouseRepository.updateProductById(product.getName(), product.getImpDetail(), product.getImpQuantity(), product.getImpProductPrice());
 			wareHouseRepository.updateQuantity(impId, product.getImpQuantity());
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -33,7 +33,8 @@
 			warehouse.name = $("#productName").val();
 			warehouse.productId = $("#productId").val();
 			warehouse.impDetail = $("#importDetail").val();
-			warehouse.impQuantity = $("#quantity").val();			
+			warehouse.impQuantity = $("#quantity").val();
+			warehouse.impProductPrice = $("#price").val();	
 			console.log(warehouse)
 			$.ajax({
 				url: `/admin/warehouse/edit`,

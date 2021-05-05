@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head>
+<th:block th:include="components/admin/admin-head :: admin-head"></th:block>
+<meta th:name="_csrf" th:content="${_csrf.token}" />
+<meta th:name="_csrf_header" th:content="${_csrf.headerName}" />
+</head>
+<body>
+	<div
+		class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
+		<div th:replace="components/admin/admin-header :: admin-header"></div>
+		<div class="app-main">
+			<div th:replace="components/product/product-menu :: product-menu"></div>
+			<div th:replace="components/product/product-add :: product-add"></div>
+		</div>
+	</div>
+	<th:block th:replace="components/admin/admin-footer :: admin-footer"></th:block>
+	
+</body>
+</html>
