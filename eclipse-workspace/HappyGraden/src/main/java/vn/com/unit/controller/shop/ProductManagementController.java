@@ -149,7 +149,8 @@ public class ProductManagementController {
 			for (MultipartFile img : file) {
 				 if (file != null && file.length > 0) {
 					try {
-						name = name.replace("", "_");
+						//productName = productName.replace("", "_");
+						name = "caycanh";
 						String imgName = productId + name + "_" + String.valueOf(i) + ".jpg";
 
 						String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img";
@@ -215,7 +216,8 @@ public class ProductManagementController {
 			for (MultipartFile img : file) {
 				if (file != null && file.length > 0) {
 					try {
-						name = name.replace("", "_");
+						//productName = productName.replace("", "_");
+						name = "caycanh";
 						String imgName = id + name + "_" + String.valueOf(i) + ".jpg";
 
 						String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img";
