@@ -181,21 +181,19 @@ public class HomeController {
 			model.addAttribute("error", "");
 		}else {
 			if(error.equals("Wrong username or password")) {
-				model.addAttribute("error", "Wrong username or password!");
+				model.addAttribute("error", "Tài khoản hoặc mật khẩu không đúng!");
 			}
 			if(error.equals("timeout")) {
-				model.addAttribute("error", "Time Out!");
+				model.addAttribute("error", "Hết thời gian đăng nhập!");
 			}
 			if(error.equals("Your account has been deactivated")) {
-				model.addAttribute("error", "Your account has been deactivated!");
+				model.addAttribute("error", "Tài khoản đã bị vô hiệu hóa!");
 			}
 			if(error.equals("max_session")) {
-				model.addAttribute("error", "Your account has been logged in another device!");
+				model.addAttribute("error", "Tài khoản của bạn đã được đăng nhập trên một thiết bị khác!");
 			}
 		}
 
-
-		
 		model.addAttribute("title", "Login");
 		return new ModelAndView("login");
 	}

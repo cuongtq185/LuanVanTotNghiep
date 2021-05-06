@@ -18,7 +18,7 @@
                                     <div class="position-relative h-100 d-flex justify-content-center align-items-center bg-plum-plate" tabindex="-1">
                                         <div class="slide-img-bg" style="background-image: url('/static/template-login/images/lg-2.jpg');"></div>
                                         <div class="slider-content">
-                                            <h3>Chrysalidocarpus lutescens</h3>
+                                            <h3>Cây dừa cảnh</h3>
                                             <p> Cây dừa cảnh phong thủy hay còn gọi là cây cau vàng,
                                              cây cau tre, cây cau cọ… với tên khoa học là Chrysalidocarpus lutescens,
                                               Areca lutescens, thuộc chi Dypsis.
@@ -53,37 +53,37 @@
                         <div class="mx-auto app-login-box col-sm-12 col-md-10 col-lg-9">
                             <div class="app-logo"></div>
                             <h4 class="mb-0">
-                                <span class="d-block">Welcome back,</span>
-                                <span>Please sign in to your account.</span>
+                                <span class="d-block">Chào bạn,</span>
+                                <span>Xin hãy đăng nhập tài khoản của bạn.</span>
                             </h4>
-                            <h6 class="mt-3">No account? <a th:href="@{/register}" class="text-primary">Sign up now</a></h6>
+                            <h6 class="mt-3">Chưa có tài khoản? <a th:href="@{/register}" class="text-primary">Đăng ký ngay</a></h6>
                             <div class="divider row"></div>
                             <div>
                                 <form method="POST" class="register-form" id="login-form" th:action=@{/login}>
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <div class="position-relative form-group">
-                                                <label for="exampleEmail" class="">Username</label>
-                                                <input id="your_name" name ="username" placeholder="Username here..." type="text" class="form-control">
+                                                <label for="exampleEmail" class="">Tên đăng nhập</label>
+                                                <input id="your_name" name ="username" placeholder="Nhập tên đăng nhập" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="position-relative form-group">
-                                                <label for="examplePassword" class="">Password</label>
-                                                <input name="password" id="your_pass" placeholder="Password here..." type="password" class="form-control">
+                                                <label for="examplePassword" class="">Mật khẩu</label>
+                                                <input name="password" id="your_pass" placeholder="Nhập mật khẩu" type="password" class="form-control">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="position-relative form-check">
                                         <input name="check" id="exampleCheck" type="checkbox" class="form-check-input">
-                                        <label for="exampleCheck" class="form-check-label">Keep me logged in</label>
+                                        <label for="exampleCheck" class="form-check-label">Lưu thông tin đăng nhập</label>
                                         <p style="color:red; font-size: 14px; text-align: center" th:text="${error}" ></p>
                                     </div>
                                     <div class="divider row"></div>
                                     <div class="d-flex align-items-center">
                                         <div class="ml-auto">
-                                            <a href="javascript:void(0);" class="btn-lg btn btn-link">Recover Password</a>
-                                            <button type="submit" name="signin" id="signin" class="btn btn-primary btn-lg">Login</button>
+                                            <a href="javascript:void(0);" class="btn-lg btn btn-link">Lấy lại mật khẩu</a>
+                                            <button type="submit" name="signin" id="signin" class="btn btn-primary btn-lg">Đăng nhập</button>
                                         </div>
                                     </div>
                                 </form>
