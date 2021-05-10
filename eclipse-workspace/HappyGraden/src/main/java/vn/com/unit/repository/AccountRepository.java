@@ -20,7 +20,9 @@ public interface AccountRepository extends MirageRepository<Account, Long> {
 	
 	public List<Account> findAllAccountActive(@Param("sizeOfPage") Integer sizeOfPage,@Param("offset") Integer offset,@Param("keyword") String keyword,@Param("role_id") Long role_id);
 
-	public Long createNewAccount(@Param("username") String username, @Param("password") String password);
+	public Account createNewAccount(@Param("username") String username, @Param("password") String password, 
+			@Param("name") String name, @Param("email") String email,
+			@Param("address") String address, @Param("phone") String phone);
 	
 	@Modifying
 	public void setAccountPassword(@Param("account_id") Long account_id, @Param("password") String password);

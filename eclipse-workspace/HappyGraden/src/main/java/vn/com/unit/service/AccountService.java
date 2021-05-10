@@ -18,7 +18,7 @@ public interface AccountService {
 	//tìm tất cả account 
 	public List<Account> findAllAccount(int limit,int offset,String keyword,Long role_id);
 	
-	public Account createNewAccount(Account account,String role_name);
+	public Account createNewAccount(Account account);
 	
 	public void setRoleByAccountId(Long id_account, Long id_role);
 	

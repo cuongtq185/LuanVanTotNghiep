@@ -5,13 +5,70 @@
 
 <head>
     <th:block th:include="components/login/login-head :: login-head"></th:block>
+    <meta th:name="_csrf" th:content="${_csrf.token}" />
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}" />
 </head>
 
 <body>
 
-       	<div th:replace="components/login/register-form :: register-form"></div>			
-						
-    	<th:block th:include="components/login/login-footer :: login-footer"></th:block>
+	<div th:replace="components/login/register-form :: register-form"></div>
+
+	<th:block th:include="components/login/login-footer :: login-footer"></th:block>
+	<script
+		th:src="@{/static/template-admin/polygon/cooladmin/vendor/jquery-3.2.1.min.js}"></script>
+	<script th:src="@{/static/admin/js/plugins/sweetalert2@9.js}"></script>
+	<!-- Script dang ki tai khoan nguoi dung -->
+	<script>
+            function addAccount() {
+                var token = $("meta[name='_csrf']").attr("content");
+                var header = $("meta[name='_csrf_header']").attr("content");
+
+                let newAccount = new Object();
+                newAccount.accountName = $("#name").val();
+                newAccount.accountEmail = $("#email").val();
+                newAccount.accountUsername = $("#userName").val();
+                newAccount.accountPassword = $("#password").val();
+                newAccount.accountAddress = $("#address").val();
+                newAccount.accountPhone = $("#phone").val();
+
+                console.log(newAccount);
+                $.ajax({
+                    url: `/register`,
+                    type: 'POST',
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(newAccount),
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader(header, token);
+                    },
+                    ssuccess: function (data, status, xhr) {
+   					 try {
+                         Swal.fire({
+              		  position: 'center',
+              		  icon: 'success',
+              		  title: 'Tạo tài khoản thành công',
+              		  showConfirmButton: false,
+              		  timer: 800
+                  		}).then(()=>{
+                             window.location.href = '/login';
+                  		})             
+                    } catch (error) { }
+
+				},
+				error: function (request, status, error) {
+					  try {
+						  Swal.fire({
+							  icon: 'error',
+							  title: 'Lỗi',
+							  confirmButtonText: 'Trở lại',
+							  text: request.responseJSON.msg,
+							})
+                     } catch (error) { }
+                 }
+				
+			});
+		}
+        </script>
 </body>
 
 </html>

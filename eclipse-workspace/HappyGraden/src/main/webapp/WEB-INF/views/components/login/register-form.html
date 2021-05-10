@@ -2,53 +2,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
-<head>
-</head>
 <body>
 	<th:block th:fragment="register-form">
-	  <!-- <div class="main">
-        Sign up form
-        <section class="signup">
-            <div class="container">
-                <div class="signup-content">
-                    <div class="signup-form">
-                        <h2 class="form-title">Sign up</h2>
-                        <form method="POST" class="register-form" id="register-form">
-                            <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="username" id="addusername" placeholder="Your Name"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Your Email"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="password" id="addpassword" placeholder="Password"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
-                            </div>
-                            <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/ onclick="addAccount()">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="signup-image">
-                        <figure><img th:src="@{static/template-login/images/signup-image.jpg}" alt="sing up image"></figure>
-                        <a th:href="@{/login}" class="signup-image-link">I am already member</a>
-                    </div>
-                          
-                </div>
-            </div>
-        </section>
-    </div> -->
-    
     <div class="app-container app-theme-white body-tabs-shadow">
         <div class="app-container">
             <div class="h-100">
@@ -62,60 +17,57 @@
                                 <span>Chỉ mất <span class="text-success">vài giây</span> để tạo tài khoản của bạn</span>
                             </h4>
                             <div>
-                                <form method="POST" class="register-form" id="register-form">
+                                
                                     <div class="form-row">
                                     	<div class="col-md-6">
-                                            <div class="position-relative form-group">
-                                                 <label for="exampleEmail" class=""><span class="text-danger">*</span> Họ và tên</label>
-                                                <input name="username" id="addusername" placeholder="Nhập họ tên" type="text" class="form-control">
+                                            <div class="form-group">
+                                                 <label class=""><span class="text-danger">*</span> Họ và tên</label>
+                                                <input id="name" placeholder="Nhập họ tên" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="position-relative form-group">
-                                                <label for="exampleEmail" class=""><span class="text-danger">*</span> Email</label>
-                                                <input name="email" id="email" placeholder="Nhập email" type="email" class="form-control">
+                                            <div class="form-group">
+                                                <label class=""><span class="text-danger">*</span> Email</label>
+                                                <input id="email" placeholder="Nhập email" type="email" class="form-control">
                                             </div>
                                         </div>
                                         
                                         <div class="col-md-6">
                                             <div class="position-relative form-group">
-                                                <label for="examplePassword" class=""><span class="text-danger">*</span> Mật khẩu</label>
-                                                <input name="password" id="addpassword" placeholder="Nhập mật khẩu" type="password" class="form-control">
+                                                <label class=""><span class="text-danger">*</span> Tên đăng nhập</label>
+                                                <input id="userName" placeholder="Nhập tên đăng nhập" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="position-relative form-group">
-                                                <label for="examplePasswordRep" class=""><span class="text-danger">*</span> Nhập lại mật khẩu</label>
-                                                <input name="re_pass" id="re_pass" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
-                                            </div>
-                                        </div>
-                                        
-                                         <div class="col-md-6">
-                                            <div class="position-relative form-group">
-                                                <label for="examplePassword" class=""><span class="text-danger">*</span> Địa chỉ</label>
-                                                <input name="address" id="address" placeholder="Nhập địa chỉ" type="text" class="form-control">
+                                                <label class=""><span class="text-danger">*</span> Mật khẩu</label>
+                                                <input id="password" placeholder="Nhập mật khẩu" type="password" class="form-control">
                                             </div>
                                         </div>
                                         
                                          <div class="col-md-6">
                                             <div class="position-relative form-group">
-                                                <label for="examplePassword" class=""><span class="text-danger">*</span> Số điện thoại</label>
-                                                <input name="phone" id="phone" placeholder="Nhập số điện thoại" type="phone" class="form-control">
+                                                <label class=""><span class="text-danger">*</span> Địa chỉ</label>
+                                                <input id="address" placeholder="Nhập địa chỉ" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        
+                                         <div class="col-md-6">
+                                            <div class="position-relative form-group">
+                                                <label class=""><span class="text-danger">*</span> Số điện thoại</label>
+                                                <input id="phone" placeholder="Nhập số điện thoại" type="phone" class="form-control">
                                             </div>
                                         </div>
                                                                               
                                     </div>
-                                    <div class="mt-3 position-relative form-check">
-                                        <input name="check" id="exampleCheck" type="checkbox" class="form-check-input">
-                                        <label for="exampleCheck" class="form-check-label">Chấp nhận các <a href="javascript:void(0);">điều khoản và điều kiện</a>.</label>
-                                    </div>
+
                                     <div class="mt-4 d-flex align-items-center">
-                                        <h5 class="mb-0">Bạn đã sẵn sàng để tạo tài khoản? <a href="javascript:void(0);" class="text-primary">Đăng nhập</a></h5>
+                                        <h5 class="mb-0">Bạn đã sẵn sàng để tạo tài khoản? <a th:href="@{/login}" class="text-primary">Đăng nhập</a></h5>
                                         <div class="ml-auto">
-                                            <button class="btn-wide btn-pill btn-shadow btn-hover-shine btn btn-primary btn-lg">Tạo tài khoản </button>
+                                            <button class="btn-wide btn-pill btn-shadow btn-hover-shine btn btn-primary btn-lg"  onclick="addAccount()">Tạo tài khoản </button>		                                    
                                         </div>
                                     </div>
-                                </form>
+                               
                             </div>
                         </div>
                     </div>
@@ -143,54 +95,6 @@
         </div>
     </div>
     
-    <!-- Script dang ki tai khoan nguoi dung -->
-		<script th:inline="javascript">
-
-            let home = [[@{/}]];
-
-            if (home.slice(home.length - 1) == "/") {
-                home = home.slice(0, -1);
-            }
-
-            function addAccount() {
-                var token = $("meta[name='_csrf']").attr("content");
-                var header = $("meta[name='_csrf_header']").attr("content");
-
-                let newAccount = new Object();
-                newAccount.username = $("#addusername").val();
-                newAccount.password = $("#addpassword").val();
-
-                console.log(newAccount);
-                $.ajax({
-                    url: `${home}/register`,
-                    type: 'POST',
-
-
-                    dataType: "json",
-                    contentType: "application/json",
-
-
-                    data: JSON.stringify(newAccount),
-
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader(header, token);
-                    },
-
-                    success: function (data, status, xhr) {
-                        try {
-                            alert(data.msg);
-                            window.location.href = `${home}/login`;
-                        } catch (error) { }
-                    },
-                    error: function (request, status, error) {
-                        try {
-                            alert(request.responseJSON.msg);
-                        } catch (error) { }
-                    }
-                });
-
-            } 
-        </script>
 	</th:block>
 </body>
 </html>

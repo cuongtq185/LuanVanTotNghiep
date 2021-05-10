@@ -1,6 +1,7 @@
 package vn.com.unit.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,12 @@ public class AccountServiceImpl implements AccountService {
 	/* check username login*/
 	@Override
 	public Account findByUsername(String username) {
-		return accountRepository.findByUsername(username);
+		try {
+			return accountRepository.findByUsername(username);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
 	}
 
 	/* check login */
@@ -110,36 +116,30 @@ public class AccountServiceImpl implements AccountService {
 
 	// create new account
 	@Override
-	public Account createNewAccount(Account account, String role_name) {
+	public Account createNewAccount(Account account) {
 		try {
-			String username = account.getAccountName();
-
-			if (username.equals("")) {
-				return null;
-			}
-
+			String username = account.getAccountUsername();
+			String email = account.getAccountEmail();
+			String fullName = account.getAccountName();
+			String address = account.getAccountAddress();
+			String phone = account.getAccountPhone();
 			String password = CommonUtils.encodePassword(account.getAccountPassword());
 
-			Account account_temp = new Account();
-			account_temp.setAccountUsername(username);
-			account_temp.setAccountPassword(password);;
+//			Account account_temp = new Account();
+//			account_temp.setAccountUsername(username);
+//			account_temp.setAccountPassword(password);
+//			account_temp.setAccountName(fullName);
+//			account_temp.setAccountEmail(email);
+//			account_temp.setAccountAddress(address);
+//			account_temp.setAccountPhone(phone);
+//			account_temp.setRole(2L);
+//			//account_temp.setAccountDisable(false);
+//			account_temp.setAccountCreateAt(new Date());
 
-			Account account_new = accountRepository.save(account_temp);
-
-			if (account_new != null) {
-
-				Account account_role_new = new Account();
-				
-				account_role_new.setAccountId(account_new.getAccountId());
-				account_role_new.setRole(roleService.findRoleIdByName(role_name));
-
-				accountRoleRepository.save(account_role_new);
-				
-				return account_new;
-			}
-
+			return accountRepository.createNewAccount(username, password, fullName, email, address, phone );
+			
 		} catch (Exception e) {
-
+			
 		}
 		return null;
 	}
