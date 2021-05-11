@@ -18,10 +18,10 @@
 			<div class="humberger__menu__cart">
 				<ul>
 					<li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-					<li><a th:href="@{/cart}"><i class="fa fa-shopping-bag"></i> <span>13</span></a></li>
+					<li><a th:href="@{/cart}"><i class="fa fa-shopping-bag"></i><span id="count" th:text="${total_cart_item}">0</span></a></li>
 				</ul>
 				<div class="header__cart__price">
-					item: <span>$150.00</span>
+					Tổng giá: <span id="total" th:text="${total_price}">0</span>
 				</div>
 			</div>
 			</th:block>
@@ -158,9 +158,9 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a th:href="@{/cart}"><i class="fa fa-shopping-bag"></i> <span>13</span></a></li>
+                            <li><a th:href="@{/cart}"><i class="fa fa-shopping-bag"></i> <span id="count" th:text="${total_cart_item}">0</span></a></li>
                         </ul>
-                        <div class="header__cart__price">Tổng giá: <span>$150.00</span></div>
+                        <div class="header__cart__price">Tổng giá:<span id="total" th:text="${total_price}">0</span><span>VNĐ</span>
                     </div>
                 </div>
                 </th:block>
