@@ -1,10 +1,4 @@
-select count (*)
-from
-	(
-	select *
-	from cart as a
-	left join cart_item as b on a.cart_id = b.cart 	
-	) as cart
-left join product as c
-on c.product_id = cart.product
-where cart.status = 1
+select sum(item.quantity)
+from cart as cart
+left join cart_item as item on cart.cart_id = item.cartitem_id
+where cart.account = /*accountId*/'' and cart.status = 1

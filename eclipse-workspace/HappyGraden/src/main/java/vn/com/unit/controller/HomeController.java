@@ -25,9 +25,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import vn.com.unit.dto.ProductDto;
 import vn.com.unit.entity.Account;
+import vn.com.unit.entity.Category;
 import vn.com.unit.entity.Product;
 import vn.com.unit.service.AccountService;
 import vn.com.unit.service.CartService;
+import vn.com.unit.service.CategoryService;
 import vn.com.unit.service.ProductService;
 import vn.com.unit.service.RoleService;
 import vn.com.unit.service.ShopService;
@@ -52,6 +54,9 @@ public class HomeController {
 	
 	@Autowired
 	private CartService cartService;
+	
+	@Autowired
+	private CategoryService categoryService;
 
 
 	@GetMapping("*")
@@ -62,8 +67,8 @@ public class HomeController {
 		// Add Role if reload
 		int total_cart_item = 0;
 		Long total = 0L;
-		model.addAttribute("total_cart_item", total_cart_item);
-		model.addAttribute("total_price", Math.toIntExact(total));
+		//model.addAttribute("total_cart_item", total_cart_item);
+		//model.addAttribute("total_price", Math.toIntExact(total));
 
 		try {
 			Account account = accountService.findCurrentAccount();
@@ -80,11 +85,11 @@ public class HomeController {
 
 				SecurityContextHolder.getContext().setAuthentication(newAuth);
 				
-//				total_cart_item = cartService.countAllCartItemByCurrentAccount(account.getAccountId());
-//				model.addAttribute("total_cart_item", total_cart_item);
+				total_cart_item = cartService.countAllCartItemByCurrentAccount(account.getAccountId());
+				model.addAttribute("total_cart_item", total_cart_item);
 				
-//				total = cartService.calculateCartTotalByCurrentAccount();
-//				model.addAttribute("total_price", Math.toIntExact(total));
+				total = cartService.calculateCartTotalByCurrentAccount();
+				model.addAttribute("total_price", Math.toIntExact(total));
 			}
 
 		} catch (Exception e) {
@@ -93,11 +98,9 @@ public class HomeController {
 
 		model.addAttribute("title", "Home");
 
-//		List<Category> categories = categoryService.findAllCategory();
-//		model.addAttribute("categories", categories);
+		List<Category> categories = categoryService.findAllCategory();
+		model.addAttribute("categories", categories);
 		
-
-
 //		List<Product> product = productService.findAllActiveProductOfShopActiveOfVendorActive();
 //		model.addAttribute("product", product);
 //		

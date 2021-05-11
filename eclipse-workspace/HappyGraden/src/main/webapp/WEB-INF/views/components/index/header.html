@@ -26,7 +26,7 @@
 			</div>
 			</th:block>
 			<div class="humberger__menu__widget">
-				<div class="header__top__right__language">
+				<!-- <div class="header__top__right__language">
 					<img src="img/language.png" alt="">
 					<div>Tiếng Việt</div>
 					<span class="arrow_carrot-down"></span>
@@ -34,16 +34,16 @@
 						<li><a href="#">Tiếng Việt</a></li>
 						<li><a href="#">English</a></li>
 					</ul>
-				</div>
+				</div> -->
 				<div class="header__top__right__auth">
-					<a th:href="@{/login}"><i class="fa fa-user"></i> Login</a>
+					<a th:href="@{/login}"><i class="fa fa-user"></i> Đăng nhập/Đăng kí</a>
 				</div>
 			</div>
 			<nav class="humberger__menu__nav mobile-menu">
 				<ul>
-					<li class="active"><a href="./index.html">Home</a></li>
-					<li><a href="./shop-grid.html">Shop</a></li>
-					<li><a href="#">Pages</a>
+					<li class="active"><a href="./index.html">Trang chủ</a></li>
+					<li><a href="./shop-grid.html">Sản phẩm</a></li>
+					<!-- <li><a href="#">Pages</a>
 						<ul class="header__menu__dropdown">
 							<li><a href="./shop-details.html">Shop Details</a></li>
 							<li><a href="./shoping-cart.html">Shoping Cart</a></li>
@@ -51,7 +51,7 @@
 							<li><a href="./blog-details.html">Blog Details</a></li>
 						</ul></li>
 					<li><a href="./blog.html">Blog</a></li>
-					<li><a href="./contact.html">Contact</a></li>
+					<li><a href="./contact.html">Contact</a></li> -->
 				</ul>
 			</nav>
 			<div id="mobile-menu-wrap"></div>
@@ -89,7 +89,7 @@
                                 <a href="#"><i class="fa fa-linkedin"></i></a>
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div> -->
-								<div class="header__top__right__language">
+								<!-- <div class="header__top__right__language">
 									<img th:src="@{/static/template/theme/agani/img/language.png}"
 										alt="">
 									<div>Tiếng Việt</div>
@@ -98,11 +98,11 @@
 										<li><a href="#">Tiếng Việt</a></li>
 										<li><a href="#">English</a></li>
 									</ul>
-								</div>
+								</div> -->
 								<th:block sec:authorize="!isAuthenticated()">
 									<div class="header__top__right__language">
 										<a th:href="@{/login}"><i class="fa fa-user"></i>
-											Login/Register</a>
+											Đăng nhập/Đăng kí</a>
 									</div>
 								</th:block>
 								<th:block sec:authorize="isAuthenticated()">
@@ -116,7 +116,7 @@
 											<li sec:authorize="hasRole('ROLE_ADMIN')"><a
 												href="/admin">Trang quản lí</a></li>
 											<li sec:authorize="isAuthenticated()"><a
-												href="/profile/home">Thông tin cá nhân</a></li>
+												href="/profile/home">Thông cá nhân</a></li>
 											<li sec:authorize="isAuthenticated()"><a href="/logout">Đăng xuất</a></li>
 											<li sec:authorize="!isAuthenticated()"><a hre
 										</ul>
@@ -138,9 +138,9 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
+                            <li class="active"><a href="./index.html">Trang chủ</a></li>
+                            <li><a href="./shop-grid.html">Sản phẩm</a></li>
+                          <!--   <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
                                     <li><a href="./shoping-cart.html">Shoping Cart</a></li>
@@ -149,7 +149,7 @@
                                 </ul>
                             </li>
                             <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li><a href="./contact.html">Contact</a></li> -->
                         </ul>
                     </nav>
                 </div>
