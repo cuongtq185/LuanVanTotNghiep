@@ -118,18 +118,20 @@ public class HomeController {
 		name = String.join("%", name.split(""));
 		
 		//model.addAllAttributes(CommonUtils.getMapHeaderAtribute(model, categoryService));
+		List<Category> categories = categoryService.findAllCategory();
+		model.addAttribute("categories", categories);
 		
 		List<ProductDto> products = productService.searchProductByName(name);
 		model.addAttribute("products", products);
-		model.addAttribute("name", name);
 	
 		int total_cart_item= 0;
 		Long total = 0L;
 		Account account = accountService.findCurrentAccount();
-//		total_cart_item = cartService.countAllCartItemByCurrentAccount(account.getAccountId());
+		if(account != null) {
+			total_cart_item = cartService.countAllCartItemByCurrentAccount(account.getAccountId());	
+			total = cartService.calculateCartTotalByCurrentAccount();			
+		}
 		model.addAttribute("total_cart_item", total_cart_item);
-		
-//		total = cartService.calculateCartTotalByCurrentAccount();
 		model.addAttribute("total_price", total);
 		return new ModelAndView("search-product");
 	}
