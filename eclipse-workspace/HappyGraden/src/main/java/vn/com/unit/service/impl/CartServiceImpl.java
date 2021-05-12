@@ -53,7 +53,8 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public Long calculateCartTotalByCurrentAccount() {
 		Long account_id = accountService.findCurrentAccount().getAccountId();
-		return cartRepository.calculateCartTotalByAccountId(account_id);
+		Long price = cartRepository.calculateCartTotalByAccountId(account_id);
+		return price;
 	}
 
 	@Override

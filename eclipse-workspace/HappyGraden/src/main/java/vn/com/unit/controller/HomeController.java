@@ -67,9 +67,6 @@ public class HomeController {
 		// Add Role if reload
 		int total_cart_item = 0;
 		Long total = 0L;
-		//model.addAttribute("total_cart_item", total_cart_item);
-		//model.addAttribute("total_price", Math.toIntExact(total));
-
 		try {
 			Account account = accountService.findCurrentAccount();
 
@@ -90,6 +87,8 @@ public class HomeController {
 				
 				total = cartService.calculateCartTotalByCurrentAccount();
 				model.addAttribute("total_price", Math.toIntExact(total));
+				int logo = 1;
+				model.addAttribute("logo", logo);
 			}
 
 		} catch (Exception e) {
@@ -100,15 +99,10 @@ public class HomeController {
 
 		List<Category> categories = categoryService.findAllCategory();
 		model.addAttribute("categories", categories);
-		
-//		List<Product> product = productService.findAllActiveProductOfShopActiveOfVendorActive();
-//		model.addAttribute("product", product);
-//		
+				
 //		Product top_product = productService.findOneTopProductPaymentSuccess();
 //		model.addAttribute("top_product", top_product);
 //		
-//		List<Shop> shops = shopService.searchAllShop();
-//		model.addAttribute("shops", shops);
 		
 		List<ProductDto> lstProduct = productService.findAllProductActive(8, 0);
 		
