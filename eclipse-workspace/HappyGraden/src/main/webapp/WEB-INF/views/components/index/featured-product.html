@@ -29,15 +29,15 @@
     
                 <th:block th:each="product : ${lstProduct}">
     
-                    <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-                        <div class="featured__item">
+                    <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" >
+                        <div class="featured__item" >
                             <div class="featured__item__pic set-bg" th:data-setbg="@{ ${product.productImg} }">
                                 <ul class="featured__item__pic__hover">
                                  <th:block sec:authorize="isAuthenticated()">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                  </th:block>   
                                  
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                    <li><a th:href="@{|product/detail/__${product.productId}__|}"><i class="fa fa-retweet"></i></a></li>
                                   <th:block sec:authorize="isAuthenticated()">   
                                     <li>
                                         <a href="#" class ="productMSG" type ="button"
@@ -48,7 +48,8 @@
                                 </ul>
                             </div>
                             <div class="featured__item__text">
-                                <h6><a href="#">[[${product.productName}]]</a></h6>
+                                 <a th:href="@{|product/detail/__${product.productId}__|}"
+                                                                    th:text="${product.productName}"></a>
                                 <h5>[[${product.productPrice}]] đ</h5>
                             </div>
                         </div>

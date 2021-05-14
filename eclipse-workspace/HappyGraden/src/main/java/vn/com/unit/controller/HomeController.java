@@ -17,6 +17,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +34,7 @@ import vn.com.unit.service.CategoryService;
 import vn.com.unit.service.ProductService;
 import vn.com.unit.service.RoleService;
 import vn.com.unit.service.ShopService;
+import vn.com.unit.utils.CommonUtils;
 
 @Controller
 public class HomeController {
@@ -218,5 +220,50 @@ public class HomeController {
 
 		return ResponseEntity.ok(products);
 	}
+	
+	@GetMapping("/product/detail/{product_id}")
+    public ModelAndView detail(Model model, @PathVariable ("product_id") Long product_id) {
+		
+		model.addAllAttributes(CommonUtils.getMapHeaderAtribute(model, categoryService));
+		
+		int total_cart_item = 0;
+		Long total = 0L;
+		try {
+			Account account = accountService.findCurrentAccount();
+
+			if (account != null) {
+				Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+				List<GrantedAuthority> authorities = new ArrayList<>();
+
+				authorities = roleService.findAuthorities(account);
+
+				Authentication newAuth = new UsernamePasswordAuthenticationToken(auth.getPrincipal(),
+						auth.getCredentials(), authorities);
+
+				SecurityContextHolder.getContext().setAuthentication(newAuth);
+				
+				total_cart_item = cartService.countAllCartItemByCurrentAccount(account.getAccountId());
+				model.addAttribute("total_cart_item", total_cart_item);
+				
+				total = cartService.calculateCartTotalByCurrentAccount();
+				model.addAttribute("total_price", Math.toIntExact(total));
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		List<Category> categories = categoryService.findAllCategory();
+		model.addAttribute("categories", categories);
+		
+		Product product = productService.findProductByProductId(product_id);
+		model.addAttribute("product", product);
+		Long id = (long) product.getCategory();
+		List<Product> products = productService.findAllProductByCategoryIdNotPagination(id);
+		model.addAttribute("products", products);
+		
+        return new ModelAndView("index-product-detail");
+    }
 
 }
