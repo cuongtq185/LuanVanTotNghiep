@@ -193,14 +193,13 @@ create table log (
 	create_at datetime default getutcdate(),
 )
 
-
 --insert
 insert into role(role_name) values ('ROLE_ADMIN')
 insert into role(role_name) values ('ROLE_USER')
 
 --insert account
 insert into account(account_name, account_username, account_password, account_email,account_phone, account_address, role)
-values (N'Trần Quốc Cường', 'admin', '', 'cuongtq.tvh@gmail.com','0398915767', 'Châu Thành - Trà Vinh', 1)
+values (N'Trần Quốc Cường', 'cuongtq', '', 'cuongtq.tvh@gmail.com','0398915767', 'Châu Thành - Trà Vinh', 1)
 
 insert into account(account_name, account_username, account_password, account_email,account_phone, account_address, role)
 values (N'Trần Quốc Vinh', 'user', '', 'vinh@gmail.com','0123456789', 'Châu Thành - Trà Vinh', 2)

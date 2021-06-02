@@ -149,8 +149,8 @@
 }
 
 .header__top__right__language ul {
-	background: #222;
-	width: 100px;
+	width: 200px;
+	background: #95d438;
 	text-align: left;
 	padding: 5px 0;
 	position: absolute;
