@@ -47,7 +47,7 @@
 
                 const recognition = new SpeechRecognition();
                 //recognition.continuous = true;
-
+				recognition.lang = "vi-VN";
                 micBtn.addEventListener("click", micBtnClick);
 
                 recognition.addEventListener("start", startSpeechRecognition);
