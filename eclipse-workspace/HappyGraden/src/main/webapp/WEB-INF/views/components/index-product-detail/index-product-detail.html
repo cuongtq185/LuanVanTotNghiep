@@ -7,6 +7,16 @@
 </head>
 <body>
 	<th:block th:fragment="index-product-detail">
+	<style type="text/css">
+		.hero__search__form form button {
+		    position: absolute;
+		    right: 0;
+		    top: -1px;
+		    height: 50px;
+		    width: 50px;
+		    color: #26bf13;
+		}
+	</style>
     <!-- Product Details Section Begin -->
     <section class="product-details spad">
         <div class="container">
@@ -29,34 +39,36 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
                         <h3 th:text="${product.productName}"></h3>
-                        <div class="product__details__rating">
+                        <!-- <div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
-                        </div>
+                        </div> -->
                         <div class="product__details__price" th:text="${product.productPrice}">$50.00</div>
                         <p th:text="${product.productDetail}"></p>
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" value="1">
+                                    <input type="text" id="quantity_input" value="1">
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">Thêm vào giỏ hàng</a>
-                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        <a type="button" th:onclick="|addCart(__${product.productId}__)|" class="primary-btn">Thêm vào giỏ hàng</a>
+                       <!--  <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a> -->
                          <ul>
                             <li><b>Khả dụng</b> <span>Trong kho</span></li>
                             <li><b>Thời gian vận chuyển</b> <span>Từ 1 ngày <samp>Đến 5 ngày</samp></span></li>      
                              <li><b>Đánh giá</b> 
-                             <span class="icon_heart_alt"></span>
-                             <span class="icon_heart_alt"></span>
-                             <span class="icon_heart_alt"></span>
-                             <span class="icon_heart_alt"></span>
-                             <span class="icon_heart_alt"></span>
+		                          <span class="product__details__rating">
+		                            <i class="fa fa-star"></i>
+		                            <i class="fa fa-star"></i>
+		                            <i class="fa fa-star"></i>
+		                            <i class="fa fa-star"></i>
+		                            <i class="fa fa-star-half-o"></i>		                            
+		                        </span>
                              </li>
                         </ul>
                     </div>
@@ -86,6 +98,13 @@
             </div>
         </div>
     </section>
+    
+    <script th:inline="javascript">
+		const product = [[${product}]];
+		const productId = [[${product.productId}]];
+		const productQuantity = [[${product.productQuantity}]];
+		console.log(productQuantity)
+		</script>
 	</th:block>
 </body>
 </html>

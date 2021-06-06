@@ -125,7 +125,8 @@ public class HomeController {
 		
 		List<ProductDto> products = productService.searchProductByName(name);
 		model.addAttribute("products", products);
-	
+		model.addAttribute("size", products.size());
+		
 		int total_cart_item= 0;
 		Long total = 0L;
 		Account account = accountService.findCurrentAccount();
