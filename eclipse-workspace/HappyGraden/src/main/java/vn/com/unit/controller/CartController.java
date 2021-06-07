@@ -57,6 +57,9 @@ public class CartController {
 
 		model.addAttribute("total", total);
 		model.addAttribute("total_price", total);
+		model.addAttribute("name", account.getAccountName());
+		model.addAttribute("phone", account.getAccountPhone());
+		model.addAttribute("address", account.getAccountAddress());
 
 		model.addAttribute("title", "Cart");
 		return new ModelAndView("shopping-cart");
@@ -66,12 +69,12 @@ public class CartController {
 	@ResponseBody
 	public ResponseEntity<String> add(Model model, @RequestBody Map<String, String> json) {		
 		
-		int quantity = 1;	
-		if (json.get("quantity") != null) {
-			quantity = Integer.valueOf(json.get("quantity"));
+		int productQuantity = 1;	
+		if (json.get("productQuantity") != null) {
+			productQuantity = Integer.valueOf(json.get("productQuantity"));
 		}
 		
-		cartService.addCartItemCurrentAccount(Long.valueOf(json.get("product_id")), quantity);
+		cartService.addCartItemCurrentAccount(Long.valueOf(json.get("productId")), productQuantity);
 		Account account = accountService.findCurrentAccount();
 		int total_cart_item = cartService.countAllCartItemByCurrentAccount(account.getAccountId());
 		Long total = cartService.calculateCartTotalByCurrentAccount();

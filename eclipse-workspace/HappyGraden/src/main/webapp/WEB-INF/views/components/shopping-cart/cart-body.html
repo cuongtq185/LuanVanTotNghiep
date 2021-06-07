@@ -69,9 +69,9 @@
 							<h5>Tổng giỏ hàng</h5>
 							<form  th:action="@{/cart/payment/momo}" method="POST">
 								<ul>
-									<li>Người nhận hàng: <input type="text" required="required" name="fullname" placeholder="Nhập tên người nhận" style="float:right"></li>
-									<li>Số điện thoại:<input type="text" required="required" name="phone" placeholder="Nhập số điện thoại" style="float:right"></li>
-									<li>Địa chỉ: <input type="address" required="required" name="address" placeholder="Nhập địa chỉ" style="float:right"></li>
+									<li>Người nhận hàng: <input type="text" th:value="${name}" required="required" name="fullname" placeholder="Nhập tên người nhận" style="float:right"></li>
+									<li>Số điện thoại:<input type="phone" th:value="${phone}" required="required" name="phone" placeholder="Nhập số điện thoại" style="float:right"></li>
+									<li>Địa chỉ: <input type="address" th:value="${address}" required="required" name="address" placeholder="Nhập địa chỉ" style="float:right"></li>
 									<!-- <li>Subtotal <span>$454.98</span></li> -->
 									<li>Tổng giá:<span th:inline="text">VNĐ [[${#numbers.formatDecimal(total, 0, 'COMMA', 0, 'POINT')}]]</span></li>
 								</ul>

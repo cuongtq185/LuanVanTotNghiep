@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.com.unit.dto.BillItemDto;
@@ -23,7 +25,8 @@ public class BillController {
 	@Autowired
 	BillItemService billItemService;
 	
-	@GetMapping("/bill/{id}")
+	//@GetMapping("/bill/{id}")
+	@RequestMapping(value = "/bill/{id}", produces = "text/plain;charset=UTF-8", method = RequestMethod.GET)
 	public ModelAndView bill(@PathVariable ("id") Long id, Model model) {
 		
 		Bill bill = billService.findBillOfCurrentAccountByBillId(id);
