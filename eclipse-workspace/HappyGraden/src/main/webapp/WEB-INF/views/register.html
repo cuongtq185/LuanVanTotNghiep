@@ -18,6 +18,19 @@
 	<script
 		th:src="@{/static/template-admin/polygon/cooladmin/vendor/jquery-3.2.1.min.js}"></script>
 	<script th:src="@{/static/admin/js/plugins/sweetalert2@9.js}"></script>
+	<script th:src="@{/static/admin/js/core/jquery.min.js}"></script>
+	<script th:src="@{/static/admin/js/core/popper.min.js}"></script>
+	<script
+		th:src="@{/static/admin/js/core/bootstrap-material-design.min.js}"></script>
+
+	<script th:src="@{/static/bootstrap-4.5.0-dist/js/bootstrap.min.js}"></script>
+	<script
+		th:src="@{/static/admin/js/plugins/perfect-scrollbar.jquery.min.js}"></script>
+
+	<script th:src="@{/static/admin/js/plugins/bootstrap-notify.js}"></script>
+
+	<script th:src="@{/static/admin/js/material-dashboard.js?v=2.1.2}"
+		type="text/javascript"></script>
 	<!-- Script dang ki tai khoan nguoi dung -->
 	<script>
             function addAccount() {
@@ -42,7 +55,7 @@
                     beforeSend: function (xhr) {
                         xhr.setRequestHeader(header, token);
                     },
-                    ssuccess: function (data, status, xhr) {
+                    success: function (data, status, xhr) {
    					 try {
                          Swal.fire({
               		  position: 'center',
