@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import vn.com.unit.entity.Bill;
 import vn.com.unit.pageable.PageRequest;
 import vn.com.unit.service.AdminBillService;
+import vn.com.unit.service.PaymentService;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -22,6 +23,9 @@ public class AdminBillManagementController {
 
 	@Autowired
 	private AdminBillService adminBillService;
+	
+	@Autowired
+	PaymentService paymentService;
 
 	@GetMapping("/admin/bill/list")
 	public ModelAndView product(Model model,

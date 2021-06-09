@@ -49,6 +49,7 @@
                         </div> -->
                         <div class="product__details__price" th:text="${product.productPrice}">$50.00</div>
                         <p th:text="${product.productDetail}"></p>
+                        <th:block sec:authorize="isAuthenticated()">
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
@@ -56,7 +57,9 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <a type="button" th:onclick="|addCart(__${product.productId}__)|" class="primary-btn">Thêm vào giỏ hàng</a>
+                        </th:block>
                        <!--  <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a> -->
                          <ul>
                             <li><b>Khả dụng</b> <span>Trong kho</span></li>

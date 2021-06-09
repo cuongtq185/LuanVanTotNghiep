@@ -7,7 +7,7 @@ import jp.sf.amateras.mirage.annotation.PrimaryKey;
 import jp.sf.amateras.mirage.annotation.Table;
 import jp.sf.amateras.mirage.annotation.PrimaryKey.GenerationType;
 
-@Table(name = "p2p_bill_item")
+@Table(name = "bill_item")
 public class BillItem {
 
 	@Id

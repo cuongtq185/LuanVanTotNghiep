@@ -47,6 +47,9 @@ public class Bill {
 	
 	@Transient
 	private int status;
+	
+	@Transient
+	private String productName;
 
 	public int getStatus() {
 		return status;
@@ -150,6 +153,14 @@ public class Bill {
 		this.account = account;
 	}
 
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
 //	public Long getPaymentId() {
 //		return paymentId;
 //	}
@@ -157,5 +168,6 @@ public class Bill {
 //	public void setPaymentId(Long paymentId) {
 //		this.paymentId = paymentId;
 //	}
+	
 
 }

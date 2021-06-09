@@ -1,93 +1,106 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
 <head>
 
 </head>
 <body>
 	<th:block th:fragment="account-edit">
-	<div class="app-main__outer">
+		<div class="app-main__outer">
                 <div class="app-main__inner">
-                    <div class="app-page-title">
-                        <div class="page-title-wrapper">
-                            <div class="page-title-heading">
-                                <div class="page-title-icon">
-                                    <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <h3 class="card-title">Thông tin tài khoản người dùng</h3>
+                            <form id="signupForm" class="col-md-10 mx-auto" method="post" action="" th:if="account != null" th:object="${account}">
+                                <div class="form-group">
+                                    <label for="firstname">Họ tên</label>
+                                    <div>
+                                        <input type="text" class="form-control" id="firstname" name="firstname" 
+                                        placeholder="First name" th:field="*{accountName}"/>
+                                    </div>
+                                </div>	                              
+                                <div class="form-group">
+                                    <label for="username">Tên tài khoản</label>
+                                    <div>
+                                        <input type="text" class="form-control" id="username" name="username" 
+                                        placeholder="Username" th:field="*{accountUsername}" disabled/>
+                                    </div>
                                 </div>
-                                <div>Account Management
-                                    <!-- <div class="page-title-subheading">This is an example dashboard created using
-                                        build-in elements and components.</div> -->
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <div>
+                                        <input type="text" class="form-control" id="email" name="email"
+                                         placeholder="Email" th:field="*{accountEmail}"/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="page-title-actions">
-                               
-                                <div class="d-inline-block dropdown">
-                                    <button type="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">
-                                        <span class="btn-icon-wrapper pr-2 opacity-7">
-                                            <i class="fa fa-business-time fa-w-20"></i>
-                                        </span>
-                                        Buttons
-                                    </button>
-                                    
+                                 <div class="form-group">
+                                    <label for="phone">Số điện thoại</label>
+                                    <div>
+                                        <input type="text" class="form-control" id="phone" name="email"
+                                         placeholder="phone" th:field="*{accountPhone}" />
+                                    </div>
                                 </div>
-                            </div>
+                                 <div class="form-group">
+                                    <label for="address">Địa chỉ</label>
+                                    <div>
+                                        <input type="text" class="form-control" id="address" name="address" 
+                                        placeholder="address" th:field="*{accountAddress}"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="createdAt">Ngày tạo</label>
+                                    <div>
+                                        <input type="text" class="form-control" id="createdAt"
+                                         th:value=" ${account.accountCreateAt} ? ${#dates.format(account.accountCreateAt, 'dd/MM/yyyy')} "
+                                         name="createdAt" placeholder="createdAt" disabled/>
+                                    </div>
+                                </div>
+                          
+            
+                                <!-- <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
+                                </div> -->
+                                <!-- <div class="form-group">
+                                    <label for="confirm_password">Confirm password</label>
+                                    <div>
+                                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm password" />
+                                    </div>
+                                </div> -->
+                                <!-- <div class="form-group">
+                                    <div>
+                                        <div class="form-check">
+                                            <input type="checkbox" id="agree" name="agree" value="agree" class="form-check-input" />
+                                            <label class="form-check-label">Please agree to our policy</label>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="form-group right">
+                                <a th:href="@{/}">
+                                    <button type="submit" class="btn btn-primary" action="action"
+    									onclick="window.history.go(-1); return false;">
+    									<i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+    									Trờ về</button>
+    							</a>
+    							<span type="submit" class="btn btn-warning"
+									onClick="accountEdit()">
+									<i class="fa fa-floppy-o" aria-hidden="true"></i>
+									Lưu</span>		
+                                </div>
+                               <!--  <a th:href="@{'/account/bill-information' + ${account.accountId}}">
+										<button rel="tooltip" title="Chi tiết" type="button"
+											class="btn btn-warning btn-just-icon">
+											<i class="fas fa-eye"></i>
+										</button>&nbsp;&nbsp;
+								</a> -->
+                            </form>
                         </div>
-                    </div>
-                    
-                    <div class="tabs-animation">
-                        
-
-                        <div class="card mb-3">
-                            
-                            <div class="card-body">
-                                <table style="width: 100%;" id="example"
-                                    class="table table-hover table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>UserName</th>
-                                            <th>Email</th>
-                                            <th>Create At</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr  th:if="${!pageable.data.empty or pageable.data != null}"
-												th:each="account, i : ${pageable.data}">
-                                            <td><span
-												th:text="${i.count+(pageable.limit*(pageable.page -1))}"></span></td>
-                                            <td><span th:text="${account.accountName}"></span></td>
-											<td><span th:text="${account.accountUsername}"></span></td>
-											<td><span th:text="${account.accountEmail}"></span></td>
-                                            <td><span
-												th:text=" ${account.accountCreateAt} ? ${#dates.format(account.accountCreateAt, 'dd-MM-yyyy')} "></span></td>
-                                            <td></td>
-                                        </tr>
-                                       
-                                        
-                                        
-                                    </tbody>
-                                    <tfoot>
-                                         <tr>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>UserName</th>
-                                            <th>Email</th>
-                                            <th>Create At</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                        </div>
-                        
                     </div>
                 </div>
-                <div class="app-wrapper-footer">
+                 <div class="app-wrapper-footer">
                     <div class="app-footer">
                         <div class="app-footer__inner">
                             
@@ -106,7 +119,9 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
+            
 	</th:block>
 
 </body>

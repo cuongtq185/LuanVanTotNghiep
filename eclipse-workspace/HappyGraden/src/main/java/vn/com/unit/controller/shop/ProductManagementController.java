@@ -153,7 +153,7 @@ public class ProductManagementController {
 						name = "caycanh";
 						String imgName = productId + name + "_" + String.valueOf(i) + ".jpg";
 
-						String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img";
+						String path = "C:/Users/Quoc Cuong Tran/Desktop/BC_LVTN/LVTN_eclipse_workspace/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img";
 						FileUtil.createDirectoryNotExists(path);
 						File fileNew = new File(path, imgName);
 
@@ -220,7 +220,7 @@ public class ProductManagementController {
 						name = "caycanh";
 						String imgName = id + name + "_" + String.valueOf(i) + ".jpg";
 
-						String path = "D:/LuanVanTotNghiep2021/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img";
+						String path = "C:/Users/Quoc Cuong Tran/Desktop/BC_LVTN/LVTN_eclipse_workspace/LuanVanTotNghiep/eclipse-workspace/HappyGraden/src/main/webapp/static/img";
 						FileUtil.createDirectoryNotExists(path);
 						File fileNew = new File(path, imgName);
 

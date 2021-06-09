@@ -16,7 +16,7 @@
 								<i class="fa fa-home" aria-hidden="true"></i>
 							</div>
 							<div>
-								<b>Quản lí giá cây cảnh</b>
+								<b>Quản lí đơn hàng</b>
 							</div>
 						</div>
 						<div class="page-title-actions">
@@ -35,8 +35,8 @@
 										<th style="text-align: center;">Họ tên</th>
 										<th style="text-align: center;">Địa chỉ</th>
 										<th style="text-align: center;">Số điện thoại</th>
-										<th style="text-align: center;">Tổng giá</th>									
-										<th style="text-align: center;">Tổng số lượng</th>
+										<!-- <th style="text-align: center;">Tổng giá</th>									
+										<th style="text-align: center;">Tổng số lượng</th> -->
 										<th style="text-align: center;">Ngày tạo</th>
 										<th style="text-align: center;">Trạng thái</th>
 									</tr>
@@ -49,11 +49,11 @@
 										<td style="text-align: center;"><span th:text="${bill.fullName}"></span></td>
 										<td style="text-align: center;"><span th:text="${bill.address}"></span></td>
 										<td style="text-align: center;"><span th:text="${bill.phone}"></span></td>
-										<td style="text-align: center;"><span th:text="${bill.tottalPrice}"></span></td>
-										<td style="text-align: center;"><span th:text="${bill.totalQuantity}"></span></td>
+										<!-- <td style="text-align: center;"><span th:text="${bill.tottalPrice}"></span></td>
+										<td style="text-align: center;"><span th:text="${bill.totalQuantity}"></span></td> -->
 										<td style="text-align: center;"><span
-												th:text=" ${impPrice.billCreateAt} ? ${#dates.format(impPrice.billCreateAt, 'dd-MM-yyyy')} "></span></td>
-										<td style="text-align: center;"><span th:text="${impPrice.status}"></span></td>
+												th:text=" ${bill.billCreateAt} ? ${#dates.format(bill.billCreateAt, 'dd/MM/yyyy')} "></span></td>
+										<td style="text-align: center;"><span th:text="${bill.status == 1 ?'Thanh toán thành công':'Thất bại'}"></span></td>
 									</tr>
 								</tbody>
 								<tfoot>
@@ -62,8 +62,8 @@
 										<th style="text-align: center;">Họ tên</th>
 										<th style="text-align: center;">Địa chỉ</th>
 										<th style="text-align: center;">Số điện thoại</th>
-										<th style="text-align: center;">Tổng giá</th>									
-										<th style="text-align: center;">Tổng số lượng</th>
+										<!-- <th style="text-align: center;">Tổng giá</th>									
+										<th style="text-align: center;">Tổng số lượng</th> -->
 										<th style="text-align: center;">Ngày tạo</th>
 										<th style="text-align: center;">Trạng thái</th>
 									</tr>

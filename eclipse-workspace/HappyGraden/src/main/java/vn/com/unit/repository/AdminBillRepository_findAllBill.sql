@@ -1,4 +1,4 @@
-select a.*, b.payment_status
+select a.*, b.payment_status as status
 from bill as a
 left join payment as b on a.bill_id = b.bill
 ORDER BY a.bill_id desc

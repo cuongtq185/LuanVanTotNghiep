@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head>
+</head>
+<body>
+	<th:block th:fragment="banner-bill" >
+	
+		<!-- Hero Section Begin -->
+	    <section class="hero hero-normal">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-lg-3">
+	                    <div class="hero__categories">
+	                        <div class="hero__categories__all">
+	                            <i class="fa fa-bars"></i>
+	                            <span>Loại cây cảnh</span>
+	                        </div>
+	                        <ul>
+	                            <th:block th:each="category : ${categories}">
+								<li><a class="clc" href="#" th:text="${category.categoryName}"></a></li>
+								</th:block>
+	                        </ul>
+	                    </div>
+	                </div>
+	                <div class="col-lg-9">
+						<div class="hero__search">
+							<div class="hero__search__form">
+								 <form th:action="@{/product-by-search}" id="search-form">
+	                                <div class="hero__search__categories">
+	                                   Tìm kiếm
+	                                    <span class="arrow_carrot-down"></span>
+	                                </div>
+	                                <input type="text" placeholder="Nhập từ khóa bạn muốn tìm kiếm ?" name="name" required="required">
+	                               <!--  <button type="submit" class="site-btn">SEARCH</button> -->
+	                            </form>
+							</div>
+							<div class="hero__search__phone">
+								<div class="hero__search__phone__icon">
+									<i class="fa fa-phone"></i>
+								</div>
+								<div class="hero__search__phone__text">
+									<h5>0398 915 767</h5>
+									<span>Hỗ trợ 24/7 thời gian</span>
+								</div>
+							</div>
+						</div>
+						<section class="breadcrumb-section set-bg"
+							>
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-12 text-center">
+										<div class="">
+											<h1>Hóa đơn</h1>
+											<strong>Ngày đặt hàng: [[${bill?.billCreateAt}]]</strong>
+											<!-- <strong>Ngày đặt hàng: [[${#dates.format(bill?.billCreateAt, 'dd/MM/yyyy')}]] "</strong> -->
+											<div>
+												<div>Người đặt hàng: [[${bill?.fullName}]]</div>
+											</div>
+											<div>Địa chỉ: [[${bill?.address}]]</div>
+										</div>
+										
+									</div>
+									<div class="col-lg-12 text-center">
+											<span class="float-center"> <strong>Trạng thái:</strong> [[${bill?.payment == 0} ? 'Tạm dừng' : '']][[${bill?.payment > 0} ? 'Thành công' : '']][[${bill?.payment < 0} ? 'Lỗi' : '' ]]</span>
+									</div>
+									
+								</div>
+							</div>
+						</section>
+					</div>
+	            </div>
+	        </div>
+	    </section>
+    <!-- Hero Section End -->
+	</th:block>
+</body>
+</html>

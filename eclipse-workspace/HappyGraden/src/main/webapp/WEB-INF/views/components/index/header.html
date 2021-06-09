@@ -116,9 +116,10 @@
 											<li sec:authorize="hasRole('ROLE_ADMIN')"><a
 												href="/admin">Trang quản lý</a></li>
 											<li sec:authorize="isAuthenticated()"><a
-												href="/profile/home">Thông tin cá nhân</a></li>
+												href="/profile/myaccount">Thông tin cá nhân</a></li>
 											<li sec:authorize="isAuthenticated()"><a href="/logout">Đăng xuất</a></li>
-											<li sec:authorize="!isAuthenticated()"><a hre
+											<li sec:authorize="isAuthenticated()"><a href="/bill-information">Đơn hàng</a></li>
+											<!-- <li sec:authorize="!isAuthenticated()"><a hre -->
 										</ul>
 
 									</div></div>

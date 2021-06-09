@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head>
+    <th:block th:include="components/bill/head :: head"></th:block>
+    <meta th:name="_csrf" th:content="${_csrf.token}" />
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}" />
+    
+    <style type="text/css">
+		.hero__search__form form button {
+		    position: absolute;
+		    right: 0;
+		    top: -1px;
+		    height: 50px;
+		    width: 50px;
+		    color: #26bf13;
+		}
+	</style>
+
+</head>
+
+<body>
+       	 	<div th:replace="components/index-product-detail/header :: index-header"></div>
+			<!-- <div th:replace="components/bill/banner-bill :: banner-bill"></div> -->
+        	<div th:replace="components/bill-information/bill-body :: bill-body"></div>
+			<div th:replace="components/index/footer :: index-footer"></div>
+						
+    		<th:block th:replace="components/bill-information/footer :: footer"></th:block>
+    		
+    		<script type="text/javascript">
+			
+				const searchForm = document.querySelector("#search-form");
+	            const searchFormInput = searchForm.querySelector("input");
+	            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+	
+	            if (SpeechRecognition) {
+	                console.log("Support");
+	                searchForm.insertAdjacentHTML("beforeend", '<button id="searchBtn" type="button" class="header_search_button trans_300"><i class="fa fa-microphone"></i></button>')
+	                const micBtn = searchForm.querySelector("button");
+	                const micIcon = micBtn.querySelector("i");
+	
+	                const recognition = new SpeechRecognition();
+	                //recognition.continuous = true;
+					recognition.lang = "vi-VN";
+	                micBtn.addEventListener("click", micBtnClick);
+	
+	                recognition.addEventListener("start", startSpeechRecognition);
+	                recognition.addEventListener("end", endSpeechRecognition);
+	                recognition.addEventListener("result", resultOfSpeechRecognition);
+	
+	                // recognition.addEventListener("start", startSpeechRecognition);
+	                function startSpeechRecognition() {
+	                	//debugger;
+	                    micIcon.classList.remove("fa-microphone");
+	                    micIcon.classList.add("fa-microphone-slash");
+	                    console.log("Speech Recognition Active " + Date.now());
+	                    searchFormInput.focus();
+	                }
+	                // recognition.addEventListener("end",endSpeechRecognition);
+	                function endSpeechRecognition() {
+	                    micIcon.classList.remove("fa-microphone-slash");
+	                    micIcon.classList.add("fa-microphone");
+	                    console.log("Speech Recognition DeActive")
+	                }
+	                // recognition.addEventListener("result", resultOfSpeechRecognition);
+	                function resultOfSpeechRecognition(event) {
+	                    const transcript = event.results[0][0].transcript;
+	                    searchFormInput.value = transcript;
+	                    setTimeout(() => {
+	                        searchForm.submit();
+	                    }, 750);
+	                }
+	
+	                function micBtnClick() {
+	                    if (micIcon.classList.contains("fa-microphone")) {
+	                        recognition.start();
+	                    } else {
+	                        recognition.stop();
+	                    }
+	                }
+	            } else {
+	                console.log("No support")
+	            }
+       	 	</script>
+	
+</body>
+
+</html>

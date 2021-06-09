@@ -13,4 +13,6 @@ public interface AdminBillRepository extends MirageRepository<Bill, Long>{
 
 	public List<Bill> findAllBill(@Param("sizeOfPage") Integer sizeOfPage,
 			@Param("offset") Integer offset);
+	
+	public List<Bill> findAllBillByAccount(@Param("id") Long id);
 }
